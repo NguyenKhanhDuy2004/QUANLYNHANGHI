@@ -63,6 +63,16 @@ namespace THUEPHONGNHANGHI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1564491_add_create_new_plus_icon {
+            get {
+                object obj = ResourceManager.GetObject("1564491_add_create_new_plus_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _1564506_close_exit_logout_power_icon {
             get {
                 object obj = ResourceManager.GetObject("1564506_close_exit_logout_power_icon", resourceCulture);
@@ -76,6 +86,16 @@ namespace THUEPHONGNHANGHI.Properties {
         internal static System.Drawing.Bitmap _1564506_close_exit_logout_power_icon__1_ {
             get {
                 object obj = ResourceManager.GetObject("1564506_close_exit_logout_power_icon (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1564506_close_exit_logout_power_icon1 {
+            get {
+                object obj = ResourceManager.GetObject("1564506_close_exit_logout_power_icon1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,6 +213,16 @@ namespace THUEPHONGNHANGHI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _5402370_bin_delete_remove_trash_can_icon1 {
+            get {
+                object obj = ResourceManager.GetObject("5402370_bin_delete_remove_trash_can_icon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _6035_exit_icon {
             get {
                 object obj = ResourceManager.GetObject("6035_exit_icon", resourceCulture);
@@ -203,9 +233,29 @@ namespace THUEPHONGNHANGHI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _8664938_trash_can_delete_remove_icon {
+            get {
+                object obj = ResourceManager.GetObject("8664938_trash_can_delete_remove_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _8666571_log_out_icon {
             get {
                 object obj = ResourceManager.GetObject("8666571_log_out_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _8673553_ic_fluent_note_edit_filled_icon {
+            get {
+                object obj = ResourceManager.GetObject("8673553_ic_fluent_note_edit_filled_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

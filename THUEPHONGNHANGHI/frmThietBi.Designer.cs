@@ -42,12 +42,12 @@
 			this.TENTB = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.DONGIA = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+			this.btnHuy = new DevExpress.XtraEditors.SimpleButton();
+			this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
 			this.label2 = new System.Windows.Forms.Label();
 			this.nUDDongia = new System.Windows.Forms.NumericUpDown();
 			this.txtTentb = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
-			this.btnHuy = new DevExpress.XtraEditors.SimpleButton();
-			this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
 			this.toolStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).BeginInit();
@@ -105,7 +105,7 @@
 			// 
 			// btnXoa
 			// 
-			this.btnXoa.Image = global::THUEPHONGNHANGHI.Properties.Resources._5402370_bin_delete_remove_trash_can_icon;
+			this.btnXoa.Image = global::THUEPHONGNHANGHI.Properties.Resources._5402370_bin_delete_remove_trash_can_icon1;
 			this.btnXoa.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btnXoa.Name = "btnXoa";
 			this.btnXoa.Size = new System.Drawing.Size(50, 75);
@@ -191,6 +191,30 @@
 			this.groupControl1.TabIndex = 8;
 			this.groupControl1.Text = "Thông tin";
 			// 
+			// btnHuy
+			// 
+			this.btnHuy.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+			this.btnHuy.Appearance.Options.UseFont = true;
+			this.btnHuy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnHuy.ImageOptions.Image")));
+			this.btnHuy.Location = new System.Drawing.Point(522, 195);
+			this.btnHuy.Name = "btnHuy";
+			this.btnHuy.Size = new System.Drawing.Size(133, 62);
+			this.btnHuy.TabIndex = 25;
+			this.btnHuy.Text = "Hủy";
+			this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click_1);
+			// 
+			// btnLuu
+			// 
+			this.btnLuu.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+			this.btnLuu.Appearance.Options.UseFont = true;
+			this.btnLuu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.ImageOptions.Image")));
+			this.btnLuu.Location = new System.Drawing.Point(350, 195);
+			this.btnLuu.Name = "btnLuu";
+			this.btnLuu.Size = new System.Drawing.Size(133, 62);
+			this.btnLuu.TabIndex = 24;
+			this.btnLuu.Text = "Lưu";
+			this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click_1);
+			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
@@ -233,30 +257,6 @@
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Tên thiết bị";
 			// 
-			// btnHuy
-			// 
-			this.btnHuy.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-			this.btnHuy.Appearance.Options.UseFont = true;
-			this.btnHuy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnHuy.ImageOptions.Image")));
-			this.btnHuy.Location = new System.Drawing.Point(522, 195);
-			this.btnHuy.Name = "btnHuy";
-			this.btnHuy.Size = new System.Drawing.Size(133, 62);
-			this.btnHuy.TabIndex = 25;
-			this.btnHuy.Text = "Hủy";
-			this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click_1);
-			// 
-			// btnLuu
-			// 
-			this.btnLuu.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-			this.btnLuu.Appearance.Options.UseFont = true;
-			this.btnLuu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.ImageOptions.Image")));
-			this.btnLuu.Location = new System.Drawing.Point(350, 195);
-			this.btnLuu.Name = "btnLuu";
-			this.btnLuu.Size = new System.Drawing.Size(133, 62);
-			this.btnLuu.TabIndex = 24;
-			this.btnLuu.Text = "Lưu";
-			this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click_1);
-			// 
 			// frmThietBi
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -265,6 +265,8 @@
 			this.Controls.Add(this.groupControl1);
 			this.Controls.Add(this.gcDanhSach);
 			this.Controls.Add(this.toolStrip1);
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "frmThietBi";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Danh mục Thiết bị";

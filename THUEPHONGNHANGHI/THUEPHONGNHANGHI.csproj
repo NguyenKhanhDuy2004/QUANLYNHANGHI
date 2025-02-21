@@ -397,6 +397,21 @@
   <ItemGroup>
     <None Include="Resources\Thêm tiêu đề.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1564491_add_create_new_plus_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\8673553_ic_fluent_note_edit_filled_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\8664938_trash_can_delete_remove_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5402370_bin_delete_remove_trash_can_icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1564506_close_exit_logout_power_icon1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
