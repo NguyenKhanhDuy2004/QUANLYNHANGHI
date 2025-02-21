@@ -299,5 +299,15 @@ namespace THUEPHONGNHANGHI.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Thêm_tiêu_đề {
+            get {
+                object obj = ResourceManager.GetObject("Thêm tiêu đề", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

@@ -42,7 +42,7 @@
 			// 
 			this.txtUsername.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			this.txtUsername.Font = new System.Drawing.Font("Tahoma", 12F);
-			this.txtUsername.Location = new System.Drawing.Point(249, 126);
+			this.txtUsername.Location = new System.Drawing.Point(715, 116);
 			this.txtUsername.Name = "txtUsername";
 			this.txtUsername.Size = new System.Drawing.Size(302, 36);
 			this.txtUsername.TabIndex = 2;
@@ -50,7 +50,7 @@
 			// txtPass
 			// 
 			this.txtPass.Font = new System.Drawing.Font("Tahoma", 12F);
-			this.txtPass.Location = new System.Drawing.Point(249, 177);
+			this.txtPass.Location = new System.Drawing.Point(715, 167);
 			this.txtPass.Name = "txtPass";
 			this.txtPass.Size = new System.Drawing.Size(302, 36);
 			this.txtPass.TabIndex = 4;
@@ -62,7 +62,7 @@
 			this.btnLogin.Appearance.Options.UseFont = true;
 			this.btnLogin.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.btnLogin.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLogin.ImageOptions.Image")));
-			this.btnLogin.Location = new System.Drawing.Point(187, 248);
+			this.btnLogin.Location = new System.Drawing.Point(653, 238);
 			this.btnLogin.Name = "btnLogin";
 			this.btnLogin.Size = new System.Drawing.Size(168, 56);
 			this.btnLogin.TabIndex = 5;
@@ -75,7 +75,7 @@
 			this.btnThoat.Appearance.Options.UseFont = true;
 			this.btnThoat.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.btnThoat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThoat.ImageOptions.Image")));
-			this.btnThoat.Location = new System.Drawing.Point(383, 248);
+			this.btnThoat.Location = new System.Drawing.Point(849, 238);
 			this.btnThoat.Name = "btnThoat";
 			this.btnThoat.Size = new System.Drawing.Size(168, 56);
 			this.btnThoat.TabIndex = 6;
@@ -88,7 +88,7 @@
 			this.labelControl1.Appearance.ForeColor = System.Drawing.Color.White;
 			this.labelControl1.Appearance.Options.UseFont = true;
 			this.labelControl1.Appearance.Options.UseForeColor = true;
-			this.labelControl1.Location = new System.Drawing.Point(249, 50);
+			this.labelControl1.Location = new System.Drawing.Point(715, 40);
 			this.labelControl1.Name = "labelControl1";
 			this.labelControl1.Size = new System.Drawing.Size(246, 48);
 			this.labelControl1.TabIndex = 7;
@@ -100,7 +100,8 @@
 			this.labelControl2.Appearance.ForeColor = System.Drawing.Color.White;
 			this.labelControl2.Appearance.Options.UseFont = true;
 			this.labelControl2.Appearance.Options.UseForeColor = true;
-			this.labelControl2.Location = new System.Drawing.Point(83, 133);
+			this.labelControl2.LineVisible = true;
+			this.labelControl2.Location = new System.Drawing.Point(549, 123);
 			this.labelControl2.Name = "labelControl2";
 			this.labelControl2.Size = new System.Drawing.Size(160, 24);
 			this.labelControl2.TabIndex = 8;
@@ -112,7 +113,7 @@
 			this.labelControl3.Appearance.ForeColor = System.Drawing.Color.White;
 			this.labelControl3.Appearance.Options.UseFont = true;
 			this.labelControl3.Appearance.Options.UseForeColor = true;
-			this.labelControl3.Location = new System.Drawing.Point(135, 184);
+			this.labelControl3.Location = new System.Drawing.Point(601, 174);
 			this.labelControl3.Name = "labelControl3";
 			this.labelControl3.Size = new System.Drawing.Size(108, 24);
 			this.labelControl3.TabIndex = 9;
@@ -124,9 +125,9 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImageLayoutStore = System.Windows.Forms.ImageLayout.Tile;
-			this.BackgroundImageStore = global::THUEPHONGNHANGHI.Properties.Resources.nhanghi1;
+			this.BackgroundImageStore = global::THUEPHONGNHANGHI.Properties.Resources.Thêm_tiêu_đề;
 			this.CancelButton = this.btnThoat;
-			this.ClientSize = new System.Drawing.Size(728, 361);
+			this.ClientSize = new System.Drawing.Size(1057, 356);
 			this.ControlBox = false;
 			this.Controls.Add(this.labelControl3);
 			this.Controls.Add(this.labelControl2);
