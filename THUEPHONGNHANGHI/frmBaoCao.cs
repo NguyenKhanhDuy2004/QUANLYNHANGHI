@@ -14,7 +14,7 @@ using THUEPHONGNHANGHI.MyControls;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 using CrystalDecisions.Windows.Forms;
-
+//
 namespace THUEPHONGNHANGHI
 {
 	public partial class frmBaoCao: DevExpress.XtraEditors.XtraForm
