@@ -44,6 +44,7 @@ namespace THUEPHONGNHANGHI
 			_sysRight = new SYS_RIGHT();
 			leftMenu(); 
 			showRoom();
+			navMain.View = new DevExpress.XtraNavBar.ViewInfo.ExplorerBarViewInfoRegistrator();
 		}
 		void leftMenu()
 		{
@@ -67,7 +68,7 @@ namespace THUEPHONGNHANGHI
 					navItem.ImageOptions.SmallImageIndex = 0;
 					navGruop.ItemLinks.Add(navItem);
 				}
-				navMain.Groups[navGruop.Name].Expanded = true;
+				navGruop.Expanded = false;
 			}
 		}
 		public void showRoom()
@@ -293,44 +294,9 @@ namespace THUEPHONGNHANGHI
 
 		}
 
-		private void btnDatPhongTheoGio_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-		{
-			if (_phong.checkEmpty(int.Parse(item.Value.ToString())))
-			{
-				MessageBox.Show("Phòng đã được đặt.Vui lòng chọn phòng khác.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				return;
-			}
-			frmDatPhongTheoGio frm = new frmDatPhongTheoGio();
-			frm._idPhong = int.Parse(item.Value.ToString());
-			frm._them = true;
-			frm.ShowDialog();
-		}
 
-		private void btnThanhtoantheogio_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-		{
-			if (!_phong.checkEmpty(int.Parse(item.Value.ToString())))
-			{
-				MessageBox.Show("Phòng chưa được đặt.Nên chưa thể thanh toán.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				return;
-			}
-			frmDatPhongTheoGio frmTheoGio = new frmDatPhongTheoGio();
-			frmTheoGio._idPhong = int.Parse(item.Value.ToString());
-			frmTheoGio._them = false;
-			frmTheoGio.ShowDialog();
-		}
+	
 
-		private void btnCapnhattheogio_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-		{
-			if (!_phong.checkEmpty(int.Parse(item.Value.ToString())))
-			{
-				MessageBox.Show("Phòng chưa được đặt.Vui lòng chọn phòng đã được đặt.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				return;
-			}
-			frmDatPhongTheoGio frm = new frmDatPhongTheoGio();
-			frm._idPhong = int.Parse(item.Value.ToString());
-			frm._them = false;
-			frm.ShowDialog();
-
-		}
+	
 	}
 }

@@ -106,7 +106,15 @@ namespace THUEPHONGNHANGHI
 			Crv.ToolPanelView = ToolPanelViewType.None;
 			TableLogOnInfo Thongtin;
 			ReportDocument doc = new ReportDocument();
-			doc.Load(System.Windows.Forms.Application.StartupPath + "\\Reports\\" + rp.REP_NAME + @".rpt");
+
+			string reportPath = System.Windows.Forms.Application.StartupPath + "\\Reports\\" + rp.REP_NAME + @".rpt";
+			if (!System.IO.File.Exists(reportPath))
+			{
+				MessageBox.Show("Không tìm thấy file báo cáo: " + reportPath, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+			doc.Load(reportPath);
+
 			Thongtin = doc.Database.Tables[0].LogOnInfo;
 			Thongtin.ConnectionInfo.ServerName = myFunctions._srv;
 			Thongtin.ConnectionInfo.DatabaseName = myFunctions._db;
@@ -114,7 +122,8 @@ namespace THUEPHONGNHANGHI
 			Thongtin.ConnectionInfo.Password = myFunctions._pw;
 			doc.Database.Tables[0].ApplyLogOnInfo(Thongtin);
 
-            if(rp.TUNGAY==true)
+			// Gán giá trị cho các tham số của báo cáo
+			if (rp.TUNGAY == true)
 			{
 				doc.SetParameterValue("@NGAYD", _uTuNgay.dtTuNgay.Value);
 				doc.SetParameterValue("@NGAYC", _uTuNgay.dtDenNgay.Value);
@@ -122,16 +131,25 @@ namespace THUEPHONGNHANGHI
 
 			if (rp.MACTY == true)
 			{
+				if (_uCongTy.cboCongTy.SelectedValue == null)
+				{
+					MessageBox.Show("Vui lòng chọn công ty.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+					return;
+				}
 				doc.SetParameterValue("@MACTY", _uCongTy.cboCongTy.SelectedValue.ToString());
-				
 			}
+
 			if (rp.MADVI == true)
 			{
-				doc.SetParameterValue("@MACTY", _uCongTy.cboCongTy.SelectedValue.ToString());
+				if (_uDonVi.cboDonVi.SelectedValue == null)
+				{
+					MessageBox.Show("Vui lòng chọn đơn vị.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+					return;
+				}
 				doc.SetParameterValue("@MADVI", _uDonVi.cboDonVi.SelectedValue.ToString());
-
 			}
 
+			// Hiển thị báo cáo
 			Crv.Dock = DockStyle.Fill;
 			Crv.ReportSource = doc;
 			frm.Controls.Add(Crv);

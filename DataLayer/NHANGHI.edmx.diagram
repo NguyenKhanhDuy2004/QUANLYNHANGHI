@@ -7,7 +7,6 @@
       <Diagram DiagramId="c6ce7c0b3488485da715e7f505898689" Name="Diagram1" ZoomLevel="74">
         <EntityTypeShape EntityType="NHANGHI.tb_CongTy" Width="1.5" PointX="0.75" PointY="0.5" />
         <EntityTypeShape EntityType="NHANGHI.tb_DatPhong" Width="1.5" PointX="2.75" PointY="0.5" />
-        <EntityTypeShape EntityType="NHANGHI.tb_DatPhongCT" Width="1.5" PointX="4.75" PointY="0.5" />
         <EntityTypeShape EntityType="NHANGHI.tb_DatPhongSanPham" Width="1.5" PointX="4.75" PointY="3.5" />
         <EntityTypeShape EntityType="NHANGHI.tb_DonVi" Width="1.5" PointX="0.75" PointY="3.375" />
         <EntityTypeShape EntityType="NHANGHI.tb_KhachHang" Width="1.5" PointX="6.75" PointY="0.5" />
@@ -28,6 +27,7 @@
         <EntityTypeShape EntityType="NHANGHI.tb_Phong" Width="1.5" PointX="11.125" PointY="1.125" />
         <EntityTypeShape EntityType="NHANGHI.tb_LoaiPhong" Width="1.5" PointX="6.875" PointY="3.375" />
         <EntityTypeShape EntityType="NHANGHI.tb_SYS_USER" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="NHANGHI.tb_DatPhongCT" Width="1.5" PointX="4.75" PointY="0.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

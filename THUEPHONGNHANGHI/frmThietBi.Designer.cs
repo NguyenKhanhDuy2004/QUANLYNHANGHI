@@ -31,12 +31,8 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThietBi));
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
 			this.btnThem = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.btnSua = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.btnXoa = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-			this.btnThoat = new System.Windows.Forms.ToolStripButton();
 			this.gcDanhSach = new DevExpress.XtraGrid.GridControl();
 			this.gvDanhSach = new DevExpress.XtraGrid.Views.Grid.GridView();
 			this.TENTB = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -61,12 +57,8 @@
 			this.toolStrip1.ImageScalingSize = new System.Drawing.Size(46, 46);
 			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnThem,
-            this.toolStripSeparator1,
             this.btnSua,
-            this.toolStripSeparator2,
-            this.btnXoa,
-            this.toolStripSeparator4,
-            this.btnThoat});
+            this.btnXoa});
 			this.toolStrip1.Location = new System.Drawing.Point(0, 0);
 			this.toolStrip1.Name = "toolStrip1";
 			this.toolStrip1.Size = new System.Drawing.Size(977, 80);
@@ -75,7 +67,7 @@
 			// 
 			// btnThem
 			// 
-			this.btnThem.Image = global::THUEPHONGNHANGHI.Properties.Resources._299068_add_sign_icon;
+			this.btnThem.Image = global::THUEPHONGNHANGHI.Properties.Resources.icons8_add_1008;
 			this.btnThem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btnThem.Name = "btnThem";
 			this.btnThem.Size = new System.Drawing.Size(60, 75);
@@ -83,14 +75,9 @@
 			this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
 			this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
 			// 
-			// toolStripSeparator1
-			// 
-			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 80);
-			// 
 			// btnSua
 			// 
-			this.btnSua.Image = global::THUEPHONGNHANGHI.Properties.Resources._8725775_edit_icon__1_;
+			this.btnSua.Image = global::THUEPHONGNHANGHI.Properties.Resources.user_avatar1;
 			this.btnSua.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btnSua.Name = "btnSua";
 			this.btnSua.Size = new System.Drawing.Size(50, 75);
@@ -98,14 +85,9 @@
 			this.btnSua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
 			this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
 			// 
-			// toolStripSeparator2
-			// 
-			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 80);
-			// 
 			// btnXoa
 			// 
-			this.btnXoa.Image = global::THUEPHONGNHANGHI.Properties.Resources._5402370_bin_delete_remove_trash_can_icon1;
+			this.btnXoa.Image = global::THUEPHONGNHANGHI.Properties.Resources.icons8_recycle_bin_1009;
 			this.btnXoa.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btnXoa.Name = "btnXoa";
 			this.btnXoa.Size = new System.Drawing.Size(50, 75);
@@ -113,28 +95,13 @@
 			this.btnXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
 			this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
 			// 
-			// toolStripSeparator4
-			// 
-			this.toolStripSeparator4.Name = "toolStripSeparator4";
-			this.toolStripSeparator4.Size = new System.Drawing.Size(6, 80);
-			// 
-			// btnThoat
-			// 
-			this.btnThoat.Image = global::THUEPHONGNHANGHI.Properties.Resources._1564506_close_exit_logout_power_icon;
-			this.btnThoat.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.btnThoat.Name = "btnThoat";
-			this.btnThoat.Size = new System.Drawing.Size(61, 75);
-			this.btnThoat.Text = "Thoát";
-			this.btnThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-			this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
-			// 
 			// gcDanhSach
 			// 
-			this.gcDanhSach.Dock = System.Windows.Forms.DockStyle.Top;
+			this.gcDanhSach.Dock = System.Windows.Forms.DockStyle.Left;
 			this.gcDanhSach.Location = new System.Drawing.Point(0, 80);
 			this.gcDanhSach.MainView = this.gvDanhSach;
 			this.gcDanhSach.Name = "gcDanhSach";
-			this.gcDanhSach.Size = new System.Drawing.Size(977, 343);
+			this.gcDanhSach.Size = new System.Drawing.Size(555, 657);
 			this.gcDanhSach.TabIndex = 7;
 			this.gcDanhSach.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDanhSach});
@@ -184,10 +151,10 @@
 			this.groupControl1.Controls.Add(this.nUDDongia);
 			this.groupControl1.Controls.Add(this.txtTentb);
 			this.groupControl1.Controls.Add(this.label1);
-			this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.groupControl1.Location = new System.Drawing.Point(0, 423);
+			this.groupControl1.Dock = System.Windows.Forms.DockStyle.Right;
+			this.groupControl1.Location = new System.Drawing.Point(554, 80);
 			this.groupControl1.Name = "groupControl1";
-			this.groupControl1.Size = new System.Drawing.Size(977, 314);
+			this.groupControl1.Size = new System.Drawing.Size(423, 657);
 			this.groupControl1.TabIndex = 8;
 			this.groupControl1.Text = "Thông tin";
 			// 
@@ -196,7 +163,7 @@
 			this.btnHuy.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
 			this.btnHuy.Appearance.Options.UseFont = true;
 			this.btnHuy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnHuy.ImageOptions.Image")));
-			this.btnHuy.Location = new System.Drawing.Point(522, 195);
+			this.btnHuy.Location = new System.Drawing.Point(255, 232);
 			this.btnHuy.Name = "btnHuy";
 			this.btnHuy.Size = new System.Drawing.Size(133, 62);
 			this.btnHuy.TabIndex = 25;
@@ -208,7 +175,7 @@
 			this.btnLuu.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
 			this.btnLuu.Appearance.Options.UseFont = true;
 			this.btnLuu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.ImageOptions.Image")));
-			this.btnLuu.Location = new System.Drawing.Point(350, 195);
+			this.btnLuu.Location = new System.Drawing.Point(79, 232);
 			this.btnLuu.Name = "btnLuu";
 			this.btnLuu.Size = new System.Drawing.Size(133, 62);
 			this.btnLuu.TabIndex = 24;
@@ -219,7 +186,7 @@
 			// 
 			this.label2.AutoSize = true;
 			this.label2.Font = new System.Drawing.Font("Tahoma", 12F);
-			this.label2.Location = new System.Drawing.Point(233, 134);
+			this.label2.Location = new System.Drawing.Point(78, 143);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(96, 29);
 			this.label2.TabIndex = 17;
@@ -228,7 +195,7 @@
 			// nUDDongia
 			// 
 			this.nUDDongia.Font = new System.Drawing.Font("Tahoma", 12F);
-			this.nUDDongia.Location = new System.Drawing.Point(350, 131);
+			this.nUDDongia.Location = new System.Drawing.Point(83, 175);
 			this.nUDDongia.Maximum = new decimal(new int[] {
             1233977344,
             465661,
@@ -242,7 +209,7 @@
 			// txtTentb
 			// 
 			this.txtTentb.Font = new System.Drawing.Font("Tahoma", 12F);
-			this.txtTentb.Location = new System.Drawing.Point(350, 83);
+			this.txtTentb.Location = new System.Drawing.Point(83, 104);
 			this.txtTentb.Name = "txtTentb";
 			this.txtTentb.Size = new System.Drawing.Size(305, 36);
 			this.txtTentb.TabIndex = 1;
@@ -251,7 +218,7 @@
 			// 
 			this.label1.AutoSize = true;
 			this.label1.Font = new System.Drawing.Font("Tahoma", 12F);
-			this.label1.Location = new System.Drawing.Point(210, 86);
+			this.label1.Location = new System.Drawing.Point(78, 72);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(134, 29);
 			this.label1.TabIndex = 0;
@@ -288,12 +255,8 @@
 
 		private System.Windows.Forms.ToolStrip toolStrip1;
 		private System.Windows.Forms.ToolStripButton btnThem;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripButton btnSua;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.ToolStripButton btnXoa;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-		private System.Windows.Forms.ToolStripButton btnThoat;
 		private DevExpress.XtraGrid.GridControl gcDanhSach;
 		private DevExpress.XtraGrid.Views.Grid.GridView gvDanhSach;
 		private DevExpress.XtraGrid.Columns.GridColumn TENTB;

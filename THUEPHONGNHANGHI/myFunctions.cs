@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CrystalDecisions.Windows.Forms;
-using CrystalDecisions.Shared;
-using CrystalDecisions.CrystalReports.Engine;
+//using CrystalDecisions.Windows.Forms;
+//using CrystalDecisions.Shared;
+//using CrystalDecisions.CrystalReports.Engine;
 using System.Linq.Expressions;
 
 
@@ -55,7 +55,7 @@ namespace THUEPHONGNHANGHI
 		{
 			return new DateTime(year, month, 1);
 		}
-		public static void XuatReport(string _khoa, string _reportName, string _tieude)
+		/*public static void XuatReport(string _khoa, string _reportName, string _tieude)
 		{
 			if (_khoa != null)
 			{
@@ -94,7 +94,7 @@ namespace THUEPHONGNHANGHI
 				MessageBox.Show("Không có dữ liệu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			} 
 				
-		}
+		}*/
 
 	}
 }

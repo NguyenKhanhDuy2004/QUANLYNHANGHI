@@ -40,7 +40,6 @@ namespace THUEPHONGNHANGHI
 			btnThem.Visible = t;
 			btnSua.Visible = t;
 			btnXoa.Visible = t;
-			btnThoat.Visible = t;
 			btnLuu.Visible = !t;
 			btnHuy.Visible = !t;
 		}
@@ -140,11 +139,7 @@ namespace THUEPHONGNHANGHI
 			txtMa.Enabled = false;
 		}
 
-		private void btnThoat_Click(object sender, EventArgs e)
-		{
-			this.Close();
-		}
-
+		
 		private void gvDanhSach_Click(object sender, EventArgs e)
 		{
 			if (gvDanhSach.RowCount > 0)

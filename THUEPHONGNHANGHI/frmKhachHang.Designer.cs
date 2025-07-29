@@ -31,18 +31,8 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmKhachHang));
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
 			this.btnThem = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.btnSua = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.btnXoa = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-			this.btnThoat = new System.Windows.Forms.ToolStripButton();
-			this.gcDanhSach = new DevExpress.XtraGrid.GridControl();
-			this.gvDanhSach = new DevExpress.XtraGrid.Views.Grid.GridView();
-			this.HOTEN = new DevExpress.XtraGrid.Columns.GridColumn();
-			this.PHAI = new DevExpress.XtraGrid.Columns.GridColumn();
-			this.CCCD = new DevExpress.XtraGrid.Columns.GridColumn();
-			this.DIACHI = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
 			this.BtnHuy = new DevExpress.XtraEditors.SimpleButton();
 			this.btnLuu = new DevExpress.XtraEditors.SimpleButton();
@@ -54,11 +44,17 @@
 			this.txtCCCD = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
+			this.gvDanhSach = new DevExpress.XtraGrid.Views.Grid.GridView();
+			this.HOTEN = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.PHAI = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.CCCD = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.DIACHI = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.gcDanhSach = new DevExpress.XtraGrid.GridControl();
 			this.toolStrip1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
 			this.groupControl1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// toolStrip1
@@ -66,12 +62,8 @@
 			this.toolStrip1.ImageScalingSize = new System.Drawing.Size(46, 46);
 			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnThem,
-            this.toolStripSeparator1,
             this.btnSua,
-            this.toolStripSeparator2,
-            this.btnXoa,
-            this.toolStripSeparator4,
-            this.btnThoat});
+            this.btnXoa});
 			this.toolStrip1.Location = new System.Drawing.Point(0, 0);
 			this.toolStrip1.Name = "toolStrip1";
 			this.toolStrip1.Size = new System.Drawing.Size(1414, 80);
@@ -80,7 +72,7 @@
 			// 
 			// btnThem
 			// 
-			this.btnThem.Image = global::THUEPHONGNHANGHI.Properties.Resources._299068_add_sign_icon;
+			this.btnThem.Image = global::THUEPHONGNHANGHI.Properties.Resources.icons8_add_1002;
 			this.btnThem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btnThem.Name = "btnThem";
 			this.btnThem.Size = new System.Drawing.Size(60, 75);
@@ -88,14 +80,9 @@
 			this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
 			this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
 			// 
-			// toolStripSeparator1
-			// 
-			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 80);
-			// 
 			// btnSua
 			// 
-			this.btnSua.Image = global::THUEPHONGNHANGHI.Properties.Resources._8725775_edit_icon__1_;
+			this.btnSua.Image = global::THUEPHONGNHANGHI.Properties.Resources.user_avatar1;
 			this.btnSua.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btnSua.Name = "btnSua";
 			this.btnSua.Size = new System.Drawing.Size(50, 75);
@@ -103,114 +90,15 @@
 			this.btnSua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
 			this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
 			// 
-			// toolStripSeparator2
-			// 
-			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 80);
-			// 
 			// btnXoa
 			// 
-			this.btnXoa.Image = global::THUEPHONGNHANGHI.Properties.Resources._5402370_bin_delete_remove_trash_can_icon;
+			this.btnXoa.Image = global::THUEPHONGNHANGHI.Properties.Resources.icons8_recycle_bin_1003;
 			this.btnXoa.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btnXoa.Name = "btnXoa";
 			this.btnXoa.Size = new System.Drawing.Size(50, 75);
 			this.btnXoa.Text = "Xóa";
 			this.btnXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
 			this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-			// 
-			// toolStripSeparator4
-			// 
-			this.toolStripSeparator4.Name = "toolStripSeparator4";
-			this.toolStripSeparator4.Size = new System.Drawing.Size(6, 80);
-			// 
-			// btnThoat
-			// 
-			this.btnThoat.Image = global::THUEPHONGNHANGHI.Properties.Resources._1564506_close_exit_logout_power_icon;
-			this.btnThoat.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.btnThoat.Name = "btnThoat";
-			this.btnThoat.Size = new System.Drawing.Size(61, 75);
-			this.btnThoat.Text = "Thoát";
-			this.btnThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-			this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
-			// 
-			// gcDanhSach
-			// 
-			this.gcDanhSach.Dock = System.Windows.Forms.DockStyle.Left;
-			this.gcDanhSach.Location = new System.Drawing.Point(0, 80);
-			this.gcDanhSach.MainView = this.gvDanhSach;
-			this.gcDanhSach.Name = "gcDanhSach";
-			this.gcDanhSach.Size = new System.Drawing.Size(963, 673);
-			this.gcDanhSach.TabIndex = 3;
-			this.gcDanhSach.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvDanhSach});
-			// 
-			// gvDanhSach
-			// 
-			this.gvDanhSach.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
-			this.gvDanhSach.Appearance.Row.Options.UseFont = true;
-			this.gvDanhSach.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.HOTEN,
-            this.PHAI,
-            this.CCCD,
-            this.DIACHI});
-			this.gvDanhSach.GridControl = this.gcDanhSach;
-			this.gvDanhSach.Name = "gvDanhSach";
-			this.gvDanhSach.OptionsView.ShowGroupPanel = false;
-			this.gvDanhSach.RowHeight = 35;
-			this.gvDanhSach.Click += new System.EventHandler(this.gvDanhSach_Click);
-			this.gvDanhSach.DoubleClick += new System.EventHandler(this.gvDanhSach_DoubleClick);
-			// 
-			// HOTEN
-			// 
-			this.HOTEN.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-			this.HOTEN.AppearanceHeader.Options.UseFont = true;
-			this.HOTEN.Caption = "HỌ TÊN";
-			this.HOTEN.FieldName = "HOTEN";
-			this.HOTEN.MaxWidth = 250;
-			this.HOTEN.MinWidth = 200;
-			this.HOTEN.Name = "HOTEN";
-			this.HOTEN.Visible = true;
-			this.HOTEN.VisibleIndex = 0;
-			this.HOTEN.Width = 200;
-			// 
-			// PHAI
-			// 
-			this.PHAI.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-			this.PHAI.AppearanceHeader.Options.UseFont = true;
-			this.PHAI.Caption = "GIỚI TÍNH";
-			this.PHAI.FieldName = "PHAI";
-			this.PHAI.MaxWidth = 100;
-			this.PHAI.MinWidth = 150;
-			this.PHAI.Name = "PHAI";
-			this.PHAI.Visible = true;
-			this.PHAI.VisibleIndex = 1;
-			this.PHAI.Width = 150;
-			// 
-			// CCCD
-			// 
-			this.CCCD.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-			this.CCCD.AppearanceHeader.Options.UseFont = true;
-			this.CCCD.Caption = "CCCD";
-			this.CCCD.FieldName = "CCCD";
-			this.CCCD.MaxWidth = 100;
-			this.CCCD.MinWidth = 150;
-			this.CCCD.Name = "CCCD";
-			this.CCCD.Visible = true;
-			this.CCCD.VisibleIndex = 2;
-			this.CCCD.Width = 150;
-			// 
-			// DIACHI
-			// 
-			this.DIACHI.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-			this.DIACHI.AppearanceHeader.Options.UseFont = true;
-			this.DIACHI.Caption = "ĐỊA CHỈ";
-			this.DIACHI.FieldName = "DIACHI";
-			this.DIACHI.MaxWidth = 350;
-			this.DIACHI.MinWidth = 250;
-			this.DIACHI.Name = "DIACHI";
-			this.DIACHI.Visible = true;
-			this.DIACHI.VisibleIndex = 3;
-			this.DIACHI.Width = 250;
 			// 
 			// groupControl1
 			// 
@@ -243,6 +131,7 @@
 			this.BtnHuy.Size = new System.Drawing.Size(134, 59);
 			this.BtnHuy.TabIndex = 18;
 			this.BtnHuy.Text = "Hủy";
+			this.BtnHuy.Click += new System.EventHandler(this.BtnHuy_Click_1);
 			// 
 			// btnLuu
 			// 
@@ -254,6 +143,7 @@
 			this.btnLuu.Size = new System.Drawing.Size(129, 59);
 			this.btnLuu.TabIndex = 17;
 			this.btnLuu.Text = "Lưu";
+			this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click_1);
 			// 
 			// txtHoten
 			// 
@@ -327,6 +217,84 @@
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Họ và Tên";
 			// 
+			// gvDanhSach
+			// 
+			this.gvDanhSach.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
+			this.gvDanhSach.Appearance.Row.Options.UseFont = true;
+			this.gvDanhSach.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.HOTEN,
+            this.PHAI,
+            this.CCCD,
+            this.DIACHI});
+			this.gvDanhSach.GridControl = this.gcDanhSach;
+			this.gvDanhSach.Name = "gvDanhSach";
+			this.gvDanhSach.RowHeight = 35;
+			this.gvDanhSach.Click += new System.EventHandler(this.gvDanhSach_Click);
+			this.gvDanhSach.DoubleClick += new System.EventHandler(this.gvDanhSach_DoubleClick);
+			// 
+			// HOTEN
+			// 
+			this.HOTEN.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+			this.HOTEN.AppearanceHeader.Options.UseFont = true;
+			this.HOTEN.Caption = "HỌ TÊN";
+			this.HOTEN.FieldName = "HOTEN";
+			this.HOTEN.MaxWidth = 250;
+			this.HOTEN.MinWidth = 200;
+			this.HOTEN.Name = "HOTEN";
+			this.HOTEN.Visible = true;
+			this.HOTEN.VisibleIndex = 0;
+			this.HOTEN.Width = 200;
+			// 
+			// PHAI
+			// 
+			this.PHAI.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+			this.PHAI.AppearanceHeader.Options.UseFont = true;
+			this.PHAI.Caption = "GIỚI TÍNH";
+			this.PHAI.FieldName = "PHAI";
+			this.PHAI.MaxWidth = 100;
+			this.PHAI.MinWidth = 150;
+			this.PHAI.Name = "PHAI";
+			this.PHAI.Visible = true;
+			this.PHAI.VisibleIndex = 1;
+			this.PHAI.Width = 150;
+			// 
+			// CCCD
+			// 
+			this.CCCD.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+			this.CCCD.AppearanceHeader.Options.UseFont = true;
+			this.CCCD.Caption = "CCCD";
+			this.CCCD.FieldName = "CCCD";
+			this.CCCD.MaxWidth = 100;
+			this.CCCD.MinWidth = 150;
+			this.CCCD.Name = "CCCD";
+			this.CCCD.Visible = true;
+			this.CCCD.VisibleIndex = 2;
+			this.CCCD.Width = 150;
+			// 
+			// DIACHI
+			// 
+			this.DIACHI.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+			this.DIACHI.AppearanceHeader.Options.UseFont = true;
+			this.DIACHI.Caption = "ĐỊA CHỈ";
+			this.DIACHI.FieldName = "DIACHI";
+			this.DIACHI.MaxWidth = 350;
+			this.DIACHI.MinWidth = 250;
+			this.DIACHI.Name = "DIACHI";
+			this.DIACHI.Visible = true;
+			this.DIACHI.VisibleIndex = 3;
+			this.DIACHI.Width = 250;
+			// 
+			// gcDanhSach
+			// 
+			this.gcDanhSach.Dock = System.Windows.Forms.DockStyle.Left;
+			this.gcDanhSach.Location = new System.Drawing.Point(0, 80);
+			this.gcDanhSach.MainView = this.gvDanhSach;
+			this.gcDanhSach.Name = "gcDanhSach";
+			this.gcDanhSach.Size = new System.Drawing.Size(963, 673);
+			this.gcDanhSach.TabIndex = 3;
+			this.gcDanhSach.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvDanhSach});
+			// 
 			// frmKhachHang
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -343,11 +311,11 @@
 			this.Load += new System.EventHandler(this.frmKhachHang_Load);
 			this.toolStrip1.ResumeLayout(false);
 			this.toolStrip1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
 			this.groupControl1.ResumeLayout(false);
 			this.groupControl1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -357,28 +325,24 @@
 
 		private System.Windows.Forms.ToolStrip toolStrip1;
 		private System.Windows.Forms.ToolStripButton btnThem;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripButton btnSua;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.ToolStripButton btnXoa;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-		private System.Windows.Forms.ToolStripButton btnThoat;
-		private DevExpress.XtraGrid.GridControl gcDanhSach;
-		private DevExpress.XtraGrid.Views.Grid.GridView gvDanhSach;
-		private DevExpress.XtraGrid.Columns.GridColumn HOTEN;
-		private DevExpress.XtraGrid.Columns.GridColumn CCCD;
-		private DevExpress.XtraGrid.Columns.GridColumn DIACHI;
 		private DevExpress.XtraEditors.GroupControl groupControl1;
 		private System.Windows.Forms.TextBox txtDiaChi;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.TextBox txtCCCD;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label1;
-		private DevExpress.XtraGrid.Columns.GridColumn PHAI;
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.TextBox txtGioitinh;
 		private System.Windows.Forms.TextBox txtHoten;
 		private DevExpress.XtraEditors.SimpleButton BtnHuy;
 		private DevExpress.XtraEditors.SimpleButton btnLuu;
+		private DevExpress.XtraGrid.Views.Grid.GridView gvDanhSach;
+		private DevExpress.XtraGrid.Columns.GridColumn HOTEN;
+		private DevExpress.XtraGrid.Columns.GridColumn PHAI;
+		private DevExpress.XtraGrid.Columns.GridColumn CCCD;
+		private DevExpress.XtraGrid.Columns.GridColumn DIACHI;
+		private DevExpress.XtraGrid.GridControl gcDanhSach;
 	}
 }

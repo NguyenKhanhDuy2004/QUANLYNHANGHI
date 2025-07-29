@@ -43,7 +43,6 @@ namespace THUEPHONGNHANGHI
 			btnThem.Visible = t;
 			btnSua.Visible = t;
 			btnXoa.Visible = t;
-			btnThoat.Visible = t;
 			btnLuu.Visible = !t;
 			btnHuy.Visible = !t;
 		}

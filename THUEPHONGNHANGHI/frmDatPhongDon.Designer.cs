@@ -30,10 +30,8 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDatPhongDon));
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.btnLuu = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-			this.btnIn = new System.Windows.Forms.ToolStripButton();
+			this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
 			this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
 			this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
 			this.btnHuy = new DevExpress.XtraEditors.SimpleButton();
@@ -52,6 +50,9 @@
 			this.spDONGIA = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.spTHANHTIEN = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+			this.radioG_LoaiHinhThue = new DevExpress.XtraEditors.RadioGroup();
+			this.lblNgayTra = new DevExpress.XtraEditors.LabelControl();
+			this.lblNgayDat = new DevExpress.XtraEditors.LabelControl();
 			this.searchKH = new DevExpress.XtraEditors.SearchLookUpEdit();
 			this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
 			this.IDKH = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -65,9 +66,7 @@
 			this.cboTrangthai = new System.Windows.Forms.ComboBox();
 			this.label6 = new System.Windows.Forms.Label();
 			this.dtNgaydat = new System.Windows.Forms.DateTimePicker();
-			this.label5 = new System.Windows.Forms.Label();
 			this.dtNgaytra = new System.Windows.Forms.DateTimePicker();
-			this.label4 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
 			this.gcSanpham = new DevExpress.XtraGrid.GridControl();
@@ -91,6 +90,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.gvSPDV)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
 			this.groupControl1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.radioG_LoaiHinhThue.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.searchKH.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.spSonguoio.Properties)).BeginInit();
@@ -105,24 +105,17 @@
 			// 
 			this.toolStrip1.ImageScalingSize = new System.Drawing.Size(46, 46);
 			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSeparator1,
             this.btnLuu,
-            this.toolStripSeparator3,
-            this.btnIn});
+            this.toolStripButton1});
 			this.toolStrip1.Location = new System.Drawing.Point(0, 0);
 			this.toolStrip1.Name = "toolStrip1";
-			this.toolStrip1.Size = new System.Drawing.Size(1351, 80);
+			this.toolStrip1.Size = new System.Drawing.Size(1463, 80);
 			this.toolStrip1.TabIndex = 6;
 			this.toolStrip1.Text = "toolStrip1";
 			// 
-			// toolStripSeparator1
-			// 
-			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 80);
-			// 
 			// btnLuu
 			// 
-			this.btnLuu.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.Image")));
+			this.btnLuu.Image = global::THUEPHONGNHANGHI.Properties.Resources.icons8_save_1002;
 			this.btnLuu.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btnLuu.Name = "btnLuu";
 			this.btnLuu.Size = new System.Drawing.Size(50, 75);
@@ -130,20 +123,15 @@
 			this.btnLuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
 			this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
 			// 
-			// toolStripSeparator3
+			// toolStripButton1
 			// 
-			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(6, 80);
-			// 
-			// btnIn
-			// 
-			this.btnIn.Image = global::THUEPHONGNHANGHI.Properties.Resources.icons8_print_96;
-			this.btnIn.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.btnIn.Name = "btnIn";
-			this.btnIn.Size = new System.Drawing.Size(50, 75);
-			this.btnIn.Text = "In";
-			this.btnIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-			this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+			this.toolStripButton1.Image = global::THUEPHONGNHANGHI.Properties.Resources.icons8_print_96;
+			this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton1.Name = "toolStripButton1";
+			this.toolStripButton1.Size = new System.Drawing.Size(50, 75);
+			this.toolStripButton1.Text = "In";
+			this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+			this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
 			// 
 			// splitContainerControl1
 			// 
@@ -162,7 +150,7 @@
 			// 
 			this.splitContainerControl1.Panel2.Controls.Add(this.groupControl2);
 			this.splitContainerControl1.Panel2.Text = "Panel2";
-			this.splitContainerControl1.Size = new System.Drawing.Size(1351, 740);
+			this.splitContainerControl1.Size = new System.Drawing.Size(1463, 740);
 			this.splitContainerControl1.SplitterPosition = 958;
 			this.splitContainerControl1.TabIndex = 7;
 			// 
@@ -374,6 +362,9 @@
 			this.groupControl1.AppearanceCaption.ForeColor = System.Drawing.Color.Navy;
 			this.groupControl1.AppearanceCaption.Options.UseFont = true;
 			this.groupControl1.AppearanceCaption.Options.UseForeColor = true;
+			this.groupControl1.Controls.Add(this.radioG_LoaiHinhThue);
+			this.groupControl1.Controls.Add(this.lblNgayTra);
+			this.groupControl1.Controls.Add(this.lblNgayDat);
 			this.groupControl1.Controls.Add(this.searchKH);
 			this.groupControl1.Controls.Add(this.lblPhong);
 			this.groupControl1.Controls.Add(this.spSonguoio);
@@ -384,9 +375,7 @@
 			this.groupControl1.Controls.Add(this.cboTrangthai);
 			this.groupControl1.Controls.Add(this.label6);
 			this.groupControl1.Controls.Add(this.dtNgaydat);
-			this.groupControl1.Controls.Add(this.label5);
 			this.groupControl1.Controls.Add(this.dtNgaytra);
-			this.groupControl1.Controls.Add(this.label4);
 			this.groupControl1.Controls.Add(this.label3);
 			this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
 			this.groupControl1.Location = new System.Drawing.Point(0, 0);
@@ -395,10 +384,41 @@
 			this.groupControl1.TabIndex = 0;
 			this.groupControl1.Text = "Thông tin khách hàng";
 			// 
+			// radioG_LoaiHinhThue
+			// 
+			this.radioG_LoaiHinhThue.Location = new System.Drawing.Point(667, 167);
+			this.radioG_LoaiHinhThue.Name = "radioG_LoaiHinhThue";
+			this.radioG_LoaiHinhThue.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("THEONGAY", "Theo ngày"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("THEOGIO", "Theo giờ")});
+			this.radioG_LoaiHinhThue.Size = new System.Drawing.Size(215, 86);
+			this.radioG_LoaiHinhThue.TabIndex = 34;
+			this.radioG_LoaiHinhThue.EditValueChanged += new System.EventHandler(this.radioG_LoaiHinhThue_EditValueChanged);
+			// 
+			// lblNgayTra
+			// 
+			this.lblNgayTra.Appearance.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+			this.lblNgayTra.Appearance.Options.UseFont = true;
+			this.lblNgayTra.Location = new System.Drawing.Point(530, 141);
+			this.lblNgayTra.Name = "lblNgayTra";
+			this.lblNgayTra.Size = new System.Drawing.Size(70, 19);
+			this.lblNgayTra.TabIndex = 33;
+			this.lblNgayTra.Text = "Ngày trả";
+			// 
+			// lblNgayDat
+			// 
+			this.lblNgayDat.Appearance.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+			this.lblNgayDat.Appearance.Options.UseFont = true;
+			this.lblNgayDat.Location = new System.Drawing.Point(98, 141);
+			this.lblNgayDat.Name = "lblNgayDat";
+			this.lblNgayDat.Size = new System.Drawing.Size(73, 19);
+			this.lblNgayDat.TabIndex = 32;
+			this.lblNgayDat.Text = "Ngày đặt";
+			// 
 			// searchKH
 			// 
 			this.searchKH.EditValue = "";
-			this.searchKH.Location = new System.Drawing.Point(199, 97);
+			this.searchKH.Location = new System.Drawing.Point(198, 99);
 			this.searchKH.Name = "searchKH";
 			this.searchKH.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -444,7 +464,7 @@
 			this.lblPhong.AutoSize = true;
 			this.lblPhong.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
 			this.lblPhong.ForeColor = System.Drawing.Color.Red;
-			this.lblPhong.Location = new System.Drawing.Point(360, 49);
+			this.lblPhong.Location = new System.Drawing.Point(99, 49);
 			this.lblPhong.Name = "lblPhong";
 			this.lblPhong.Size = new System.Drawing.Size(89, 29);
 			this.lblPhong.TabIndex = 28;
@@ -457,7 +477,7 @@
             0,
             0,
             0});
-			this.spSonguoio.Location = new System.Drawing.Point(483, 176);
+			this.spSonguoio.Location = new System.Drawing.Point(482, 178);
 			this.spSonguoio.Name = "spSonguoio";
 			this.spSonguoio.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -468,7 +488,7 @@
 			// 
 			this.label8.AutoSize = true;
 			this.label8.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-			this.label8.Location = new System.Drawing.Point(382, 181);
+			this.label8.Location = new System.Drawing.Point(381, 183);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(95, 19);
 			this.label8.TabIndex = 26;
@@ -478,7 +498,7 @@
 			// 
 			this.btnAddNew.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAddNew.ImageOptions.Image")));
 			this.btnAddNew.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-			this.btnAddNew.Location = new System.Drawing.Point(623, 87);
+			this.btnAddNew.Location = new System.Drawing.Point(622, 89);
 			this.btnAddNew.Name = "btnAddNew";
 			this.btnAddNew.Size = new System.Drawing.Size(39, 42);
 			this.btnAddNew.TabIndex = 25;
@@ -486,7 +506,7 @@
 			// 
 			// txtGhichu
 			// 
-			this.txtGhichu.Location = new System.Drawing.Point(199, 219);
+			this.txtGhichu.Location = new System.Drawing.Point(198, 221);
 			this.txtGhichu.Name = "txtGhichu";
 			this.txtGhichu.Size = new System.Drawing.Size(463, 27);
 			this.txtGhichu.TabIndex = 24;
@@ -495,7 +515,7 @@
 			// 
 			this.label7.AutoSize = true;
 			this.label7.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-			this.label7.Location = new System.Drawing.Point(114, 223);
+			this.label7.Location = new System.Drawing.Point(113, 225);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(69, 19);
 			this.label7.TabIndex = 23;
@@ -504,7 +524,7 @@
 			// cboTrangthai
 			// 
 			this.cboTrangthai.FormattingEnabled = true;
-			this.cboTrangthai.Location = new System.Drawing.Point(199, 177);
+			this.cboTrangthai.Location = new System.Drawing.Point(198, 179);
 			this.cboTrangthai.Name = "cboTrangthai";
 			this.cboTrangthai.Size = new System.Drawing.Size(177, 27);
 			this.cboTrangthai.TabIndex = 22;
@@ -513,7 +533,7 @@
 			// 
 			this.label6.AutoSize = true;
 			this.label6.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-			this.label6.Location = new System.Drawing.Point(95, 181);
+			this.label6.Location = new System.Drawing.Point(94, 183);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(94, 19);
 			this.label6.TabIndex = 21;
@@ -523,45 +543,27 @@
 			// 
 			this.dtNgaydat.CustomFormat = "dd/MM/yyyy";
 			this.dtNgaydat.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dtNgaydat.Location = new System.Drawing.Point(199, 133);
+			this.dtNgaydat.Location = new System.Drawing.Point(198, 137);
 			this.dtNgaydat.Name = "dtNgaydat";
-			this.dtNgaydat.Size = new System.Drawing.Size(177, 27);
+			this.dtNgaydat.Size = new System.Drawing.Size(278, 27);
 			this.dtNgaydat.TabIndex = 20;
-			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.label5.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-			this.label5.Location = new System.Drawing.Point(114, 137);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(82, 19);
-			this.label5.TabIndex = 19;
-			this.label5.Text = "Ngày đặt";
 			// 
 			// dtNgaytra
 			// 
 			this.dtNgaytra.CustomFormat = "dd/MM/yyyy";
 			this.dtNgaytra.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dtNgaytra.Location = new System.Drawing.Point(473, 133);
+			this.dtNgaytra.Location = new System.Drawing.Point(609, 137);
 			this.dtNgaytra.Name = "dtNgaytra";
-			this.dtNgaytra.Size = new System.Drawing.Size(189, 27);
+			this.dtNgaytra.ShowUpDown = true;
+			this.dtNgaytra.Size = new System.Drawing.Size(273, 27);
 			this.dtNgaytra.TabIndex = 18;
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-			this.label4.Location = new System.Drawing.Point(388, 137);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(79, 19);
-			this.label4.TabIndex = 17;
-			this.label4.Text = "Ngày trả";
+			this.dtNgaytra.ValueChanged += new System.EventHandler(this.dtNgaytra_ValueChanged);
 			// 
 			// label3
 			// 
 			this.label3.AutoSize = true;
 			this.label3.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-			this.label3.Location = new System.Drawing.Point(95, 100);
+			this.label3.Location = new System.Drawing.Point(94, 102);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(103, 19);
 			this.label3.TabIndex = 15;
@@ -577,7 +579,7 @@
 			this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.groupControl2.Location = new System.Drawing.Point(0, 0);
 			this.groupControl2.Name = "groupControl2";
-			this.groupControl2.Size = new System.Drawing.Size(378, 740);
+			this.groupControl2.Size = new System.Drawing.Size(490, 740);
 			this.groupControl2.TabIndex = 3;
 			this.groupControl2.Text = "Sản phẩm - Dịch vụ";
 			// 
@@ -587,7 +589,7 @@
 			this.gcSanpham.Location = new System.Drawing.Point(2, 34);
 			this.gcSanpham.MainView = this.gvSanpham;
 			this.gcSanpham.Name = "gcSanpham";
-			this.gcSanpham.Size = new System.Drawing.Size(374, 704);
+			this.gcSanpham.Size = new System.Drawing.Size(486, 704);
 			this.gcSanpham.TabIndex = 0;
 			this.gcSanpham.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvSanpham,
@@ -645,7 +647,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1351, 820);
+			this.ClientSize = new System.Drawing.Size(1463, 820);
 			this.Controls.Add(this.splitContainerControl1);
 			this.Controls.Add(this.toolStrip1);
 			this.Name = "frmDatPhongDon";
@@ -669,6 +671,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
 			this.groupControl1.ResumeLayout(false);
 			this.groupControl1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.radioG_LoaiHinhThue.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.searchKH.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.spSonguoio.Properties)).EndInit();
@@ -685,10 +688,7 @@
 		#endregion
 
 		private System.Windows.Forms.ToolStrip toolStrip1;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripButton btnLuu;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-		private System.Windows.Forms.ToolStripButton btnIn;
 		private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
 		private DevExpress.XtraEditors.GroupControl groupControl1;
 		private System.Windows.Forms.Label lblPhong;
@@ -700,9 +700,7 @@
 		private System.Windows.Forms.ComboBox cboTrangthai;
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.DateTimePicker dtNgaydat;
-		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.DateTimePicker dtNgaytra;
-		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label3;
 		private DevExpress.XtraEditors.GroupControl groupControl4;
 		private DevExpress.XtraGrid.GridControl gcSPDV;
@@ -731,5 +729,9 @@
 		private DevExpress.XtraGrid.Columns.GridColumn HOTEN;
 		private DevExpress.XtraEditors.SimpleButton btnHuy;
 		private DevExpress.XtraEditors.SimpleButton btnThanhToanHoaDon;
+		private System.Windows.Forms.ToolStripButton toolStripButton1;
+		private DevExpress.XtraEditors.LabelControl lblNgayTra;
+		private DevExpress.XtraEditors.LabelControl lblNgayDat;
+		private DevExpress.XtraEditors.RadioGroup radioG_LoaiHinhThue;
 	}
 }

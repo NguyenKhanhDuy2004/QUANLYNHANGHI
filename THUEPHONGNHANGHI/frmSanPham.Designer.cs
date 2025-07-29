@@ -31,11 +31,8 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSanPham));
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
 			this.btnThem = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.btnSua = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.btnXoa = new System.Windows.Forms.ToolStripButton();
-			this.btnThoat = new System.Windows.Forms.ToolStripButton();
 			this.gcDanhSach = new DevExpress.XtraGrid.GridControl();
 			this.gvDanhSach = new DevExpress.XtraGrid.Views.Grid.GridView();
 			this.TENSP = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -47,7 +44,6 @@
 			this.nUDDongia = new System.Windows.Forms.NumericUpDown();
 			this.txtTensp = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
-			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).BeginInit();
@@ -61,12 +57,8 @@
 			this.toolStrip1.ImageScalingSize = new System.Drawing.Size(46, 46);
 			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnThem,
-            this.toolStripSeparator1,
             this.btnSua,
-            this.toolStripSeparator2,
-            this.btnXoa,
-            this.toolStripSeparator4,
-            this.btnThoat});
+            this.btnXoa});
 			this.toolStrip1.Location = new System.Drawing.Point(0, 0);
 			this.toolStrip1.Name = "toolStrip1";
 			this.toolStrip1.Size = new System.Drawing.Size(1255, 80);
@@ -75,7 +67,7 @@
 			// 
 			// btnThem
 			// 
-			this.btnThem.Image = global::THUEPHONGNHANGHI.Properties.Resources._299068_add_sign_icon;
+			this.btnThem.Image = global::THUEPHONGNHANGHI.Properties.Resources.icons8_add_1006;
 			this.btnThem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btnThem.Name = "btnThem";
 			this.btnThem.Size = new System.Drawing.Size(60, 75);
@@ -83,14 +75,9 @@
 			this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
 			this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
 			// 
-			// toolStripSeparator1
-			// 
-			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 80);
-			// 
 			// btnSua
 			// 
-			this.btnSua.Image = global::THUEPHONGNHANGHI.Properties.Resources._8725775_edit_icon__1_;
+			this.btnSua.Image = global::THUEPHONGNHANGHI.Properties.Resources.user_avatar1;
 			this.btnSua.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btnSua.Name = "btnSua";
 			this.btnSua.Size = new System.Drawing.Size(50, 75);
@@ -98,30 +85,15 @@
 			this.btnSua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
 			this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
 			// 
-			// toolStripSeparator2
-			// 
-			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 80);
-			// 
 			// btnXoa
 			// 
-			this.btnXoa.Image = global::THUEPHONGNHANGHI.Properties.Resources._5402370_bin_delete_remove_trash_can_icon;
+			this.btnXoa.Image = global::THUEPHONGNHANGHI.Properties.Resources.icons8_recycle_bin_1007;
 			this.btnXoa.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btnXoa.Name = "btnXoa";
 			this.btnXoa.Size = new System.Drawing.Size(50, 75);
 			this.btnXoa.Text = "Xóa";
 			this.btnXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
 			this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-			// 
-			// btnThoat
-			// 
-			this.btnThoat.Image = global::THUEPHONGNHANGHI.Properties.Resources._1564506_close_exit_logout_power_icon;
-			this.btnThoat.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.btnThoat.Name = "btnThoat";
-			this.btnThoat.Size = new System.Drawing.Size(61, 75);
-			this.btnThoat.Text = "Thoát";
-			this.btnThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-			this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
 			// 
 			// gcDanhSach
 			// 
@@ -190,8 +162,8 @@
 			// 
 			this.btnHuy.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
 			this.btnHuy.Appearance.Options.UseFont = true;
-			this.btnHuy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-			this.btnHuy.Location = new System.Drawing.Point(286, 284);
+			this.btnHuy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnHuy.ImageOptions.Image")));
+			this.btnHuy.Location = new System.Drawing.Point(371, 267);
 			this.btnHuy.Name = "btnHuy";
 			this.btnHuy.Size = new System.Drawing.Size(133, 62);
 			this.btnHuy.TabIndex = 27;
@@ -202,8 +174,8 @@
 			// 
 			this.btnLuu.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
 			this.btnLuu.Appearance.Options.UseFont = true;
-			this.btnLuu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
-			this.btnLuu.Location = new System.Drawing.Point(123, 284);
+			this.btnLuu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.ImageOptions.Image")));
+			this.btnLuu.Location = new System.Drawing.Point(199, 267);
 			this.btnLuu.Name = "btnLuu";
 			this.btnLuu.Size = new System.Drawing.Size(133, 62);
 			this.btnLuu.TabIndex = 26;
@@ -252,11 +224,6 @@
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Tên sản phẩm";
 			// 
-			// toolStripSeparator4
-			// 
-			this.toolStripSeparator4.Name = "toolStripSeparator4";
-			this.toolStripSeparator4.Size = new System.Drawing.Size(6, 80);
-			// 
 			// frmSanPham
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -286,11 +253,8 @@
 
 		private System.Windows.Forms.ToolStrip toolStrip1;
 		private System.Windows.Forms.ToolStripButton btnThem;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripButton btnSua;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.ToolStripButton btnXoa;
-		private System.Windows.Forms.ToolStripButton btnThoat;
 		private DevExpress.XtraGrid.GridControl gcDanhSach;
 		private DevExpress.XtraGrid.Views.Grid.GridView gvDanhSach;
 		private DevExpress.XtraGrid.Columns.GridColumn TENSP;
@@ -302,6 +266,5 @@
 		private System.Windows.Forms.NumericUpDown nUDDongia;
 		private DevExpress.XtraEditors.SimpleButton btnHuy;
 		private DevExpress.XtraEditors.SimpleButton btnLuu;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
 	}
 }

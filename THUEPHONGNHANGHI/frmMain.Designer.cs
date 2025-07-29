@@ -31,22 +31,18 @@
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-			this.btnBaoCao = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.btnThoat = new System.Windows.Forms.ToolStripButton();
+			this.btnBaoCao = new System.Windows.Forms.ToolStripButton();
 			this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+			this.gControl = new DevExpress.XtraBars.Ribbon.GalleryControl();
+			this.galleryControlClient1 = new DevExpress.XtraBars.Ribbon.GalleryControlClient();
 			this.navMain = new DevExpress.XtraNavBar.NavBarControl();
 			this.imageList1 = new System.Windows.Forms.ImageList(this.components);
 			this.imageList2 = new System.Windows.Forms.ImageList(this.components);
-			this.gControl = new DevExpress.XtraBars.Ribbon.GalleryControl();
-			this.galleryControlClient1 = new DevExpress.XtraBars.Ribbon.GalleryControlClient();
 			this.imageList3 = new System.Windows.Forms.ImageList(this.components);
 			this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
 			this.btnDatPhong = new DevExpress.XtraBars.BarButtonItem();
-			this.btnDatPhongTheoGio = new DevExpress.XtraBars.BarButtonItem();
 			this.btnSPDV = new DevExpress.XtraBars.BarButtonItem();
-			this.btnCapnhattheogio = new DevExpress.XtraBars.BarButtonItem();
 			this.btnChuyenPhong = new DevExpress.XtraBars.BarButtonItem();
 			this.btnThanhToan = new DevExpress.XtraBars.BarButtonItem();
 			this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -55,7 +51,6 @@
 			this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
 			this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
 			this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-			this.btnThanhtoantheogio = new DevExpress.XtraBars.BarButtonItem();
 			this.toolStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).BeginInit();
@@ -63,76 +58,93 @@
 			((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel2)).BeginInit();
 			this.splitContainerControl1.Panel2.SuspendLayout();
 			this.splitContainerControl1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.navMain)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.gControl)).BeginInit();
 			this.gControl.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.navMain)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// toolStrip1
 			// 
+			this.toolStrip1.BackColor = System.Drawing.Color.Transparent;
 			this.toolStrip1.ImageScalingSize = new System.Drawing.Size(56, 56);
 			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSeparator1,
-            this.btnBaoCao,
-            this.toolStripSeparator2,
-            this.btnThoat});
+            this.btnThoat,
+            this.btnBaoCao});
 			this.toolStrip1.Location = new System.Drawing.Point(0, 0);
 			this.toolStrip1.Name = "toolStrip1";
-			this.toolStrip1.Size = new System.Drawing.Size(1262, 90);
+			this.toolStrip1.Size = new System.Drawing.Size(1320, 90);
 			this.toolStrip1.TabIndex = 0;
 			this.toolStrip1.Text = "toolStrip1";
 			// 
-			// toolStripSeparator1
-			// 
-			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 90);
-			// 
-			// btnBaoCao
-			// 
-			this.btnBaoCao.Image = global::THUEPHONGNHANGHI.Properties.Resources._520570_chart_analytics_business_graph_report_icon2;
-			this.btnBaoCao.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.btnBaoCao.Name = "btnBaoCao";
-			this.btnBaoCao.Size = new System.Drawing.Size(79, 85);
-			this.btnBaoCao.Text = "Báo cáo";
-			this.btnBaoCao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-			this.btnBaoCao.Click += new System.EventHandler(this.btnBaoCao_Click);
-			// 
-			// toolStripSeparator2
-			// 
-			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 90);
-			// 
 			// btnThoat
 			// 
-			this.btnThoat.Image = global::THUEPHONGNHANGHI.Properties.Resources._1564506_close_exit_logout_power_icon1;
+			this.btnThoat.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+			this.btnThoat.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.btnThoat.Image = global::THUEPHONGNHANGHI.Properties.Resources.sign_out_alt__1_;
 			this.btnThoat.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btnThoat.Name = "btnThoat";
-			this.btnThoat.Size = new System.Drawing.Size(61, 85);
+			this.btnThoat.Size = new System.Drawing.Size(60, 85);
 			this.btnThoat.Text = "Thoát";
 			this.btnThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
 			this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
 			// 
+			// btnBaoCao
+			// 
+			this.btnBaoCao.Image = global::THUEPHONGNHANGHI.Properties.Resources.icons8_sales_performance_100;
+			this.btnBaoCao.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.btnBaoCao.Name = "btnBaoCao";
+			this.btnBaoCao.Size = new System.Drawing.Size(166, 85);
+			this.btnBaoCao.Text = "Báo cáo doanh thu";
+			this.btnBaoCao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+			this.btnBaoCao.Click += new System.EventHandler(this.btnBaoCao_Click);
+			// 
 			// splitContainerControl1
 			// 
 			this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.splitContainerControl1.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.Panel2;
 			this.splitContainerControl1.Location = new System.Drawing.Point(0, 90);
 			this.splitContainerControl1.Margin = new System.Windows.Forms.Padding(4);
 			this.splitContainerControl1.Name = "splitContainerControl1";
 			// 
 			// splitContainerControl1.Panel1
 			// 
-			this.splitContainerControl1.Panel1.Controls.Add(this.navMain);
+			this.splitContainerControl1.Panel1.Appearance.BackColor = System.Drawing.Color.White;
+			this.splitContainerControl1.Panel1.Appearance.BorderColor = System.Drawing.Color.White;
+			this.splitContainerControl1.Panel1.Appearance.Options.UseBackColor = true;
+			this.splitContainerControl1.Panel1.Appearance.Options.UseBorderColor = true;
+			this.splitContainerControl1.Panel1.Controls.Add(this.gControl);
 			this.splitContainerControl1.Panel1.Text = "Panel1";
 			// 
 			// splitContainerControl1.Panel2
 			// 
-			this.splitContainerControl1.Panel2.Controls.Add(this.gControl);
+			this.splitContainerControl1.Panel2.Appearance.BackColor = System.Drawing.Color.White;
+			this.splitContainerControl1.Panel2.Appearance.Options.UseBackColor = true;
+			this.splitContainerControl1.Panel2.Controls.Add(this.navMain);
 			this.splitContainerControl1.Panel2.Text = "Panel2";
-			this.splitContainerControl1.Size = new System.Drawing.Size(1262, 764);
-			this.splitContainerControl1.SplitterPosition = 450;
+			this.splitContainerControl1.Size = new System.Drawing.Size(1320, 764);
+			this.splitContainerControl1.SplitterPosition = 394;
 			this.splitContainerControl1.TabIndex = 1;
+			// 
+			// gControl
+			// 
+			this.gControl.Controls.Add(this.galleryControlClient1);
+			this.gControl.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.gControl.Location = new System.Drawing.Point(0, 0);
+			this.gControl.Margin = new System.Windows.Forms.Padding(4);
+			this.gControl.Name = "gControl";
+			this.barManager1.SetPopupContextMenu(this.gControl, this.popupMenu1);
+			this.gControl.Size = new System.Drawing.Size(911, 764);
+			this.gControl.TabIndex = 0;
+			this.gControl.Text = "galleryControl1";
+			// 
+			// galleryControlClient1
+			// 
+			this.galleryControlClient1.GalleryControl = this.gControl;
+			this.galleryControlClient1.Location = new System.Drawing.Point(2, 2);
+			this.galleryControlClient1.Margin = new System.Windows.Forms.Padding(4);
+			this.galleryControlClient1.Size = new System.Drawing.Size(881, 760);
 			// 
 			// navMain
 			// 
@@ -154,15 +166,16 @@
 			this.navMain.Appearance.ItemHotTracked.Options.UseFont = true;
 			this.navMain.Appearance.NavigationPaneHeader.Font = new System.Drawing.Font("Tahoma", 10F);
 			this.navMain.Appearance.NavigationPaneHeader.Options.UseFont = true;
-			this.navMain.Dock = System.Windows.Forms.DockStyle.Top;
+			this.navMain.BackColor = System.Drawing.Color.White;
+			this.navMain.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.navMain.Font = new System.Drawing.Font("Tahoma", 20F);
 			this.navMain.ForeColor = System.Drawing.Color.White;
 			this.navMain.LargeImages = this.imageList1;
 			this.navMain.Location = new System.Drawing.Point(0, 0);
 			this.navMain.Margin = new System.Windows.Forms.Padding(4);
 			this.navMain.Name = "navMain";
-			this.navMain.OptionsNavPane.ExpandedWidth = 450;
-			this.navMain.Size = new System.Drawing.Size(450, 965);
+			this.navMain.OptionsNavPane.ExpandedWidth = 394;
+			this.navMain.Size = new System.Drawing.Size(394, 764);
 			this.navMain.SmallImages = this.imageList2;
 			this.navMain.TabIndex = 0;
 			this.navMain.Text = "navBarControl1";
@@ -181,25 +194,6 @@
 			this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
 			this.imageList2.Images.SetKeyName(0, "520561_seo_communication_network_connection_internet_icon.png");
 			// 
-			// gControl
-			// 
-			this.gControl.Controls.Add(this.galleryControlClient1);
-			this.gControl.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.gControl.Location = new System.Drawing.Point(0, 0);
-			this.gControl.Margin = new System.Windows.Forms.Padding(4);
-			this.gControl.Name = "gControl";
-			this.barManager1.SetPopupContextMenu(this.gControl, this.popupMenu1);
-			this.gControl.Size = new System.Drawing.Size(797, 764);
-			this.gControl.TabIndex = 0;
-			this.gControl.Text = "galleryControl1";
-			// 
-			// galleryControlClient1
-			// 
-			this.galleryControlClient1.GalleryControl = this.gControl;
-			this.galleryControlClient1.Location = new System.Drawing.Point(2, 2);
-			this.galleryControlClient1.Margin = new System.Windows.Forms.Padding(4);
-			this.galleryControlClient1.Size = new System.Drawing.Size(767, 760);
-			// 
 			// imageList3
 			// 
 			this.imageList3.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList3.ImageStream")));
@@ -211,9 +205,7 @@
 			// 
 			this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.btnDatPhong),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnDatPhongTheoGio),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSPDV),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnCapnhattheogio),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnChuyenPhong),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnThanhToan)});
 			this.popupMenu1.Manager = this.barManager1;
@@ -229,15 +221,6 @@
 			this.btnDatPhong.Name = "btnDatPhong";
 			this.btnDatPhong.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDatPhong_ItemClick_1);
 			// 
-			// btnDatPhongTheoGio
-			// 
-			this.btnDatPhongTheoGio.Caption = "Đặt Phòng Theo Giờ";
-			this.btnDatPhongTheoGio.Id = 4;
-			this.btnDatPhongTheoGio.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDatPhongTheoGio.ImageOptions.Image")));
-			this.btnDatPhongTheoGio.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDatPhongTheoGio.ImageOptions.LargeImage")));
-			this.btnDatPhongTheoGio.Name = "btnDatPhongTheoGio";
-			this.btnDatPhongTheoGio.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDatPhongTheoGio_ItemClick);
-			// 
 			// btnSPDV
 			// 
 			this.btnSPDV.Caption = "Cập nhật Sản phẩm - Dịch vụ";
@@ -246,15 +229,6 @@
 			this.btnSPDV.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSPDV.ImageOptions.LargeImage")));
 			this.btnSPDV.Name = "btnSPDV";
 			this.btnSPDV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSPDV_ItemClick);
-			// 
-			// btnCapnhattheogio
-			// 
-			this.btnCapnhattheogio.Caption = "Cập nhật Sản Phẩm Theo Giờ";
-			this.btnCapnhattheogio.Id = 8;
-			this.btnCapnhattheogio.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCapnhattheogio.ImageOptions.Image")));
-			this.btnCapnhattheogio.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnCapnhattheogio.ImageOptions.LargeImage")));
-			this.btnCapnhattheogio.Name = "btnCapnhattheogio";
-			this.btnCapnhattheogio.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCapnhattheogio_ItemClick);
 			// 
 			// btnChuyenPhong
 			// 
@@ -287,10 +261,7 @@
             this.btnDatPhong,
             this.btnSPDV,
             this.btnThanhToan,
-            this.btnChuyenPhong,
-            this.btnDatPhongTheoGio,
-            this.btnThanhtoantheogio,
-            this.btnCapnhattheogio});
+            this.btnChuyenPhong});
 			this.barManager1.MaxItemId = 9;
 			this.barManager1.StatusBar = this.bar2;
 			// 
@@ -313,7 +284,7 @@
 			this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
 			this.barDockControlTop.Manager = this.barManager1;
 			this.barDockControlTop.Margin = new System.Windows.Forms.Padding(4);
-			this.barDockControlTop.Size = new System.Drawing.Size(1262, 0);
+			this.barDockControlTop.Size = new System.Drawing.Size(1320, 0);
 			// 
 			// barDockControlBottom
 			// 
@@ -322,7 +293,7 @@
 			this.barDockControlBottom.Location = new System.Drawing.Point(0, 854);
 			this.barDockControlBottom.Manager = this.barManager1;
 			this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(4);
-			this.barDockControlBottom.Size = new System.Drawing.Size(1262, 20);
+			this.barDockControlBottom.Size = new System.Drawing.Size(1320, 20);
 			// 
 			// barDockControlLeft
 			// 
@@ -337,25 +308,18 @@
 			// 
 			this.barDockControlRight.CausesValidation = false;
 			this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-			this.barDockControlRight.Location = new System.Drawing.Point(1262, 0);
+			this.barDockControlRight.Location = new System.Drawing.Point(1320, 0);
 			this.barDockControlRight.Manager = this.barManager1;
 			this.barDockControlRight.Margin = new System.Windows.Forms.Padding(4);
 			this.barDockControlRight.Size = new System.Drawing.Size(0, 854);
 			// 
-			// btnThanhtoantheogio
-			// 
-			this.btnThanhtoantheogio.Caption = "Thanh toán phòng theo giờ";
-			this.btnThanhtoantheogio.Id = 7;
-			this.btnThanhtoantheogio.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThanhtoantheogio.ImageOptions.Image")));
-			this.btnThanhtoantheogio.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnThanhtoantheogio.ImageOptions.LargeImage")));
-			this.btnThanhtoantheogio.Name = "btnThanhtoantheogio";
-			this.btnThanhtoantheogio.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThanhtoantheogio_ItemClick);
-			// 
 			// frmMain
 			// 
+			this.Appearance.BackColor = System.Drawing.Color.White;
+			this.Appearance.Options.UseBackColor = true;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1262, 874);
+			this.ClientSize = new System.Drawing.Size(1320, 874);
 			this.Controls.Add(this.splitContainerControl1);
 			this.Controls.Add(this.toolStrip1);
 			this.Controls.Add(this.barDockControlLeft);
@@ -376,9 +340,9 @@
 			this.splitContainerControl1.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
 			this.splitContainerControl1.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.navMain)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.gControl)).EndInit();
 			this.gControl.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.navMain)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
 			this.ResumeLayout(false);
@@ -391,13 +355,10 @@
 		private System.Windows.Forms.ToolStrip toolStrip1;
 		private System.Windows.Forms.ToolStripButton btnBaoCao;
 		private System.Windows.Forms.ToolStripButton btnThoat;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
 		private DevExpress.XtraNavBar.NavBarControl navMain;
 		private System.Windows.Forms.ImageList imageList1;
 		private System.Windows.Forms.ImageList imageList2;
-		private DevExpress.XtraBars.Ribbon.GalleryControlClient galleryControlClient1;
 		private System.Windows.Forms.ImageList imageList3;
 		private DevExpress.XtraBars.PopupMenu popupMenu1;
 		private DevExpress.XtraBars.BarManager barManager1;
@@ -408,12 +369,10 @@
 		private DevExpress.XtraBars.BarButtonItem btnDatPhong;
 		private DevExpress.XtraBars.BarButtonItem btnSPDV;
 		private DevExpress.XtraBars.BarButtonItem btnThanhToan;
-		public DevExpress.XtraBars.Ribbon.GalleryControl gControl;
 		private DevExpress.XtraBars.Bar bar2;
 		private DevExpress.XtraBars.BarButtonItem btnChuyenPhong;
-		private DevExpress.XtraBars.BarButtonItem btnDatPhongTheoGio;
-		private DevExpress.XtraBars.BarButtonItem btnThanhtoantheogio;
-		private DevExpress.XtraBars.BarButtonItem btnCapnhattheogio;
+		public DevExpress.XtraBars.Ribbon.GalleryControl gControl;
+		private DevExpress.XtraBars.Ribbon.GalleryControlClient galleryControlClient1;
 	}
 }
 

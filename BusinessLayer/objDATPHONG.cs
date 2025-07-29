@@ -8,15 +8,6 @@ namespace BusinessLayer
 {
 	public class objDATPHONG
 	{
-	  //    public int ID{ get; set; }
-	  //	public string TENPHONG { get; set; }
-	  //	public double DONGIA { get; set; }
-	  //	public bool STATUS { get; set; }
-	  //	public int IDTANG { get; set; }
-	  //	public int IDLOAIPHONG	{ get; set; }
-	  //	public string TENTANG {  get; set; }
-	  //	public string TENLOAIPHONG { get; set; }
-	    
 		public int IDDP { get; set; }
 		public int IDKH { get; set; }
 		public string HOTEN { get; set; }

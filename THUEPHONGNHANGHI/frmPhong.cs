@@ -43,7 +43,6 @@ namespace THUEPHONGNHANGHI
 			btnThem.Visible = t;
 			btnSua.Visible = t;
 			btnXoa.Visible = t;
-			btnThoat.Visible = t;
 		
 		}
 		void _enabled(bool t)
@@ -89,12 +88,21 @@ namespace THUEPHONGNHANGHI
 
 		private void btnXoa_Click(object sender, EventArgs e)
 		{
+			// Kiểm tra trạng thái phòng có đang cho thuê hay không
+			if (chkDachothue.Checked)
+			{
+				MessageBox.Show("Không thể xóa phòng đang cho thuê!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return; // Không tiếp tục xóa
+			}
+
 			if (MessageBox.Show("Bạn có chắc chắn muốn xóa?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
 			{
 				_phong.delete(_idphong);
 
 			}
 			loadData();
+			objMain.gControl.Gallery.Groups.Clear();
+			objMain.showRoom();
 		}
 
 

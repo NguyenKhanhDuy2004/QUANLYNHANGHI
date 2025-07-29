@@ -10,7 +10,6 @@ namespace BusinessLayer
 	{
 		public int IDDPSP { get; set; }
 		public int? IDSP { get; set; }
-		
 		public string TENSP {  get; set; }
 		public int? SOLUONG { get; set; }
 		public double? DONGIA { get; set; }

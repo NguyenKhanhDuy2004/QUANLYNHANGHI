@@ -30,19 +30,13 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDatPhong));
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-			this.btnThem = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-			this.btnSua = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-			this.btnXoa = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.btnLuu = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+			this.btnThem = new System.Windows.Forms.ToolStripButton();
+			this.btnSua = new System.Windows.Forms.ToolStripButton();
+			this.btnXoa = new System.Windows.Forms.ToolStripButton();
 			this.btnIn = new System.Windows.Forms.ToolStripButton();
-			this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
 			this.btnHuy = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-			this.btnThoat = new System.Windows.Forms.ToolStripButton();
 			this.pageChitiet = new DevExpress.XtraTab.XtraTabPage();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
@@ -62,6 +56,9 @@
 			this.DONGIA = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
 			this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
+			this.lblNgayTra = new DevExpress.XtraEditors.LabelControl();
+			this.lblNgayDat = new DevExpress.XtraEditors.LabelControl();
+			this.radioG_LoaiHinhThue = new DevExpress.XtraEditors.RadioGroup();
 			this.spSonguoio = new DevExpress.XtraEditors.SpinEdit();
 			this.label8 = new System.Windows.Forms.Label();
 			this.lblHuy = new System.Windows.Forms.Label();
@@ -71,9 +68,7 @@
 			this.cboTrangthai = new System.Windows.Forms.ComboBox();
 			this.label6 = new System.Windows.Forms.Label();
 			this.dtNgaydat = new System.Windows.Forms.DateTimePicker();
-			this.label5 = new System.Windows.Forms.Label();
 			this.dtNgaytra = new System.Windows.Forms.DateTimePicker();
-			this.label4 = new System.Windows.Forms.Label();
 			this.cboKhachhang = new System.Windows.Forms.ComboBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
@@ -138,6 +133,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel2)).BeginInit();
 			this.splitContainerControl2.Panel2.SuspendLayout();
 			this.splitContainerControl2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.radioG_LoaiHinhThue.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.spSonguoio.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
 			this.groupControl5.SuspendLayout();
@@ -167,73 +163,22 @@
 			// 
 			this.toolStrip1.ImageScalingSize = new System.Drawing.Size(46, 46);
 			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnThem,
-            this.toolStripSeparator1,
-            this.btnSua,
-            this.toolStripSeparator2,
-            this.btnXoa,
-            this.toolStripSeparator4,
             this.btnLuu,
-            this.toolStripSeparator3,
+            this.btnThem,
+            this.btnSua,
+            this.btnXoa,
             this.btnIn,
-            this.toolStripSeparator5,
             this.btnHuy,
-            this.toolStripSeparator6,
-            this.btnThoat});
+            this.toolStripSeparator6});
 			this.toolStrip1.Location = new System.Drawing.Point(0, 0);
 			this.toolStrip1.Name = "toolStrip1";
 			this.toolStrip1.Size = new System.Drawing.Size(1827, 80);
 			this.toolStrip1.TabIndex = 5;
 			this.toolStrip1.Text = "toolStrip1";
 			// 
-			// btnThem
-			// 
-			this.btnThem.Image = global::THUEPHONGNHANGHI.Properties.Resources._299068_add_sign_icon;
-			this.btnThem.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.btnThem.Name = "btnThem";
-			this.btnThem.Size = new System.Drawing.Size(60, 75);
-			this.btnThem.Text = "Thêm";
-			this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-			this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-			// 
-			// toolStripSeparator1
-			// 
-			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 80);
-			// 
-			// btnSua
-			// 
-			this.btnSua.Image = global::THUEPHONGNHANGHI.Properties.Resources._8725775_edit_icon__1_;
-			this.btnSua.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.btnSua.Name = "btnSua";
-			this.btnSua.Size = new System.Drawing.Size(50, 75);
-			this.btnSua.Text = "Sửa";
-			this.btnSua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-			this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-			// 
-			// toolStripSeparator2
-			// 
-			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(6, 80);
-			// 
-			// btnXoa
-			// 
-			this.btnXoa.Image = global::THUEPHONGNHANGHI.Properties.Resources._5402370_bin_delete_remove_trash_can_icon;
-			this.btnXoa.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.btnXoa.Name = "btnXoa";
-			this.btnXoa.Size = new System.Drawing.Size(50, 75);
-			this.btnXoa.Text = "Xóa";
-			this.btnXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-			this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-			// 
-			// toolStripSeparator4
-			// 
-			this.toolStripSeparator4.Name = "toolStripSeparator4";
-			this.toolStripSeparator4.Size = new System.Drawing.Size(6, 80);
-			// 
 			// btnLuu
 			// 
-			this.btnLuu.Image = global::THUEPHONGNHANGHI.Properties.Resources._285657_floppy_guardar_save_icon__1_;
+			this.btnLuu.Image = global::THUEPHONGNHANGHI.Properties.Resources.icons8_save_1001;
 			this.btnLuu.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.btnLuu.Name = "btnLuu";
 			this.btnLuu.Size = new System.Drawing.Size(50, 75);
@@ -241,10 +186,35 @@
 			this.btnLuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
 			this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
 			// 
-			// toolStripSeparator3
+			// btnThem
 			// 
-			this.toolStripSeparator3.Name = "toolStripSeparator3";
-			this.toolStripSeparator3.Size = new System.Drawing.Size(6, 80);
+			this.btnThem.Image = global::THUEPHONGNHANGHI.Properties.Resources.icons8_add_100;
+			this.btnThem.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.btnThem.Name = "btnThem";
+			this.btnThem.Size = new System.Drawing.Size(60, 75);
+			this.btnThem.Text = "Thêm";
+			this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+			this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+			// 
+			// btnSua
+			// 
+			this.btnSua.Image = global::THUEPHONGNHANGHI.Properties.Resources.user_avatar1;
+			this.btnSua.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.btnSua.Name = "btnSua";
+			this.btnSua.Size = new System.Drawing.Size(50, 75);
+			this.btnSua.Text = "Sửa";
+			this.btnSua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+			this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+			// 
+			// btnXoa
+			// 
+			this.btnXoa.Image = global::THUEPHONGNHANGHI.Properties.Resources.icons8_recycle_bin_1001;
+			this.btnXoa.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.btnXoa.Name = "btnXoa";
+			this.btnXoa.Size = new System.Drawing.Size(50, 75);
+			this.btnXoa.Text = "Xóa";
+			this.btnXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+			this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
 			// 
 			// btnIn
 			// 
@@ -255,11 +225,6 @@
 			this.btnIn.Text = "In";
 			this.btnIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
 			this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
-			// 
-			// toolStripSeparator5
-			// 
-			this.toolStripSeparator5.Name = "toolStripSeparator5";
-			this.toolStripSeparator5.Size = new System.Drawing.Size(6, 80);
 			// 
 			// btnHuy
 			// 
@@ -275,16 +240,6 @@
 			// 
 			this.toolStripSeparator6.Name = "toolStripSeparator6";
 			this.toolStripSeparator6.Size = new System.Drawing.Size(6, 80);
-			// 
-			// btnThoat
-			// 
-			this.btnThoat.Image = global::THUEPHONGNHANGHI.Properties.Resources._1564506_close_exit_logout_power_icon;
-			this.btnThoat.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.btnThoat.Name = "btnThoat";
-			this.btnThoat.Size = new System.Drawing.Size(61, 75);
-			this.btnThoat.Text = "Thoát";
-			this.btnThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-			this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
 			// 
 			// pageChitiet
 			// 
@@ -506,6 +461,9 @@
 			// 
 			// splitContainerControl2.Panel1
 			// 
+			this.splitContainerControl2.Panel1.Controls.Add(this.lblNgayTra);
+			this.splitContainerControl2.Panel1.Controls.Add(this.lblNgayDat);
+			this.splitContainerControl2.Panel1.Controls.Add(this.radioG_LoaiHinhThue);
 			this.splitContainerControl2.Panel1.Controls.Add(this.spSonguoio);
 			this.splitContainerControl2.Panel1.Controls.Add(this.label8);
 			this.splitContainerControl2.Panel1.Controls.Add(this.lblHuy);
@@ -515,9 +473,7 @@
 			this.splitContainerControl2.Panel1.Controls.Add(this.cboTrangthai);
 			this.splitContainerControl2.Panel1.Controls.Add(this.label6);
 			this.splitContainerControl2.Panel1.Controls.Add(this.dtNgaydat);
-			this.splitContainerControl2.Panel1.Controls.Add(this.label5);
 			this.splitContainerControl2.Panel1.Controls.Add(this.dtNgaytra);
-			this.splitContainerControl2.Panel1.Controls.Add(this.label4);
 			this.splitContainerControl2.Panel1.Controls.Add(this.cboKhachhang);
 			this.splitContainerControl2.Panel1.Controls.Add(this.label3);
 			this.splitContainerControl2.Panel1.Text = "Panel1";
@@ -532,6 +488,37 @@
 			this.splitContainerControl2.SplitterPosition = 197;
 			this.splitContainerControl2.TabIndex = 3;
 			// 
+			// lblNgayTra
+			// 
+			this.lblNgayTra.Appearance.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+			this.lblNgayTra.Appearance.Options.UseFont = true;
+			this.lblNgayTra.Location = new System.Drawing.Point(402, 77);
+			this.lblNgayTra.Name = "lblNgayTra";
+			this.lblNgayTra.Size = new System.Drawing.Size(70, 19);
+			this.lblNgayTra.TabIndex = 37;
+			this.lblNgayTra.Text = "Ngày trả";
+			// 
+			// lblNgayDat
+			// 
+			this.lblNgayDat.Appearance.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+			this.lblNgayDat.Appearance.Options.UseFont = true;
+			this.lblNgayDat.Location = new System.Drawing.Point(53, 77);
+			this.lblNgayDat.Name = "lblNgayDat";
+			this.lblNgayDat.Size = new System.Drawing.Size(73, 19);
+			this.lblNgayDat.TabIndex = 36;
+			this.lblNgayDat.Text = "Ngày đặt";
+			// 
+			// radioG_LoaiHinhThue
+			// 
+			this.radioG_LoaiHinhThue.Location = new System.Drawing.Point(528, 115);
+			this.radioG_LoaiHinhThue.Name = "radioG_LoaiHinhThue";
+			this.radioG_LoaiHinhThue.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("THEONGAY", "Theo ngày"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("THEOGIO", "Theo giờ")});
+			this.radioG_LoaiHinhThue.Size = new System.Drawing.Size(248, 69);
+			this.radioG_LoaiHinhThue.TabIndex = 35;
+			this.radioG_LoaiHinhThue.EditValueChanged += new System.EventHandler(this.radioG_LoaiHinhThue_EditValueChanged);
+			// 
 			// spSonguoio
 			// 
 			this.spSonguoio.EditValue = new decimal(new int[] {
@@ -543,7 +530,7 @@
 			this.spSonguoio.Name = "spSonguoio";
 			this.spSonguoio.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-			this.spSonguoio.Size = new System.Drawing.Size(179, 28);
+			this.spSonguoio.Size = new System.Drawing.Size(104, 28);
 			this.spSonguoio.TabIndex = 14;
 			// 
 			// label8
@@ -581,7 +568,7 @@
 			// 
 			this.txtGhichu.Location = new System.Drawing.Point(134, 157);
 			this.txtGhichu.Name = "txtGhichu";
-			this.txtGhichu.Size = new System.Drawing.Size(463, 27);
+			this.txtGhichu.Size = new System.Drawing.Size(388, 27);
 			this.txtGhichu.TabIndex = 9;
 			// 
 			// label7
@@ -616,39 +603,22 @@
 			// 
 			this.dtNgaydat.CustomFormat = "dd/MM/yyyy";
 			this.dtNgaydat.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dtNgaydat.Location = new System.Drawing.Point(134, 71);
+			this.dtNgaydat.Location = new System.Drawing.Point(134, 73);
 			this.dtNgaydat.Name = "dtNgaydat";
-			this.dtNgaydat.Size = new System.Drawing.Size(177, 27);
+			this.dtNgaydat.Size = new System.Drawing.Size(245, 27);
 			this.dtNgaydat.TabIndex = 5;
-			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.label5.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-			this.label5.Location = new System.Drawing.Point(49, 75);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(82, 19);
-			this.label5.TabIndex = 4;
-			this.label5.Text = "Ngày đặt";
+			this.dtNgaydat.ValueChanged += new System.EventHandler(this.dtNgaydat_ValueChanged);
 			// 
 			// dtNgaytra
 			// 
 			this.dtNgaytra.CustomFormat = "dd/MM/yyyy";
 			this.dtNgaytra.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dtNgaytra.Location = new System.Drawing.Point(408, 71);
+			this.dtNgaytra.Location = new System.Drawing.Point(478, 73);
 			this.dtNgaytra.Name = "dtNgaytra";
-			this.dtNgaytra.Size = new System.Drawing.Size(189, 27);
+			this.dtNgaytra.ShowUpDown = true;
+			this.dtNgaytra.Size = new System.Drawing.Size(298, 27);
 			this.dtNgaytra.TabIndex = 3;
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-			this.label4.Location = new System.Drawing.Point(323, 75);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(79, 19);
-			this.label4.TabIndex = 2;
-			this.label4.Text = "Ngày trả";
+			this.dtNgaytra.ValueChanged += new System.EventHandler(this.dtNgaytra_ValueChanged);
 			// 
 			// cboKhachhang
 			// 
@@ -967,7 +937,7 @@
 			// 
 			this.dtDenngay.CustomFormat = "dd/MM/yyyy";
 			this.dtDenngay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dtDenngay.Location = new System.Drawing.Point(623, 25);
+			this.dtDenngay.Location = new System.Drawing.Point(997, 23);
 			this.dtDenngay.Name = "dtDenngay";
 			this.dtDenngay.Size = new System.Drawing.Size(241, 27);
 			this.dtDenngay.TabIndex = 3;
@@ -977,7 +947,7 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(549, 29);
+			this.label2.Location = new System.Drawing.Point(923, 27);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(76, 19);
 			this.label2.TabIndex = 2;
@@ -987,7 +957,7 @@
 			// 
 			this.dtTungay.CustomFormat = "dd/MM/yyyy";
 			this.dtTungay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dtTungay.Location = new System.Drawing.Point(278, 25);
+			this.dtTungay.Location = new System.Drawing.Point(652, 23);
 			this.dtTungay.Name = "dtTungay";
 			this.dtTungay.Size = new System.Drawing.Size(241, 27);
 			this.dtTungay.TabIndex = 1;
@@ -997,7 +967,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(204, 29);
+			this.label1.Location = new System.Drawing.Point(578, 27);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(68, 19);
 			this.label1.TabIndex = 0;
@@ -1210,6 +1180,7 @@
 			this.splitContainerControl2.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
 			this.splitContainerControl2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.radioG_LoaiHinhThue.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.spSonguoio.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
 			this.groupControl5.ResumeLayout(false);
@@ -1244,14 +1215,10 @@
 
 		private System.Windows.Forms.ToolStrip toolStrip1;
 		private System.Windows.Forms.ToolStripButton btnThem;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripButton btnSua;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.ToolStripButton btnXoa;
 		private System.Windows.Forms.ToolStripButton btnLuu;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
 		private System.Windows.Forms.ToolStripButton btnHuy;
-		private System.Windows.Forms.ToolStripButton btnThoat;
 		private DevExpress.XtraTab.XtraTabPage pageChitiet;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private DevExpress.XtraEditors.GroupControl groupControl1;
@@ -1286,9 +1253,7 @@
 		private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
 		private DevExpress.XtraTab.XtraTabControl tabDanhsach;
 		private System.Windows.Forms.DateTimePicker dtNgaydat;
-		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.DateTimePicker dtNgaytra;
-		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.ComboBox cboKhachhang;
 		private System.Windows.Forms.TextBox txtGhichu;
 		private System.Windows.Forms.Label label7;
@@ -1327,9 +1292,10 @@
 		private DevExpress.XtraEditors.SpinEdit spSonguoio;
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.TextBox txtThanhtien;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
 		private System.Windows.Forms.Label label9;
+		private DevExpress.XtraEditors.RadioGroup radioG_LoaiHinhThue;
+		private DevExpress.XtraEditors.LabelControl lblNgayDat;
+		private DevExpress.XtraEditors.LabelControl lblNgayTra;
 	}
 }

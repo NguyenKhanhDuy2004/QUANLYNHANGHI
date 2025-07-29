@@ -52,8 +52,8 @@ namespace THUEPHONGNHANGHI.MyControls
 		void loadDonVi()
 		{
 			cboDonVi.DataSource = _donvi.getAll(cboCongTy.SelectedValue.ToString());
-			cboDonVi.DisplayMember = "MADVI";
-			cboDonVi.ValueMember = "TENDVI";
+			cboDonVi.DisplayMember = "TENDVI";
+			cboDonVi.ValueMember = "MADVI";
 			
 		}
 	}

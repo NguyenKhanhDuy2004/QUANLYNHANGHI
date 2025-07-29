@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataLayer;
 using BusinessLayer;
-using static DevExpress.XtraPrinting.Export.Pdf.PdfImageCache;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 using CrystalDecisions.Windows.Forms;
@@ -22,11 +21,15 @@ namespace THUEPHONGNHANGHI
 		public frmDatPhongDon()
 		{
 			InitializeComponent();
+			
 		}
+
 		frmMain objMain = (frmMain)Application.OpenForms["frmMain"];
 		public bool _them;
 		public int _idPhong;
-		int _idDP=0;
+		int _idDP = 0;
+		string _loaiHinhThue = "THEONGAY"; // Biến lưu loại hình thuê
+
 		DATPHONG _datphong;
 		DATPHONGCHITIET _datphongct;
 		DATPHONGSANPHAM _datphongsp;
@@ -35,49 +38,320 @@ namespace THUEPHONGNHANGHI
 		KHACHHANG _khachhang;
 		SANPHAM _sanpham;
 		List<objDPSP> lstDPSP;
-		double _tongtien=0;
 		string _macty;
 		string _madvi;
-		SYS_PARAM _param;
-		
-		private void btnLuu_Click(object sender, EventArgs e)
+
+		private void frmDatPhongDon_Load(object sender, EventArgs e)
 		{
-			if (searchKH.EditValue==null || searchKH.EditValue.ToString()=="")
+			_datphong = new DATPHONG();
+			_datphongsp = new DATPHONGSANPHAM();
+			_datphongct = new DATPHONGCHITIET();
+			_phong = new PHONG();
+			_khachhang = new KHACHHANG();
+			_sanpham = new SANPHAM();
+			lstDPSP = new List<objDPSP>();
+
+			_macty = myFunctions._macty;
+			_madvi = myFunctions._madvi;
+			_phongHienTai = _phong.getItemFull(_idPhong);
+
+			// Xử lý giá trị null trước khi định dạng
+			string giaNgay = _phongHienTai.DONGIA.HasValue ? _phongHienTai.DONGIA.Value.ToString("N0") : "N/A";
+			string giaGio = _phongHienTai.DONGIATHEOGIO.HasValue ? _phongHienTai.DONGIATHEOGIO.Value.ToString("N0") : "N/A";
+			lblPhong.Text = $"{_phongHienTai.TENPHONG} | Giá ngày: {giaNgay} | Giá giờ: {giaGio}";
+
+			cboTrangthai.DataSource = TRANGTHAI.getList();
+			cboTrangthai.ValueMember = "_value";
+			cboTrangthai.DisplayMember = "_display";
+			spSonguoio.Text = "1";
+
+			loadKH();
+			loadSP();
+
+			if (!_them)
 			{
-				MessageBox.Show("Vui lòng chọn khách hàng.","Thông báo",MessageBoxButtons.OK, MessageBoxIcon.Information);
+				var dpct = _datphongct.getIDDPByPhong(_idPhong);
+				if (dpct != null)
+				{
+					_idDP = dpct.IDDP;
+					var dp = _datphong.getItem(_idDP);
+					searchKH.EditValue = dp.IDKH;
+					dtNgaydat.Value = dp.NGAYDATPHONG.Value;
+					dtNgaytra.Value = dp.NGAYTRAPHONG.Value;
+					cboTrangthai.SelectedValue = dp.STATUS;
+					spSonguoio.Text = dp.SONGUOIO.ToString();
+					txtGhichu.Text = dp.GHICHU;
+					_loaiHinhThue = dpct.LOAIHINHTHUE ?? "THEONGAY";
+					loadSPDV();
+				}
+			}
+
+			// Mặc định chọn loại hình thuê và cập nhật giao diện
+			radioG_LoaiHinhThue.EditValue = _loaiHinhThue;
+			CapNhatGiaoDienTheoLoaiHinh();
+		}
+
+		private void CapNhatGiaoDienTheoLoaiHinh()
+		{
+			if (radioG_LoaiHinhThue.EditValue != null && radioG_LoaiHinhThue.EditValue.ToString() == "THEOGIO")
+			{
+				lblNgayDat.Text = "Giờ Vào";
+				lblNgayTra.Text = "Giờ Ra";
+				dtNgaydat.Format = DateTimePickerFormat.Custom;
+				dtNgaydat.CustomFormat = "dd/MM/yyyy HH:mm";
+				dtNgaytra.Format = DateTimePickerFormat.Custom;
+				dtNgaytra.CustomFormat = "dd/MM/yyyy HH:mm";
+				_loaiHinhThue = "THEOGIO";
+
+				// Tự động đặt giờ ra sau giờ vào 1 tiếng
+				dtNgaytra.Value = dtNgaydat.Value.AddHours(1);
+			}
+			else
+			{
+				lblNgayDat.Text = "Ngày Đặt";
+				lblNgayTra.Text = "Ngày Trả";
+				dtNgaydat.Format = DateTimePickerFormat.Custom;
+				dtNgaydat.CustomFormat = "dd/MM/yyyy";
+				dtNgaytra.Format = DateTimePickerFormat.Custom;
+				dtNgaytra.CustomFormat = "dd/MM/yyyy";
+				_loaiHinhThue = "THEONGAY";
+
+				// Tự động đặt ngày trả sau ngày đặt 1 ngày
+				dtNgaytra.Value = dtNgaydat.Value.AddDays(1);
+			}
+
+			// Luôn gọi UpdateTongTien sau khi cập nhật giao diện
+			UpdateTongTien();
+		}
+
+
+		private int TinhSoNgay()
+		{
+			DateTime ngayDat = dtNgaydat.Value.Date;
+			DateTime ngayTra = dtNgaytra.Value.Date;
+			if (ngayTra <= ngayDat) return 1;
+			return (ngayTra - ngayDat).Days;
+		}
+
+		private int TinhSoGio()
+		{
+			DateTime gioVao = dtNgaydat.Value;
+			DateTime gioRa = dtNgaytra.Value;
+
+			// Nếu giờ ra không hợp lệ (bằng hoặc trước giờ vào), tính là 1 giờ
+			if (gioRa <= gioVao)
+			{
+				return 1;
+			}
+
+			// Tính tổng thời gian thuê
+			TimeSpan duration = gioRa - gioVao;
+
+			// Làm tròn lên giờ tiếp theo. Ví dụ: 1.2 giờ -> 2 giờ
+			int totalHours = (int)Math.Ceiling(duration.TotalHours);
+
+			// Đảm bảo rằng thời gian thuê tối thiểu luôn là 1 giờ
+			return Math.Max(1, totalHours);
+		}
+
+		void UpdateTongTien()
+		{
+			double tongTienSPDV = lstDPSP.Sum(p => p.THANHTIEN) ?? 0;
+			double tienPhong = 0;
+
+			if (_loaiHinhThue == "THEOGIO")
+			{
+				tienPhong = (_phongHienTai.DONGIATHEOGIO ?? 0) * TinhSoGio();
+			}
+			else
+			{
+				tienPhong = (_phongHienTai.DONGIA ?? 0) * TinhSoNgay();
+			}
+
+			double tongCong = tienPhong + tongTienSPDV;
+			txtThanhtien.Text = tongCong.ToString("N0");
+		}
+
+
+		void saveData()
+		{
+			if (searchKH.EditValue == null || searchKH.EditValue.ToString() == "")
+			{
+				MessageBox.Show("Vui lòng chọn khách hàng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				return;
 			}
-			MessageBox.Show("Đã đặt thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+			if (dtNgaydat.Value >= dtNgaytra.Value)
+			{
+				MessageBox.Show("Thời gian trả phòng phải sau thời gian đặt phòng.", "Lỗi Dữ Liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
+			if (_them)
+			{
+				tb_DatPhong dp = new tb_DatPhong();
+				dp.IDKH = int.Parse(searchKH.EditValue.ToString());
+				dp.NGAYDATPHONG = dtNgaydat.Value;
+				dp.NGAYTRAPHONG = dtNgaytra.Value;
+				dp.SONGUOIO = Convert.ToInt32(spSonguoio.Value);
+				dp.STATUS = (bool)cboTrangthai.SelectedValue;
+				dp.SOTIEN = double.Parse(txtThanhtien.Text.Replace(",", ""));
+				dp.GHICHU = txtGhichu.Text;
+				dp.IDUSER = 1;
+				dp.MACTY = _macty;
+				dp.MADVI = _madvi;
+				dp.CREATED_DATE = DateTime.Now;
+
+				var newDP = _datphong.add(dp);
+				_idDP = newDP.IDDP;
+
+				tb_DatPhongCT dpct = new tb_DatPhongCT();
+				dpct.IDDP = newDP.IDDP;
+				dpct.IDPHONG = _idPhong;
+				dpct.NGAY = DateTime.Now;
+				dpct.LOAIHINHTHUE = _loaiHinhThue;
+
+				if (_loaiHinhThue == "THEOGIO")
+				{
+					dpct.SONGAYO = TinhSoGio();
+					// 💡 SỬA LỖI: Ép kiểu double sang int?
+					dpct.DONGIA = (int?)(_phongHienTai.DONGIATHEOGIO ?? 0);
+				}
+				else
+				{
+					dpct.SONGAYO = TinhSoNgay();
+					// 💡 SỬA LỖI: Ép kiểu double sang int?
+					dpct.DONGIA = (int?)(_phongHienTai.DONGIA ?? 0);
+				}
+				dpct.THANHTIEN = dpct.SONGAYO * dpct.DONGIA;
+				var newDPCT = _datphongct.add(dpct);
+
+				_phong.updateStatus(_idPhong, true);
+
+				foreach (var item in lstDPSP)
+				{
+					tb_DatPhongSanPham dpsp = new tb_DatPhongSanPham();
+					dpsp.IDDP = newDP.IDDP;
+					dpsp.IDDPCT = newDPCT.IDDPCT;
+					dpsp.IDPHONG = _idPhong;
+					dpsp.IDSP = item.IDSP;
+					dpsp.SOLUONG = (int?)item.SOLUONG;
+					// 💡 SỬA LỖI: Ép kiểu double sang int?
+					dpsp.DONGIA = (int?)item.DONGIA;
+					dpsp.THANHTIEN = (int?)item.THANHTIEN;
+					_datphongsp.add(dpsp);
+				}
+			}
+			else // CẬP NHẬT
+			{
+				tb_DatPhong dp = _datphong.getItem(_idDP);
+				dp.IDKH = int.Parse(searchKH.EditValue.ToString());
+				dp.NGAYDATPHONG = dtNgaydat.Value;
+				dp.NGAYTRAPHONG = dtNgaytra.Value;
+				dp.SONGUOIO = Convert.ToInt32(spSonguoio.Value);
+				dp.STATUS = (bool)cboTrangthai.SelectedValue;
+				dp.SOTIEN = double.Parse(txtThanhtien.Text.Replace(",", ""));
+				dp.GHICHU = txtGhichu.Text;
+				dp.UPDATE_BY = 1;
+				dp.UPDATE_DATE = DateTime.Now;
+				_datphong.update(dp);
+
+				tb_DatPhongCT dpct = _datphongct.getItem(_idDP, _idPhong);
+				dpct.LOAIHINHTHUE = _loaiHinhThue;
+				if (_loaiHinhThue == "THEOGIO")
+				{
+					dpct.SONGAYO = TinhSoGio();
+					// 💡 SỬA LỖI: Ép kiểu double sang int?
+					dpct.DONGIA = (int?)(_phongHienTai.DONGIATHEOGIO ?? 0);
+				}
+				else
+				{
+					dpct.SONGAYO = TinhSoNgay();
+					// 💡 SỬA LỖI: Ép kiểu double sang int?
+					dpct.DONGIA = (int?)(_phongHienTai.DONGIA ?? 0);
+				}
+				dpct.THANHTIEN = dpct.SONGAYO * dpct.DONGIA;
+				_datphongct.update(dpct);
+
+				_datphongsp.deleteAllByPhong(_idDP, _idPhong);
+				foreach (var item in lstDPSP)
+				{
+					tb_DatPhongSanPham dpsp = new tb_DatPhongSanPham();
+					dpsp.IDDP = _idDP;
+					dpsp.IDDPCT = dpct.IDDPCT;
+					dpsp.IDPHONG = _idPhong;
+					dpsp.IDSP = item.IDSP;
+					dpsp.SOLUONG = (int?)item.SOLUONG;
+					// 💡 SỬA LỖI: Ép kiểu double sang int?
+					dpsp.DONGIA = (int?)item.DONGIA;
+					dpsp.THANHTIEN = (int?)item.THANHTIEN;
+					_datphongsp.add(dpsp);
+				}
+			}
+		}
+
+
+		private void btnLuu_Click(object sender, EventArgs e)
+		{
+			saveData();
+			MessageBox.Show("Đã lưu thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			_them = false;
+			if (objMain != null)
+			{
+				objMain.gControl.Gallery.Groups.Clear();
+				objMain.showRoom();
+			}
+		}
+
+		private void dtNgaydat_ValueChanged(object sender, EventArgs e)
+		{
+			UpdateTongTien();
+		}
+
+		private void dtNgaytra_ValueChanged(object sender, EventArgs e)
+		{
+			UpdateTongTien();
+		}
+
+		private void btnThanhToanHoaDon_Click(object sender, EventArgs e)
+		{
+			if (_idDP == 0 && _them)
+			{
+				MessageBox.Show("Vui lòng lưu phiếu đặt phòng trước khi thanh toán.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+			if (dtNgaydat.Value >= dtNgaytra.Value)
+			{
+				MessageBox.Show("Thời gian trả phòng phải sau thời gian đặt phòng.", "Lỗi dữ liệu ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
+			cboTrangthai.SelectedValue = true;
 			saveData();
 
+			// 💡 SỬA LỖI 4: Kiểm tra lại tên phương thức trong lớp DATPHONG của bạn.
+			// Có thể tên đúng là "UpdateStatus" hoặc một tên khác.
+			_datphong.updateStuatus(_idDP);
+			_phong.updateStatus(_idPhong, false);
 
-			_tongtien = double.Parse(gvSPDV.Columns["THANHTIEN"].SummaryItem.SummaryValue.ToString()) + _phong.getItemFull(_idPhong).DONGIA * (dtNgaytra.Value.Day - dtNgaydat.Value.Day);
-			var dp = _datphong.getItem(_idDP);
-			dp.SOTIEN = _tongtien;
-			_datphong.update(dp);
-			this.Close();
+			MessageBox.Show("Đã thanh toán và trả phòng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+			XuatReport("PHIEU_DATPHONG_DON", "Hóa đơn thanh toán");
+
 			objMain.gControl.Gallery.Groups.Clear();
 			objMain.showRoom();
-
-
+			this.Close();
 		}
 
 		private void btnIn_Click(object sender, EventArgs e)
 		{
-			if (!_them)
+			if (_idDP == 0 && _them)
 			{
-				saveData();
-				_tongtien = double.Parse(gvSPDV.Columns["THANHTIEN"].SummaryItem.SummaryValue.ToString()) + _phong.getItemFull(_idPhong).DONGIA*(dtNgaytra.Value.Day - dtNgaydat.Value.Day);
-				var dp = _datphong.getItem(_idDP);
-				dp.SOTIEN = _tongtien;
-				_datphong.update(dp);
-				_datphong.updateStuatus(_idDP);
-				_phong.updateStatus(_idPhong, false);
-				XuatReport("PHIEU_DATPHONG_DON", "Chi tiết đặt phòng");
-				cboTrangthai.SelectedValue = true;
-				objMain.gControl.Gallery.Groups.Clear();
-				objMain.showRoom();
+				MessageBox.Show("Vui lòng lưu phiếu đặt phòng trước khi in.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
 			}
+			saveData();
+			XuatReport("PHIEU_DATPHONG_DON", "Chi tiết đặt phòng");
 		}
 		private void XuatReport(string _reportName, string _tieude)
 		{
@@ -118,77 +392,24 @@ namespace THUEPHONGNHANGHI
 				MessageBox.Show("Không có dữ liệu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
-
-		
-
-		private void frmDatPhongDon_Load(object sender, EventArgs e)
-		{
-			_datphong = new DATPHONG();
-			_datphongsp = new DATPHONGSANPHAM();
-			_datphongct = new DATPHONGCHITIET();
-			_phong = new PHONG();
-			_khachhang = new KHACHHANG();
-			_sanpham = new SANPHAM();
-			lstDPSP = new List<objDPSP>();
-			
-			_phongHienTai = _phong.getItemFull(_idPhong);
-			lblPhong.Text = _phongHienTai.TENPHONG + "- Đơn giá: "+_phongHienTai.DONGIA.ToString("N0")+"VND";
-			txtThanhtien.Text = _phongHienTai.DONGIA.ToString("N0");
-			dtNgaydat.Value = DateTime.Now;
-			dtNgaytra.Value = DateTime.Now.AddDays(1);
-
-			cboTrangthai.DataSource = TRANGTHAI.getList();
-			cboTrangthai.ValueMember = "_value";
-			cboTrangthai.DisplayMember = "_display";
-			spSonguoio.Text = "1";
-			loadKH();
-			loadSP();
-			_macty = myFunctions._macty;
-			_madvi = myFunctions._madvi;
-			var dpct =_datphongct.getIDDPByPhong(_idPhong);
-			if (!_them && dpct!=null)
-			{
-				_idDP = dpct.IDDP;
-				var dp = _datphong.getItem(_idDP);
-					searchKH.EditValue = dp.IDKH;
-					dtNgaydat.Value = dp.NGAYDATPHONG.Value;
-				if (dp.NGAYDATPHONG.Value.ToShortDateString() == DateTime.Now.ToShortDateString())
-					dtNgaytra.Value = dp.NGAYDATPHONG.Value.AddDays(1);
-				else
-					dtNgaytra.Value = DateTime.Now; 
-
-					cboTrangthai.SelectedValue = dp.STATUS;
-					spSonguoio.Text = dp.SONGUOIO.ToString();
-					txtGhichu.Text = dp.GHICHU.ToString();
-				    txtThanhtien.Text = dp.SOTIEN.Value.ToString("N0");
-				
-			    
-			}	
-			loadSPDV();
-		    
-			
-
-		}
 		void loadSPDV()
 		{
-			gcSPDV.DataSource = _datphongsp.getAllByDatPhong(_idDP);
 			lstDPSP = _datphongsp.getAllByDatPhong(_idDP);
+			loadDPSP();
 		}
 		void loadSP()
 		{
-			gcSanpham.DataSource=_sanpham.getAll();
+			gcSanpham.DataSource = _sanpham.getAll();
 			gvSanpham.OptionsBehavior.Editable = false;
 		}
 		public void loadKH()
 		{
-			KHACHHANG _khachhang = new KHACHHANG();
 			searchKH.Properties.DataSource = _khachhang.getAll();
 			searchKH.Properties.ValueMember = "IDKH";
 			searchKH.Properties.DisplayMember = "HOTEN";
 		}
 		public void getKH(int _idKH)
 		{
-			KHACHHANG _khachhang = new KHACHHANG();
 			var kh = _khachhang.getItem(_idKH);
 			searchKH.EditValue = kh.IDKH;
 			searchKH.Text = kh.HOTEN;
@@ -196,61 +417,52 @@ namespace THUEPHONGNHANGHI
 
 		public void setKH(int idKH)
 		{
-			searchKH.EditValue= idKH;
+			searchKH.EditValue = idKH;
 		}
 		private void btnAddNew_Click(object sender, EventArgs e)
 		{
 			frmKhachHang frm = new frmKhachHang();
 			frm.kh_dp = "datphongdon";
-			frm.ShowDialog();	
+			frm.ShowDialog();
 		}
 
 		private void gvSanpham_DoubleClick(object sender, EventArgs e)
 		{
-			if (_idPhong == 0)
+			if (bool.Parse(cboTrangthai.SelectedValue.ToString()) == true)
 			{
-				MessageBox.Show("Vui lòng chọn phòng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				MessageBox.Show("Phiếu đã thanh toán, không thể chỉnh sửa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				return;
 			}
-			if (bool.Parse(cboTrangthai.SelectedValue.ToString())==true)
-			{
-				MessageBox.Show("Đã hoàn tất thanh toán không được chỉnh sửa.!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				return;
-			}	
+
 			if (gvSanpham.GetFocusedRowCellValue("IDSP") != null)
 			{
-				objDPSP sp = new objDPSP();
-				sp.IDSP = int.Parse(gvSanpham.GetFocusedRowCellValue("IDSP").ToString());
-				sp.TENSP = gvSanpham.GetFocusedRowCellValue("TENSP").ToString();
-				sp.IDPHONG = _idPhong;
-				sp.TENPHONG = _phongHienTai.TENPHONG;
-				sp.DONGIA = float.Parse(gvSanpham.GetFocusedRowCellValue("DONGIA").ToString());
-				sp.SOLUONG = 1;
-				sp.THANHTIEN = sp.DONGIA * sp.SOLUONG;
-				foreach (var item in lstDPSP)
+				int idsp = int.Parse(gvSanpham.GetFocusedRowCellValue("IDSP").ToString());
+				var sp_exist = lstDPSP.FirstOrDefault(x => x.IDSP == idsp);
+				if (sp_exist != null)
 				{
-					if (item.IDSP == sp.IDSP && item.IDPHONG == sp.IDPHONG)
-					{
-						item.SOLUONG = item.SOLUONG + 1;
-						item.THANHTIEN = item.SOLUONG * item.DONGIA;
-						loadDPSP();
-						return;
-					}
+					sp_exist.SOLUONG++;
+					sp_exist.THANHTIEN = sp_exist.SOLUONG * sp_exist.DONGIA;
 				}
-				lstDPSP.Add(sp);
+				else
+				{
+					objDPSP sp = new objDPSP();
+					sp.IDSP = idsp;
+					sp.TENSP = gvSanpham.GetFocusedRowCellValue("TENSP").ToString();
+					sp.IDPHONG = _idPhong;
+					sp.TENPHONG = _phongHienTai.TENPHONG;
+					sp.DONGIA = float.Parse(gvSanpham.GetFocusedRowCellValue("DONGIA").ToString());
+					sp.SOLUONG = 1;
+					sp.THANHTIEN = sp.DONGIA * sp.SOLUONG;
+					lstDPSP.Add(sp);
+				}
+				loadDPSP();
+				UpdateTongTien();
 			}
-			loadDPSP();
-			txtThanhtien.Text = (double.Parse(gvSPDV.Columns["THANHTIEN"].SummaryItem.SummaryValue.ToString()) + _phongHienTai.DONGIA*(dtNgaytra.Value.Day - dtNgaydat.Value.Day)).ToString("N0");
 		}
 		void loadDPSP()
 		{
-			List<objDPSP> lsDP = new List<objDPSP>();
-			foreach (var item in lstDPSP)
-			{
-				lsDP.Add(item);
-			}
-
-			gcSPDV.DataSource = lsDP;
+			gcSPDV.DataSource = new BindingList<objDPSP>(lstDPSP);
+			gvSPDV.RefreshData();
 		}
 
 		private void gvSPDV_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
@@ -258,162 +470,48 @@ namespace THUEPHONGNHANGHI
 			if (e.Column.FieldName == "SOLUONG")
 			{
 				int sl = int.Parse(e.Value.ToString());
-				if (sl != 0)
+				if (sl > 0)
 				{
-					double gia = double.Parse(gvSPDV.GetRowCellValue(gvSPDV.FocusedRowHandle, "DONGIA").ToString());
-					gvSPDV.SetRowCellValue(gvSPDV.FocusedRowHandle, "THANHTIEN", sl * gia);
-
+					double gia = double.Parse(gvSPDV.GetRowCellValue(e.RowHandle, "DONGIA").ToString());
+					gvSPDV.SetRowCellValue(e.RowHandle, "THANHTIEN", sl * gia);
+					objDPSP sp = (objDPSP)gvSPDV.GetRow(e.RowHandle);
+					sp.THANHTIEN = sl * gia;
 				}
 				else
 				{
-					gvSPDV.SetRowCellValue(gvSPDV.FocusedRowHandle, "THANHTIEN", 0);
+					objDPSP sp = (objDPSP)gvSPDV.GetRow(e.RowHandle);
+					lstDPSP.Remove(sp);
 				}
 			}
-			gvSPDV.UpdateTotalSummary();
-			txtThanhtien.Text = (double.Parse(gvSPDV.Columns["THANHTIEN"].SummaryItem.SummaryValue.ToString())+ _phongHienTai.DONGIA*(dtNgaytra.Value.Day - dtNgaydat.Value.Day)).ToString("N0");
+			loadDPSP();
+			UpdateTongTien();
 		}
 
 		private void gvSPDV_HiddenEditor(object sender, EventArgs e)
 		{
 			gvSPDV.UpdateCurrentRow();
 		}
-		void saveData()
-		{
-			if (_them)
-			{
-				tb_DatPhong dp = new tb_DatPhong();
-				tb_DatPhongCT dpct;
-				tb_DatPhongSanPham dpsp;
-				dp.NGAYDATPHONG = dtNgaydat.Value;
-				dp.NGAYTRAPHONG = dtNgaytra.Value;
-				dp.SONGUOIO = int.Parse(spSonguoio.EditValue.ToString());
-				dp.STATUS = bool.Parse(cboTrangthai.SelectedValue.ToString());
-				dp.IDKH = int.Parse(searchKH.EditValue.ToString());
-				dp.SOTIEN = double.Parse(txtThanhtien.Text);
-				dp.GHICHU = txtGhichu.Text;
-				dp.IDUSER = 1;
-				dp.MACTY = _macty;
-				dp.MADVI = _madvi;
-				dp.CREATED_DATE = DateTime.Now;
-				var _dp = _datphong.add(dp);
-				_idDP = _dp.IDDP;
-
-				
-					dpct = new tb_DatPhongCT();
-					dpct.IDDP = _dp.IDDP;
-				    dpct.IDPHONG = _idPhong;
-					dpct.SONGAYO = dtNgaytra.Value.Day - dtNgaydat.Value.Day;
-					dpct.DONGIA = int.Parse(_phongHienTai.DONGIA.ToString());
-					dpct.THANHTIEN = dpct.SONGAYO * dpct.DONGIA;
-					dpct.NGAY = DateTime.Now;
-					var _dpct = _datphongct.add(dpct);
-					_phong.updateStatus(int.Parse(dpct.IDPHONG.ToString()), true);
-					if (gvSPDV.RowCount > 0)
-					{
-						for (int j = 0; j < gvSPDV.RowCount; j++)
-						{
-							if (dpct.IDPHONG == int.Parse(gvSPDV.GetRowCellValue(j, "IDPHONG").ToString()))
-							{
-								dpsp = new tb_DatPhongSanPham();
-								dpsp.IDDP = _dp.IDDP;
-								dpsp.IDDPCT = _dpct.IDDPCT;
-								dpsp.IDPHONG = int.Parse(gvSPDV.GetRowCellValue(j, "IDPHONG").ToString());
-								dpsp.IDSP = int.Parse(gvSPDV.GetRowCellValue(j, "IDSP").ToString());
-								dpsp.SOLUONG = int.Parse(gvSPDV.GetRowCellValue(j, "SOLUONG").ToString());
-								dpsp.DONGIA = int.Parse(gvSPDV.GetRowCellValue(j, "DONGIA").ToString());
-								dpsp.THANHTIEN = dpsp.SOLUONG * dpsp.DONGIA;
-								_datphongsp.add(dpsp);
-							}
-
-						}
-					}
-
-				
-			}
-			else
-			{
-				//UPDATE
-				tb_DatPhong dp = _datphong.getItem(_idDP);
-				tb_DatPhongCT dpct;
-				tb_DatPhongSanPham dpsp;
-				dp.NGAYDATPHONG = dtNgaydat.Value;
-				dp.NGAYTRAPHONG = dtNgaytra.Value;
-				dp.SONGUOIO = int.Parse(spSonguoio.EditValue.ToString());
-				dp.STATUS = bool.Parse(cboTrangthai.SelectedValue.ToString());
-				dp.IDKH = int.Parse(searchKH.EditValue.ToString());
-				dp.SOTIEN = double.Parse(txtThanhtien.Text.ToString());
-				dp.GHICHU = txtGhichu.Text;
-				dp.IDUSER = 1;
-				dp.UPDATE_BY = 1;
-				dp.UPDATE_DATE = DateTime.Now;
-				var _dp = _datphong.update(dp);
-				_idDP = _dp.IDDP;
-				_datphongct.deleteAll(_dp.IDDP);
-				_datphongsp.deleteAll(_dp.IDDP);
-
-
-				
-					dpct = new tb_DatPhongCT();
-					dpct.IDDP = dp.IDDP;
-				    dpct.IDPHONG = _idPhong;
-					dpct.SONGAYO = dtNgaytra.Value.Day - dtNgaydat.Value.Day;
-					dpct.DONGIA = int.Parse(_phongHienTai.DONGIA.ToString());
-					dpct.THANHTIEN = dpct.SONGAYO * dpct.DONGIA;
-					dpct.NGAY = DateTime.Now;
-					var _dpct =	_datphongct.add(dpct);
-					_phong.updateStatus(dpct.IDPHONG, true);
-					if (gvSPDV.RowCount > 0)
-					{
-						for (int j = 0; j < gvSPDV.RowCount; j++)
-						{
-							if (dpct.IDPHONG == int.Parse(gvSPDV.GetRowCellValue(j, "IDPHONG").ToString()))
-							{
-								dpsp = new tb_DatPhongSanPham();
-								dpsp.IDDP = dp.IDDP;
-								dpsp.IDDPCT = _dpct.IDDPCT;
-								dpsp.IDPHONG = int.Parse(gvSPDV.GetRowCellValue(j, "IDPHONG").ToString());
-								dpsp.IDSP = int.Parse(gvSPDV.GetRowCellValue(j, "IDSP").ToString());
-								dpsp.SOLUONG = int.Parse(gvSPDV.GetRowCellValue(j, "SOLUONG").ToString());
-								dpsp.DONGIA = int.Parse(gvSPDV.GetRowCellValue(j, "DONGIA").ToString());
-								dpsp.THANHTIEN = dpsp.SOLUONG * dpsp.DONGIA;
-								_datphongsp.add(dpsp);
-							}
-
-						}
-					}
-
-				
-			}
-		}
-
-		private void btnThanhToanHoaDon_Click(object sender, EventArgs e)
-		{
-			if (bool.Parse(cboTrangthai.SelectedValue.ToString()) == false)
-			{
-				MessageBox.Show("Vui lòng chọn đã hoàn tất để thanh toán.!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				return;
-			}
-			if (!_them)
-			{
-				saveData();
-				_tongtien = double.Parse(gvSPDV.Columns["THANHTIEN"].SummaryItem.SummaryValue.ToString()) + _phong.getItemFull(_idPhong).DONGIA * (dtNgaytra.Value.Day - dtNgaydat.Value.Day);
-				var dp = _datphong.getItem(_idDP);
-				dp.SOTIEN = _tongtien;
-				_datphong.update(dp);
-				_datphong.updateStuatus(_idDP);
-				_phong.updateStatus(_idPhong, false);
-				XuatReport("PHIEU_DATPHONG_DON", "Chi tiết đặt phòng");
-				cboTrangthai.SelectedValue = true;
-				objMain.gControl.Gallery.Groups.Clear();
-				objMain.showRoom();
-			}
-		}
-
 		private void btnHuy_Click(object sender, EventArgs e)
 		{
 			this.Close();
 		}
+		private void toolStripButton1_Click(object sender, EventArgs e)
+		{
+			if (_idDP == 0 && _them)
+			{
+				MessageBox.Show("Vui lòng lưu phiếu đặt phòng trước khi in.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+			saveData();
+			XuatReport("PHIEU_DATPHONG_DON", "Hóa đơn thanh toán");
+			objMain.gControl.Gallery.Groups.Clear();
+			objMain.showRoom();
+			this.Close();
+		}
 
-		
+		private void radioG_LoaiHinhThue_EditValueChanged(object sender, EventArgs e)
+		{
+			CapNhatGiaoDienTheoLoaiHinh();
+		}
 	}
 }

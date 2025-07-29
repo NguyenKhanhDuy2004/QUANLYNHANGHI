@@ -62,6 +62,7 @@ namespace BusinessLayer
 			_dpct.DONGIA = dpct.DONGIA;
 			_dpct.THANHTIEN = dpct.THANHTIEN;
 			_dpct.NGAY = dpct.NGAY;
+			_dpct.LOAIHINHTHUE = dpct.LOAIHINHTHUE;
 			
 			try
 			{

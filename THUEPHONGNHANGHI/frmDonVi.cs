@@ -46,7 +46,6 @@ namespace THUEPHONGNHANGHI
 			btnThem.Visible = t;
 			btnSua.Visible = t;
 			btnXoa.Visible = t;
-			btnThoat.Visible = t;
 			
 		}
 		void _enabled(bool t)
@@ -112,39 +111,7 @@ namespace THUEPHONGNHANGHI
 			loadData();
 		}
 
-		private void btnLuu_Click(object sender, EventArgs e)
-		{
-			if (_them)
-			{
-				tb_DonVi dvi = new tb_DonVi();
-				dvi.MADVI = txtMa.Text;
-				dvi.MACTY = cboCty.SelectedValue.ToString();
-				dvi.TENDVI = txtTen.Text;
-				dvi.DIACHI = txtDiaChi.Text;
-				dvi.DIENTHOAI = txtDienThoai.Text;
-				dvi.FAX = txtFax.Text;
-				dvi.EMAIL = txtEmail.Text;
-				dvi.DISABLED = chkDisabled.Checked;
-				_donvi.add(dvi);
-			}
-			else
-			{
-				tb_DonVi dvi = _donvi.getItem(_madvi);
-				dvi.MACTY = cboCty.SelectedValue.ToString();
-				dvi.TENDVI = txtTen.Text;
-				dvi.DIACHI = txtDiaChi.Text;
-				dvi.DIENTHOAI = txtDienThoai.Text;
-				dvi.FAX = txtFax.Text;
-				dvi.EMAIL = txtEmail.Text;
-				dvi.DISABLED = chkDisabled.Checked;
-				_donvi.update(dvi);
-			}
-			_them = false;
-			loadData();
-			_enabled(false);
-			showHideControl(true);
-			txtMa.Enabled = false;
-		}
+		
 
 		private void btnHuy_Click(object sender, EventArgs e)
 		{

@@ -1,4 +1,5 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props" Condition="Exists('..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props')" />
   <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -64,6 +65,21 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -84,6 +100,12 @@
     </Compile>
     <Compile Include="frmBaoCao.Designer.cs">
       <DependentUpon>frmBaoCao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBCao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBCao.Designer.cs">
+      <DependentUpon>frmBCao.cs</DependentUpon>
     </Compile>
     <Compile Include="frmChuyenPhong.cs">
       <SubType>Form</SubType>
@@ -108,12 +130,6 @@
     </Compile>
     <Compile Include="frmDatPhongDon.Designer.cs">
       <DependentUpon>frmDatPhongDon.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmDatPhongTheoGio.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmDatPhongTheoGio.Designer.cs">
-      <DependentUpon>frmDatPhongTheoGio.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDonVi.cs">
       <SubType>Form</SubType>
@@ -193,6 +209,11 @@
     <Compile Include="frmThietBi.Designer.cs">
       <DependentUpon>frmThietBi.cs</DependentUpon>
     </Compile>
+    <Compile Include="HOTELSDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HOTELSDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="MyControls\frmShowDonVi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -223,6 +244,9 @@
     <EmbeddedResource Include="frmBaoCao.resx">
       <DependentUpon>frmBaoCao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmBCao.resx">
+      <DependentUpon>frmBCao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmChuyenPhong.resx">
       <DependentUpon>frmChuyenPhong.cs</DependentUpon>
     </EmbeddedResource>
@@ -234,9 +258,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDatPhongDon.resx">
       <DependentUpon>frmDatPhongDon.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmDatPhongTheoGio.resx">
-      <DependentUpon>frmDatPhongTheoGio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDonVi.resx">
       <DependentUpon>frmDonVi.cs</DependentUpon>
@@ -300,7 +321,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Report1.rdlc" />
     <None Include="App.config" />
+    <None Include="HOTELSDataSet.xsc">
+      <DependentUpon>HOTELSDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="HOTELSDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>HOTELSDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="HOTELSDataSet.xss">
+      <DependentUpon>HOTELSDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -412,6 +445,147 @@
   <ItemGroup>
     <None Include="Resources\1564506_close_exit_logout_power_icon1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BeautyPlus-Image-Enhancer-1751255764254.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BeautyPlus-Image-Enhancer-1751255764254.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BeautyPlus-Image-Enhancer-17512557642541.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-save-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-add-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-recycle-bin-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-fix-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-edit-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-edit-property-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-edit-property-1001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-edit-property-1002.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-recycle-bin-1001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-save-1001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-save-1002.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-save-1003.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-add-1001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-edit-property-1003.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-recycle-bin-1002.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-add-1002.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-edit-property-1004.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-recycle-bin-1003.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-add-1003.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-edit-property-1005.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-recycle-bin-1004.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BeautyPlus-Image-Enhancer-17512557642542.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-add-1004.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-edit-property-1006.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-recycle-bin-1005.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-add-1005.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-edit-property-1007.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-recycle-bin-1006.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-add-1006.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-edit-property-1008.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-recycle-bin-1007.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-add-1007.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-edit-property-1009.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-recycle-bin-1008.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-add-1008.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-edit-property-10010.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-recycle-bin-1009.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Thiết kế chưa có tên %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-sales-performance-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sign-out-alt %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-pen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-avatar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-avatar1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -419,6 +593,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

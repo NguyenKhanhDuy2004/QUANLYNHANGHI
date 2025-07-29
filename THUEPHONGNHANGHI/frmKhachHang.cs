@@ -39,9 +39,7 @@ namespace THUEPHONGNHANGHI
 			btnThem.Visible = t;
 			btnSua.Visible = t;
 			btnXoa.Visible = t;
-			btnThoat.Visible = t;
-			btnLuu.Visible = !t;
-			BtnHuy.Visible = !t;
+			
 		}
 		void _enabled(bool t)
 		{
@@ -176,7 +174,9 @@ namespace THUEPHONGNHANGHI
 			}	
 		}
 
-		private void btnLuu_Click(object sender, EventArgs e)
+
+
+		private void btnLuu_Click_1(object sender, EventArgs e)
 		{
 
 			if (_them)
@@ -203,12 +203,12 @@ namespace THUEPHONGNHANGHI
 			showHideControl(true);
 		}
 
-		private void BtnHuy_Click(object sender, EventArgs e)
+		private void BtnHuy_Click_1(object sender, EventArgs e)
 		{
 			_them = false;
 			showHideControl(true);
 			_enabled(false);
-		
-        }
-    }
+
+		}
+	}
 }
