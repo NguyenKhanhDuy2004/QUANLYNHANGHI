@@ -26,7 +26,6 @@ namespace THUEPHONGNHANGHI
 			_congty = new CONGTY();
 			_donvi = new DONVI();
 			loadCongTy();
-			cboCongTy.SelectedValue = "CTCT";
 			cboCongTy.SelectedIndexChanged += cboCongTy_SelectedIndexChanged;
 			loadDonVi();
 
@@ -59,6 +58,7 @@ namespace THUEPHONGNHANGHI
 			SYS_PARAM _sysParam = new SYS_PARAM(macty, madvi );
 			_sysParam.SaveFile();
 			MessageBox.Show("Xác lập đơn vị sử dụng thanh công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			this.Close();
 		}
 
 		private void btnThoat_Click(object sender, EventArgs e)

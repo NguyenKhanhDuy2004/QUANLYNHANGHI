@@ -86,7 +86,7 @@
 
 		private void btnAdmin_Click(object sender, EventArgs e)
 		{
-			selectedAccount = "ADMIN"; // << LƯU Ý: Dùng đúng tên đăng nhập trong CSDL
+			selectedAccount = "ADMIN1"; // << LƯU Ý: Dùng đúng tên đăng nhập trong CSDL
 			btnAdmin.Appearance.BackColor = Color.DodgerBlue;
 			btnCa1.Appearance.BackColor = defaultColor;
 			btnCa2.Appearance.BackColor = defaultColor;

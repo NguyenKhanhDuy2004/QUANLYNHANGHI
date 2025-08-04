@@ -1783,11 +1783,30 @@ namespace THUEPHONGNHANGHI
 
 		}
 
+		private void gvSPDV_KeyDown(object sender, KeyEventArgs e)
+		{
+			// 1. Kiểm tra xem phím được nhấn có phải là phím Delete không
+			if (e.KeyCode == Keys.Delete)
+			{
+				// 2. Lấy đối tượng sản phẩm từ dòng đang được chọn
+				var sp = gvSPDV.GetFocusedRow() as objDPSP;
+				if (sp != null)
+				{
+					// 3. Hỏi xác nhận người dùng
+					if (MessageBox.Show("Bạn có chắc chắn muốn xóa '" + sp.TENSP + "' không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+					{
+						// 4. Xóa sản phẩm khỏi danh sách trong bộ nhớ
+						lstDPSP.Remove(sp);
 
+						// 5. Tải lại dữ liệu lên lưới để cập nhật giao diện
+						loadDPSP();
 
-		
-
-	
+						// 6. Tính lại tổng tiền
+						UpdateTotalPrice();
+					}
+				}
+			}
+		}
 	}
 
 }

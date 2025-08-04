@@ -32,7 +32,6 @@
 			this.txtPass = new System.Windows.Forms.TextBox();
 			this.btnLogin = new DevExpress.XtraEditors.SimpleButton();
 			this.btnThoat = new DevExpress.XtraEditors.SimpleButton();
-			this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
 			this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
 			this.btnCa1 = new DevExpress.XtraEditors.SimpleButton();
 			this.btnCa2 = new DevExpress.XtraEditors.SimpleButton();
@@ -41,8 +40,10 @@
 			// 
 			// txtPass
 			// 
+			this.txtPass.BackColor = System.Drawing.Color.LightSteelBlue;
 			this.txtPass.Font = new System.Drawing.Font("Tahoma", 12F);
-			this.txtPass.Location = new System.Drawing.Point(616, 295);
+			this.txtPass.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+			this.txtPass.Location = new System.Drawing.Point(150, 288);
 			this.txtPass.Name = "txtPass";
 			this.txtPass.Size = new System.Drawing.Size(314, 36);
 			this.txtPass.TabIndex = 4;
@@ -51,12 +52,14 @@
 			// btnLogin
 			// 
 			this.btnLogin.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+			this.btnLogin.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
 			this.btnLogin.Appearance.Options.UseFont = true;
+			this.btnLogin.Appearance.Options.UseForeColor = true;
 			this.btnLogin.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.btnLogin.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLogin.ImageOptions.Image")));
-			this.btnLogin.Location = new System.Drawing.Point(616, 365);
+			this.btnLogin.Location = new System.Drawing.Point(27, 355);
 			this.btnLogin.Name = "btnLogin";
-			this.btnLogin.Size = new System.Drawing.Size(150, 73);
+			this.btnLogin.Size = new System.Drawing.Size(201, 73);
 			this.btnLogin.TabIndex = 5;
 			this.btnLogin.Text = "Đăng nhập";
 			this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -64,35 +67,25 @@
 			// btnThoat
 			// 
 			this.btnThoat.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+			this.btnThoat.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
 			this.btnThoat.Appearance.Options.UseFont = true;
+			this.btnThoat.Appearance.Options.UseForeColor = true;
 			this.btnThoat.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.btnThoat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThoat.ImageOptions.Image")));
-			this.btnThoat.Location = new System.Drawing.Point(785, 365);
+			this.btnThoat.Location = new System.Drawing.Point(261, 355);
 			this.btnThoat.Name = "btnThoat";
-			this.btnThoat.Size = new System.Drawing.Size(145, 73);
+			this.btnThoat.Size = new System.Drawing.Size(203, 73);
 			this.btnThoat.TabIndex = 6;
 			this.btnThoat.Text = "Thoát";
 			this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
 			// 
-			// labelControl1
-			// 
-			this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 20F, System.Drawing.FontStyle.Bold);
-			this.labelControl1.Appearance.ForeColor = System.Drawing.Color.White;
-			this.labelControl1.Appearance.Options.UseFont = true;
-			this.labelControl1.Appearance.Options.UseForeColor = true;
-			this.labelControl1.Location = new System.Drawing.Point(601, 107);
-			this.labelControl1.Name = "labelControl1";
-			this.labelControl1.Size = new System.Drawing.Size(246, 48);
-			this.labelControl1.TabIndex = 7;
-			this.labelControl1.Text = "ĐĂNG NHẬP";
-			// 
 			// labelControl3
 			// 
 			this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-			this.labelControl3.Appearance.ForeColor = System.Drawing.Color.White;
+			this.labelControl3.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
 			this.labelControl3.Appearance.Options.UseFont = true;
 			this.labelControl3.Appearance.Options.UseForeColor = true;
-			this.labelControl3.Location = new System.Drawing.Point(491, 301);
+			this.labelControl3.Location = new System.Drawing.Point(27, 295);
 			this.labelControl3.Name = "labelControl3";
 			this.labelControl3.Size = new System.Drawing.Size(108, 24);
 			this.labelControl3.TabIndex = 9;
@@ -101,10 +94,12 @@
 			// btnCa1
 			// 
 			this.btnCa1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+			this.btnCa1.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
 			this.btnCa1.Appearance.Options.UseFont = true;
-			this.btnCa1.Location = new System.Drawing.Point(644, 186);
+			this.btnCa1.Appearance.Options.UseForeColor = true;
+			this.btnCa1.Location = new System.Drawing.Point(178, 188);
 			this.btnCa1.Name = "btnCa1";
-			this.btnCa1.Size = new System.Drawing.Size(134, 71);
+			this.btnCa1.Size = new System.Drawing.Size(146, 71);
 			this.btnCa1.TabIndex = 11;
 			this.btnCa1.Text = "CA 1";
 			this.btnCa1.Click += new System.EventHandler(this.btnCa1_Click);
@@ -112,8 +107,10 @@
 			// btnCa2
 			// 
 			this.btnCa2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+			this.btnCa2.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
 			this.btnCa2.Appearance.Options.UseFont = true;
-			this.btnCa2.Location = new System.Drawing.Point(796, 186);
+			this.btnCa2.Appearance.Options.UseForeColor = true;
+			this.btnCa2.Location = new System.Drawing.Point(330, 188);
 			this.btnCa2.Name = "btnCa2";
 			this.btnCa2.Size = new System.Drawing.Size(134, 71);
 			this.btnCa2.TabIndex = 12;
@@ -123,10 +120,12 @@
 			// btnAdmin
 			// 
 			this.btnAdmin.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+			this.btnAdmin.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
 			this.btnAdmin.Appearance.Options.UseFont = true;
-			this.btnAdmin.Location = new System.Drawing.Point(493, 186);
+			this.btnAdmin.Appearance.Options.UseForeColor = true;
+			this.btnAdmin.Location = new System.Drawing.Point(27, 188);
 			this.btnAdmin.Name = "btnAdmin";
-			this.btnAdmin.Size = new System.Drawing.Size(134, 71);
+			this.btnAdmin.Size = new System.Drawing.Size(145, 71);
 			this.btnAdmin.TabIndex = 10;
 			this.btnAdmin.Text = "ADMIN";
 			this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
@@ -137,15 +136,14 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImageLayoutStore = System.Windows.Forms.ImageLayout.Tile;
-			this.BackgroundImageStore = global::THUEPHONGNHANGHI.Properties.Resources.Thiết_kế_chưa_có_tên__1_;
+			this.BackgroundImageStore = global::THUEPHONGNHANGHI.Properties.Resources.Hotel;
 			this.CancelButton = this.btnThoat;
-			this.ClientSize = new System.Drawing.Size(1053, 526);
+			this.ClientSize = new System.Drawing.Size(999, 502);
 			this.ControlBox = false;
 			this.Controls.Add(this.btnCa2);
 			this.Controls.Add(this.btnCa1);
 			this.Controls.Add(this.btnAdmin);
 			this.Controls.Add(this.labelControl3);
-			this.Controls.Add(this.labelControl1);
 			this.Controls.Add(this.btnThoat);
 			this.Controls.Add(this.btnLogin);
 			this.Controls.Add(this.txtPass);
@@ -163,7 +161,6 @@
 		private System.Windows.Forms.TextBox txtPass;
 		private DevExpress.XtraEditors.SimpleButton btnLogin;
 		private DevExpress.XtraEditors.SimpleButton btnThoat;
-		private DevExpress.XtraEditors.LabelControl labelControl1;
 		private DevExpress.XtraEditors.LabelControl labelControl3;
 		private DevExpress.XtraEditors.SimpleButton btnCa1;
 		private DevExpress.XtraEditors.SimpleButton btnCa2;

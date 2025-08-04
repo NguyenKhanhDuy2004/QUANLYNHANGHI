@@ -728,6 +728,7 @@
 			this.gvSPDV.OptionsView.ShowGroupPanel = false;
 			this.gvSPDV.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gvSPDV_CustomDrawRowIndicator);
 			this.gvSPDV.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gvSPDV_CellValueChanged);
+			this.gvSPDV.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvSPDV_KeyDown);
 			// 
 			// spIDSP
 			// 
@@ -1156,6 +1157,7 @@
 			this.Controls.Add(this.tabDanhsach);
 			this.Controls.Add(this.toolStrip1);
 			this.Name = "frmDatPhong";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Quản lý đặt phòng ";
 			this.Load += new System.EventHandler(this.frmDatPhong_Load);
 			this.toolStrip1.ResumeLayout(false);

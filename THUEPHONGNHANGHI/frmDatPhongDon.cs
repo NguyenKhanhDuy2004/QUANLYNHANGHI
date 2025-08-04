@@ -303,15 +303,15 @@ namespace THUEPHONGNHANGHI
 			}
 		}
 
-		private void dtNgaydat_ValueChanged(object sender, EventArgs e)
-		{
-			UpdateTongTien();
-		}
-
-		private void dtNgaytra_ValueChanged(object sender, EventArgs e)
-		{
-			UpdateTongTien();
-		}
+		//private void dtNgaydat_ValueChanged(object sender, EventArgs e)
+		//{
+		//	UpdateTongTien();
+		//}
+		//
+		//private void dtNgaytra_ValueChanged(object sender, EventArgs e)
+		//{
+		//	UpdateTongTien();
+		//}
 
 		private void btnThanhToanHoaDon_Click(object sender, EventArgs e)
 		{
@@ -512,6 +512,52 @@ namespace THUEPHONGNHANGHI
 		private void radioG_LoaiHinhThue_EditValueChanged(object sender, EventArgs e)
 		{
 			CapNhatGiaoDienTheoLoaiHinh();
+		}
+		// Dùng cho các thay đổi tức thời (bấm mũi tên, chọn trên lịch)
+		private void dtNgaydat_ValueChanged(object sender, EventArgs e)
+		{
+			UpdateTongTien();
+		}
+
+		private void dtNgaytra_ValueChanged(object sender, EventArgs e)
+		{
+			UpdateTongTien();
+		}
+
+		// Dùng để xác nhận thay đổi cuối cùng (khi gõ tay xong và chuyển đi)
+		private void dtNgaydat_Validated(object sender, EventArgs e)
+		{
+			UpdateTongTien();
+		}
+
+		private void dtNgaytra_Validated(object sender, EventArgs e)
+		{
+			UpdateTongTien();
+		}
+
+		private void gvSPDV_KeyDown(object sender, KeyEventArgs e)
+		{
+			// Kiểm tra xem phím được nhấn có phải là phím Delete không
+			if (e.KeyCode == Keys.Delete)
+			{
+				// Lấy dòng đang được chọn trong lưới gvSPDV
+				var sp = gvSPDV.GetFocusedRow() as objDPSP;
+				if (sp != null)
+				{
+					// Hiển thị hộp thoại xác nhận trước khi xóa
+					if (MessageBox.Show("Bạn có chắc chắn muốn xóa '" + sp.TENSP + "' không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+					{
+						// Xóa sản phẩm khỏi danh sách
+						lstDPSP.Remove(sp);
+
+						// Cập nhật lại GridView để hiển thị thay đổi
+						gvSPDV.RefreshData();
+
+						// Tính lại tổng tiền
+						UpdateTongTien();
+					}
+				}
+			}
 		}
 	}
 }

@@ -19,9 +19,9 @@
         <EntityTypeShape EntityType="NHANGHI.tb_ThietBi" Width="1.5" PointX="10.75" PointY="4" />
         <EntityTypeShape EntityType="NHANGHI.tb_SYS_FUNC" Width="1.5" PointX="8.75" PointY="3.625" />
         <EntityTypeShape EntityType="NHANGHI.tb_PhongThietBi" Width="1.5" PointX="7.375" PointY="8.75" />
-        <EntityTypeShape EntityType="NHANGHI.V_USER_NOTIN_GROUP" Width="1.5" PointX="4.25" PointY="11.75" />
+        <EntityTypeShape EntityType="NHANGHI.V_USER_NOTIN_GROUP" Width="1.75" PointX="4.25" PointY="11.75" />
         <EntityTypeShape EntityType="NHANGHI.V_USER_INGROUP" Width="1.5" PointX="2.375" PointY="11.75" />
-        <EntityTypeShape EntityType="NHANGHI.V_REP_SYS_RIGHT_REP" Width="1.5" PointX="6.125" PointY="11.75" />
+        <EntityTypeShape EntityType="NHANGHI.V_REP_SYS_RIGHT_REP" Width="1.875" PointX="6.375" PointY="11.75" />
         <EntityTypeShape EntityType="NHANGHI.tb_SYS_RIGHT" Width="1.5" PointX="9.375" PointY="8.75" />
         <EntityTypeShape EntityType="NHANGHI.V_FUNC_SYS_RIGHT" Width="2.75" PointX="8.375" PointY="11.75" />
         <EntityTypeShape EntityType="NHANGHI.tb_Phong" Width="1.5" PointX="11.125" PointY="1.125" />

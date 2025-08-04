@@ -359,6 +359,7 @@
 			this.Controls.Add(this.gcDanhSach);
 			this.Controls.Add(this.toolStrip1);
 			this.Name = "frmLoaiPhong";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Loại Phòng";
 			this.Load += new System.EventHandler(this.frmLoaiPhong_Load);
 			this.toolStrip1.ResumeLayout(false);

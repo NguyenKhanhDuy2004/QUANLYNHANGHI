@@ -143,7 +143,7 @@ namespace THUEPHONGNHANGHI
 			{
 				if (_uDonVi.cboDonVi.SelectedValue == null)
 				{
-					MessageBox.Show("Vui lòng chọn đơn vị.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+					MessageBox.Show("Vui lòng chọn đơn vị.", "Thiếu thông tin" , MessageBoxButtons.OK, MessageBoxIcon.Warning);
 					return;
 				}
 				doc.SetParameterValue("@MADVI", _uDonVi.cboDonVi.SelectedValue.ToString());

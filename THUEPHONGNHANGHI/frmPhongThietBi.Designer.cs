@@ -298,6 +298,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "frmPhongThietBi";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Phòng Thiết Bị Của Các Phòng";
 			this.Load += new System.EventHandler(this.frmPhongThietBi_Load);
 			this.toolStrip1.ResumeLayout(false);

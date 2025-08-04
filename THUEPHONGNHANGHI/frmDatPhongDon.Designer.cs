@@ -270,6 +270,7 @@
 			this.gvSPDV.OptionsView.ShowGroupPanel = false;
 			this.gvSPDV.HiddenEditor += new System.EventHandler(this.gvSPDV_HiddenEditor);
 			this.gvSPDV.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gvSPDV_CellValueChanged);
+			this.gvSPDV.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvSPDV_KeyDown);
 			// 
 			// spIDSP
 			// 
@@ -547,6 +548,8 @@
 			this.dtNgaydat.Name = "dtNgaydat";
 			this.dtNgaydat.Size = new System.Drawing.Size(278, 27);
 			this.dtNgaydat.TabIndex = 20;
+			this.dtNgaydat.ValueChanged += new System.EventHandler(this.dtNgaydat_ValueChanged);
+			this.dtNgaydat.Validated += new System.EventHandler(this.dtNgaydat_Validated);
 			// 
 			// dtNgaytra
 			// 
@@ -558,6 +561,7 @@
 			this.dtNgaytra.Size = new System.Drawing.Size(273, 27);
 			this.dtNgaytra.TabIndex = 18;
 			this.dtNgaytra.ValueChanged += new System.EventHandler(this.dtNgaytra_ValueChanged);
+			this.dtNgaytra.Validated += new System.EventHandler(this.dtNgaytra_Validated);
 			// 
 			// label3
 			// 
