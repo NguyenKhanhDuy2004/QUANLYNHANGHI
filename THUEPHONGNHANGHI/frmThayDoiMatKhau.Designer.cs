@@ -146,9 +146,11 @@
 			this.Controls.Add(this.btnDong);
 			this.Controls.Add(this.btnCapNhat);
 			this.Controls.Add(this.groupControl1);
+			this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmThayDoiMatKhau.IconOptions.Image")));
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "frmThayDoiMatKhau";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Đổi mật khẩu";
 			this.Load += new System.EventHandler(this.frmThayDoiMatKhau_Load);

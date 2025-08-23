@@ -232,9 +232,11 @@
 			this.Controls.Add(this.groupControl1);
 			this.Controls.Add(this.gcDanhSach);
 			this.Controls.Add(this.toolStrip1);
+			this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmThietBi.IconOptions.Image")));
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "frmThietBi";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Danh mục Thiết bị";
 			this.Load += new System.EventHandler(this.frmThietBi_Load);

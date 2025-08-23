@@ -17,7 +17,7 @@
 	{
 		public partial class frmLogin: DevExpress.XtraEditors.XtraForm
 		{
-		    private string selectedAccount = ""; // << THÊM DÒNG NÀY
+		    private string selectedAccount = ""; 
 		    private Color defaultColor;
 
 		    public frmLogin()
@@ -28,14 +28,14 @@
 			SYS_USER _sysUser;
 		private void btnLogin_Click(object sender, EventArgs e)
 		{
-			// 1. Kiểm tra xem người dùng đã chọn tài khoản chưa
+			//  Kiểm tra xem người dùng đã chọn tài khoản chưa
 			if (string.IsNullOrEmpty(selectedAccount))
 			{
 				MessageBox.Show("Vui lòng chọn một tài khoản để đăng nhập (Ca 1, Ca 2, hoặc Admin).", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				return;
 			}
 
-			// 2. Kiểm tra tài khoản có tồn tại không (dùng selectedAccount)
+			//  Kiểm tra tài khoản có tồn tại không 
 			bool us = _sysUser.checkUserExist(_sysParam.macty, _sysParam.madvi, selectedAccount);
 			if (!us)
 			{
@@ -44,7 +44,7 @@
 				return;
 			}
 
-			// 3. Mã hóa mật khẩu và xác thực (giữ nguyên logic của bạn)
+			//  Mã hóa mật khẩu và xác thực 
 			string pass = Encryptor.Encrypt(txtPass.Text, "qwert@123!poiuy", true);
 			tb_SYS_USER user = _sysUser.getItem(selectedAccount, _sysParam.macty, _sysParam.madvi);
 
@@ -81,12 +81,12 @@
 				fs.Close();
 				myFunctions._macty = _sysParam.macty;
 				myFunctions._madvi = _sysParam.madvi;
-			    defaultColor = btnThoat.Appearance.BackColor;
+			    //defaultColor = btnThoat.Appearance.BackColor;
 		}
 
 		private void btnAdmin_Click(object sender, EventArgs e)
 		{
-			selectedAccount = "ADMIN1"; // << LƯU Ý: Dùng đúng tên đăng nhập trong CSDL
+			selectedAccount = "ADMIN1"; // Dùng đúng tên đăng nhập trong CSDL
 			btnAdmin.Appearance.BackColor = Color.DodgerBlue;
 			btnCa1.Appearance.BackColor = defaultColor;
 			btnCa2.Appearance.BackColor = defaultColor;
@@ -94,7 +94,7 @@
 
 		private void btnCa1_Click(object sender, EventArgs e)
 		{
-			selectedAccount = "CA01"; // << LƯU Ý: Dùng đúng tên đăng nhập trong CSDL
+			selectedAccount = "CA01"; // Dùng đúng tên đăng nhập trong CSDL
 			btnCa1.Appearance.BackColor = Color.DodgerBlue;
 			btnCa2.Appearance.BackColor = defaultColor;
 			btnAdmin.Appearance.BackColor = defaultColor;
@@ -102,7 +102,7 @@
 
 		private void btnCa2_Click(object sender, EventArgs e)
 		{
-			selectedAccount = "CA02"; // << LƯU Ý: Dùng đúng tên đăng nhập trong CSDL
+			selectedAccount = "CA02"; // Dùng đúng tên đăng nhập trong CSDL
 			btnCa2.Appearance.BackColor = Color.DodgerBlue;
 			btnCa1.Appearance.BackColor = defaultColor;
 			btnAdmin.Appearance.BackColor = defaultColor;

@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCongTy));
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
 			this.btnLuu = new System.Windows.Forms.ToolStripButton();
 			this.btnThem = new System.Windows.Forms.ToolStripButton();
@@ -397,9 +398,11 @@
 			this.Controls.Add(this.groupControl1);
 			this.Controls.Add(this.gcDanhSach);
 			this.Controls.Add(this.toolStrip1);
+			this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmCongTy.IconOptions.Image")));
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "frmCongTy";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Thông tin Công ty";
 			this.Load += new System.EventHandler(this.frmCongTy_Load);

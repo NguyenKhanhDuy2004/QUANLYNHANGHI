@@ -19,6 +19,7 @@ namespace THUEPHONGNHANGHI
 	{
 		public static string _macty;
 		public static string _madvi;
+		public static string _vaitro;
 		public static string _srv;
 		public static string _us;
 		public static string _pw;

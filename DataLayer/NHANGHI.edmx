@@ -35,6 +35,7 @@
           <Property Name="CREATED_DATE" Type="datetime" />
           <Property Name="UPDATE_DATE" Type="datetime" />
           <Property Name="UPDATE_BY" Type="int" />
+          <Property Name="HINHTHUCTHANHTOAN" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tb_DatPhongCT">
           <Key>
@@ -360,7 +361,6 @@ warning 6002: The table/view 'HOTELS.dbo.V_USER_NOTIN_GROUP' does not have a pri
       <Schema Namespace="NHANGHI" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tb_CongTy" EntityType="NHANGHI.tb_CongTy" />
-          <EntitySet Name="tb_DatPhong" EntityType="NHANGHI.tb_DatPhong" />
           <EntitySet Name="tb_DatPhongSanPham" EntityType="NHANGHI.tb_DatPhongSanPham" />
           <EntitySet Name="tb_DonVi" EntityType="NHANGHI.tb_DonVi" />
           <EntitySet Name="tb_KhachHang" EntityType="NHANGHI.tb_KhachHang" />
@@ -382,6 +382,7 @@ warning 6002: The table/view 'HOTELS.dbo.V_USER_NOTIN_GROUP' does not have a pri
           <EntitySet Name="tb_LoaiPhong" EntityType="NHANGHI.tb_LoaiPhong" />
           <EntitySet Name="tb_SYS_USER" EntityType="NHANGHI.tb_SYS_USER" />
           <EntitySet Name="tb_DatPhongCT" EntityType="NHANGHI.tb_DatPhongCT" />
+          <EntitySet Name="tb_DatPhong" EntityType="NHANGHI.tb_DatPhong" />
         </EntityContainer>
         <EntityType Name="tb_CongTy">
           <Key>
@@ -394,25 +395,6 @@ warning 6002: The table/view 'HOTELS.dbo.V_USER_NOTIN_GROUP' does not have a pri
           <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DIACHI" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="DISABLED" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="tb_DatPhong">
-          <Key>
-            <PropertyRef Name="IDDP" />
-          </Key>
-          <Property Name="IDDP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IDKH" Type="Int32" Nullable="false" />
-          <Property Name="NGAYDATPHONG" Type="DateTime" Precision="3" />
-          <Property Name="NGAYTRAPHONG" Type="DateTime" Precision="3" />
-          <Property Name="SOTIEN" Type="Double" />
-          <Property Name="SONGUOIO" Type="Int32" />
-          <Property Name="IDUSER" Type="Int32" Nullable="false" />
-          <Property Name="MACTY" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="MADVI" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="STATUS" Type="Boolean" />
-          <Property Name="GHICHU" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="CREATED_DATE" Type="DateTime" Precision="3" />
-          <Property Name="UPDATE_DATE" Type="DateTime" Precision="3" />
-          <Property Name="UPDATE_BY" Type="Int32" />
         </EntityType>
         <EntityType Name="tb_DatPhongSanPham">
           <Key>
@@ -654,6 +636,26 @@ warning 6002: The table/view 'HOTELS.dbo.V_USER_NOTIN_GROUP' does not have a pri
           <Property Name="NGAY" Type="DateTime" Precision="3" />
           <Property Name="LOAIHINHTHUE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="tb_DatPhong">
+          <Key>
+            <PropertyRef Name="IDDP" />
+          </Key>
+          <Property Name="IDDP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDKH" Type="Int32" Nullable="false" />
+          <Property Name="NGAYDATPHONG" Type="DateTime" Precision="3" />
+          <Property Name="NGAYTRAPHONG" Type="DateTime" Precision="3" />
+          <Property Name="SOTIEN" Type="Double" />
+          <Property Name="SONGUOIO" Type="Int32" />
+          <Property Name="IDUSER" Type="Int32" Nullable="false" />
+          <Property Name="MACTY" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MADVI" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS" Type="Boolean" />
+          <Property Name="GHICHU" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="CREATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDATE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDATE_BY" Type="Int32" />
+          <Property Name="HINHTHUCTHANHTOAN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -670,26 +672,6 @@ warning 6002: The table/view 'HOTELS.dbo.V_USER_NOTIN_GROUP' does not have a pri
                 <ScalarProperty Name="DIENTHOAI" ColumnName="DIENTHOAI" />
                 <ScalarProperty Name="TENCTY" ColumnName="TENCTY" />
                 <ScalarProperty Name="MACTY" ColumnName="MACTY" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tb_DatPhong">
-            <EntityTypeMapping TypeName="NHANGHI.tb_DatPhong">
-              <MappingFragment StoreEntitySet="tb_DatPhong">
-                <ScalarProperty Name="UPDATE_BY" ColumnName="UPDATE_BY" />
-                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
-                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
-                <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
-                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
-                <ScalarProperty Name="MADVI" ColumnName="MADVI" />
-                <ScalarProperty Name="MACTY" ColumnName="MACTY" />
-                <ScalarProperty Name="IDUSER" ColumnName="IDUSER" />
-                <ScalarProperty Name="SONGUOIO" ColumnName="SONGUOIO" />
-                <ScalarProperty Name="SOTIEN" ColumnName="SOTIEN" />
-                <ScalarProperty Name="NGAYTRAPHONG" ColumnName="NGAYTRAPHONG" />
-                <ScalarProperty Name="NGAYDATPHONG" ColumnName="NGAYDATPHONG" />
-                <ScalarProperty Name="IDKH" ColumnName="IDKH" />
-                <ScalarProperty Name="IDDP" ColumnName="IDDP" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -939,6 +921,27 @@ warning 6002: The table/view 'HOTELS.dbo.V_USER_NOTIN_GROUP' does not have a pri
                 <ScalarProperty Name="IDPHONG" ColumnName="IDPHONG" />
                 <ScalarProperty Name="IDDP" ColumnName="IDDP" />
                 <ScalarProperty Name="IDDPCT" ColumnName="IDDPCT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_DatPhong">
+            <EntityTypeMapping TypeName="NHANGHI.tb_DatPhong">
+              <MappingFragment StoreEntitySet="tb_DatPhong">
+                <ScalarProperty Name="HINHTHUCTHANHTOAN" ColumnName="HINHTHUCTHANHTOAN" />
+                <ScalarProperty Name="UPDATE_BY" ColumnName="UPDATE_BY" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+                <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="MADVI" ColumnName="MADVI" />
+                <ScalarProperty Name="MACTY" ColumnName="MACTY" />
+                <ScalarProperty Name="IDUSER" ColumnName="IDUSER" />
+                <ScalarProperty Name="SONGUOIO" ColumnName="SONGUOIO" />
+                <ScalarProperty Name="SOTIEN" ColumnName="SOTIEN" />
+                <ScalarProperty Name="NGAYTRAPHONG" ColumnName="NGAYTRAPHONG" />
+                <ScalarProperty Name="NGAYDATPHONG" ColumnName="NGAYDATPHONG" />
+                <ScalarProperty Name="IDKH" ColumnName="IDKH" />
+                <ScalarProperty Name="IDDP" ColumnName="IDDP" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -27,6 +27,7 @@ namespace THUEPHONGNHANGHI
 			InitializeComponent();
 			this._user = user;
 			this.Text = "PHẦN MỀM QUẢN LÝ KHÁCH SẠN - " + _user.FULLNAME;
+			myFunctions._vaitro = this._user.USERNAME;
 		}
 		tb_SYS_USER _user;
 		TANG _tang;
@@ -75,33 +76,80 @@ namespace THUEPHONGNHANGHI
 		{
 			_tang = new TANG();
 			_phong = new PHONG();
+			LOAIPHONG _loaiPhong = new LOAIPHONG();
+
+			gControl.Gallery.Groups.Clear();
+
 			var lsTang = _tang.getAll();
 			gControl.Gallery.ItemImageLayout = ImageLayoutMode.ZoomInside;
 			gControl.Gallery.ImageSize = new Size(128, 128);
 			gControl.Gallery.ShowItemText = true;
 			gControl.Gallery.ShowGroupCaption = true;
+
 			foreach (var t in lsTang)
 			{
 				var galleryItem = new GalleryItemGroup();
 				galleryItem.Caption = t.TENTANG;
 				galleryItem.CaptionAlignment = GalleryItemGroupCaptionAlignment.Stretch;
 				List<tb_Phong> lsPhong = _phong.getByTang(t.IDTANG);
+
 				foreach (var p in lsPhong)
 				{
 					var gc_item = new GalleryItem();
-					gc_item.Caption = p.TENPHONG;
-					gc_item.Value = p.IDPHONG;
-					if (p.TRANGTHAI == true)
-						gc_item.ImageOptions.Image = imageList3.Images[1];
+					var loaiPhong = _loaiPhong.getItem(p.IDLOAIPHONG);
+
+					if (loaiPhong != null)
+					{
+						gc_item.Caption = p.TENPHONG + " - " + loaiPhong.TENLOAIPHONG;
+					}
 					else
-						gc_item.ImageOptions.Image = imageList3.Images[0];
+					{
+						gc_item.Caption = p.TENPHONG + " - [Lỗi Loại Phòng]";
+					}
+
+					gc_item.Value = p.IDPHONG;
+
+					// === BẮT ĐẦU KHỐI CODE CHỌN HÌNH ẢNH MỚI ===
+					int imageIndex = 0;
+
+					// Ưu tiên kiểm tra trạng thái phòng trước
+					if (p.TRANGTHAI == true)
+					{
+						// Nếu phòng ĐÃ ĐẶT, luôn dùng hình ảnh số 1
+						imageIndex = 1;
+					}
+					else
+					{
+						// Nếu phòng CHƯA ĐẶT, chọn ảnh dựa trên loại phòng
+						switch (p.IDLOAIPHONG)
+						{
+							case 1: // ID của loại vip 1
+								imageIndex = 0;
+								break;
+							case 2: // ID của loại vip 2
+								imageIndex = 2;
+								break;
+							case 3: // ID của loại vip 3
+								imageIndex = 3;
+								break;
+							case 4: // ID của loại phòng thường
+								imageIndex = 4;
+								break;
+							default: // Mặc định nếu không có
+								imageIndex = 0;
+								break;
+						}
+					}
+
+					if (imageList3.Images.Count > imageIndex)
+						gc_item.ImageOptions.Image = imageList3.Images[imageIndex];
+
+					// === KẾT THÚC KHỐI CODE CHỌN HÌNH ẢNH MỚI ===
 
 					galleryItem.Items.Add(gc_item);
 				}
 				gControl.Gallery.Groups.Add(galleryItem);
 			}
-
-
 		}
 
 		private void navMain_LinkClicked(object sender, NavBarLinkEventArgs e)
@@ -231,10 +279,11 @@ namespace THUEPHONGNHANGHI
 
 
 		}
-
-		
-
 	
+
+
+
+
 
 		private void btnSPDV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
 		{
@@ -293,9 +342,6 @@ namespace THUEPHONGNHANGHI
 
 
 		}
-
-
-	
 
 	
 	}

@@ -186,9 +186,11 @@
 			this.Controls.Add(this.groupControl1);
 			this.Controls.Add(this.gcDanhSach);
 			this.Controls.Add(this.toolStrip1);
+			this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmTang.IconOptions.Image")));
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "frmTang";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Quản lí tầng";
 			this.Load += new System.EventHandler(this.frmTang_Load);

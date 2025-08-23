@@ -17,5 +17,7 @@ namespace BusinessLayer
 		public string TENLOAIPHONG { get; set; }
 		public double? DONGIA { get; set; }
 		public double? DONGIATHEOGIO { get; set; }
+		public int? SOGIUONG { get; set; }
+		public int? SONGUOIO { get; set; }
 	}
 }

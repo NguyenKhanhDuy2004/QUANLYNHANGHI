@@ -31,8 +31,7 @@
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
 			this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-			this.btnThoat = new System.Windows.Forms.ToolStripButton();
-			this.btnBaoCao = new System.Windows.Forms.ToolStripButton();
+			this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
 			this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
 			this.gControl = new DevExpress.XtraBars.Ribbon.GalleryControl();
 			this.galleryControlClient1 = new DevExpress.XtraBars.Ribbon.GalleryControlClient();
@@ -70,35 +69,22 @@
 			this.toolStrip1.BackColor = System.Drawing.Color.Transparent;
 			this.toolStrip1.ImageScalingSize = new System.Drawing.Size(56, 56);
 			this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnThoat,
-            this.btnBaoCao});
+            this.toolStripButton1});
 			this.toolStrip1.Location = new System.Drawing.Point(0, 0);
 			this.toolStrip1.Name = "toolStrip1";
 			this.toolStrip1.Size = new System.Drawing.Size(1320, 90);
 			this.toolStrip1.TabIndex = 0;
 			this.toolStrip1.Text = "toolStrip1";
 			// 
-			// btnThoat
+			// toolStripButton1
 			// 
-			this.btnThoat.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-			this.btnThoat.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-			this.btnThoat.Image = global::THUEPHONGNHANGHI.Properties.Resources.sign_out_alt__1_;
-			this.btnThoat.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.btnThoat.Name = "btnThoat";
-			this.btnThoat.Size = new System.Drawing.Size(60, 85);
-			this.btnThoat.Text = "Thoát";
-			this.btnThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-			this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
-			// 
-			// btnBaoCao
-			// 
-			this.btnBaoCao.Image = global::THUEPHONGNHANGHI.Properties.Resources.icons8_sales_performance_100;
-			this.btnBaoCao.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.btnBaoCao.Name = "btnBaoCao";
-			this.btnBaoCao.Size = new System.Drawing.Size(166, 85);
-			this.btnBaoCao.Text = "Báo cáo doanh thu";
-			this.btnBaoCao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-			this.btnBaoCao.Click += new System.EventHandler(this.btnBaoCao_Click);
+			this.toolStripButton1.Image = global::THUEPHONGNHANGHI.Properties.Resources.icons8_sales_performance_100;
+			this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton1.Name = "toolStripButton1";
+			this.toolStripButton1.Size = new System.Drawing.Size(166, 85);
+			this.toolStripButton1.Text = "Báo cáo doanh thu";
+			this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+			this.toolStripButton1.Click += new System.EventHandler(this.btnBaoCao_Click);
 			// 
 			// splitContainerControl1
 			// 
@@ -152,11 +138,11 @@
 			this.navMain.Appearance.Button.Options.UseFont = true;
 			this.navMain.Appearance.ButtonDisabled.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
 			this.navMain.Appearance.ButtonDisabled.Options.UseFont = true;
-			this.navMain.Appearance.ButtonHotTracked.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+			this.navMain.Appearance.ButtonHotTracked.Font = new System.Drawing.Font("Tahoma", 10F);
 			this.navMain.Appearance.ButtonHotTracked.Options.UseFont = true;
 			this.navMain.Appearance.ButtonPressed.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
 			this.navMain.Appearance.ButtonPressed.Options.UseFont = true;
-			this.navMain.Appearance.GroupHeader.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Bold);
+			this.navMain.Appearance.GroupHeader.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Bold);
 			this.navMain.Appearance.GroupHeader.Options.UseFont = true;
 			this.navMain.Appearance.Item.Font = new System.Drawing.Font("Tahoma", 10F);
 			this.navMain.Appearance.Item.Options.UseFont = true;
@@ -185,8 +171,8 @@
 			// 
 			this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
 			this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-			this.imageList1.Images.SetKeyName(0, "8686095_ic_fluent_person_settings_filled_icon.png");
-			this.imageList1.Images.SetKeyName(1, "9055212_bxs_category_icon.png");
+			this.imageList1.Images.SetKeyName(0, "icons8-system-100.png");
+			this.imageList1.Images.SetKeyName(1, "icons8-hotel-100.png");
 			// 
 			// imageList2
 			// 
@@ -200,6 +186,9 @@
 			this.imageList3.TransparentColor = System.Drawing.Color.Transparent;
 			this.imageList3.Images.SetKeyName(0, "nha nghi mau xanh nhat.png");
 			this.imageList3.Images.SetKeyName(1, "nha nghi mau xanh nhat 1.png");
+			this.imageList3.Images.SetKeyName(2, "nha nghi mau xanh la.png");
+			this.imageList3.Images.SetKeyName(3, "nha nghi mau xanh .png");
+			this.imageList3.Images.SetKeyName(4, "nha nghi mau cam.png");
 			// 
 			// popupMenu1
 			// 
@@ -326,6 +315,7 @@
 			this.Controls.Add(this.barDockControlRight);
 			this.Controls.Add(this.barDockControlBottom);
 			this.Controls.Add(this.barDockControlTop);
+			this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmMain.IconOptions.Image")));
 			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "frmMain";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -353,8 +343,6 @@
 		#endregion
 
 		private System.Windows.Forms.ToolStrip toolStrip1;
-		private System.Windows.Forms.ToolStripButton btnBaoCao;
-		private System.Windows.Forms.ToolStripButton btnThoat;
 		private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
 		private DevExpress.XtraNavBar.NavBarControl navMain;
 		private System.Windows.Forms.ImageList imageList1;
@@ -373,6 +361,7 @@
 		private DevExpress.XtraBars.BarButtonItem btnChuyenPhong;
 		public DevExpress.XtraBars.Ribbon.GalleryControl gControl;
 		private DevExpress.XtraBars.Ribbon.GalleryControlClient galleryControlClient1;
+		private System.Windows.Forms.ToolStripButton toolStripButton1;
 	}
 }
 

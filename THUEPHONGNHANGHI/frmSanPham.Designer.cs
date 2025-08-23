@@ -232,7 +232,11 @@
 			this.Controls.Add(this.groupControl1);
 			this.Controls.Add(this.gcDanhSach);
 			this.Controls.Add(this.toolStrip1);
+			this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmSanPham.IconOptions.Image")));
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "frmSanPham";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Danh mục Sản Phẩm - Dịch Vụ";
 			this.Load += new System.EventHandler(this.frmSanPham_Load);

@@ -48,12 +48,12 @@
 			this.splBaoCao.Location = new System.Drawing.Point(0, 0);
 			this.splBaoCao.Name = "splBaoCao";
 			// 
-			// splBaoCao.splBaoCao_Panel1
+			// splBaoCao.Panel1
 			// 
 			this.splBaoCao.Panel1.Controls.Add(this.lstDanhSach);
 			this.splBaoCao.Panel1.Text = "Panel1";
 			// 
-			// splBaoCao.splBaoCao_Panel2
+			// splBaoCao.Panel2
 			// 
 			this.splBaoCao.Panel2.Controls.Add(this.btnThoat);
 			this.splBaoCao.Panel2.Controls.Add(this.btnThucHien);
@@ -102,9 +102,11 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1413, 974);
 			this.Controls.Add(this.splBaoCao);
+			this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmBaoCao.IconOptions.Image")));
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "frmBaoCao";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Báo cáo";
 			this.Load += new System.EventHandler(this.frmBaoCao_Load);

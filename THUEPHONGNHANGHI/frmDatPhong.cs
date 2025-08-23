@@ -25,7 +25,7 @@ namespace THUEPHONGNHANGHI
 		{
 			InitializeComponent();
 			// QUAN TRỌNG: Cập nhật câu lệnh SQL để lấy thêm DONGIA_GIO
-			DataTable tb = myFunctions.laydulieu("SELECT A.IDPHONG, A.TENPHONG, C.DONGIA, C.DONGIATHEOGIO, A.IDTANG, B.TENTANG FROM tb_Phong A, tb_Tang B, tb_LoaiPhong C WHERE A.IDTANG = B.IDTANG AND A.TRANGTHAI = 0 AND A.IDLOAIPHONG = C.IDLOAIPHONG");
+			DataTable tb = myFunctions.laydulieu("SELECT A.IDPHONG, A.TENPHONG, C.TENLOAIPHONG, C.DONGIA, C.DONGIATHEOGIO, A.IDTANG, B.TENTANG FROM tb_Phong A, tb_Tang B, tb_LoaiPhong C WHERE A.IDTANG = B.IDTANG AND A.TRANGTHAI = 0 AND A.IDLOAIPHONG = C.IDLOAIPHONG");
 			gcPhong.DataSource = tb;
 			gcDatphong.DataSource = tb.Clone();
 
@@ -138,20 +138,42 @@ namespace THUEPHONGNHANGHI
 		void UpdateTotalPrice()
 		{
 			double tongTienPhong = 0;
-			double tongTienSPDV = 0;
+			// Lấy tổng tiền dịch vụ từ danh sách
+			double tongTienSPDV = lstDPSP.Sum(item => item.THANHTIEN ?? 0);
 
+			// Kiểm tra nếu loại hình thuê là THEOGIO
 			if (_loaiHinhThue == "THEOGIO")
 			{
 				int soGio = TinhSoGio();
+				// Định nghĩa giá cho mỗi giờ phát sinh thêm
+				double giaMoiGioThem = 50000;
+
+				// Duyệt qua từng phòng trong lưới gcDatphong
 				for (int i = 0; i < gvDatphong.RowCount; i++)
 				{
-					double donGiaGio = Convert.ToDouble(gvDatphong.GetRowCellValue(i, "DONGIATHEOGIO") ?? 0);
-					tongTienPhong += donGiaGio * soGio;
+					// Lấy giá giờ đầu của phòng hiện tại
+					double giaGioDau = Convert.ToDouble(gvDatphong.GetRowCellValue(i, "DONGIATHEOGIO") ?? 0);
+					double tienPhongChoMotPhong = 0;
+
+					if (soGio <= 1)
+					{
+						// Nếu chỉ thuê 1 giờ hoặc ít hơn, chỉ tính giá giờ đầu
+						tienPhongChoMotPhong = giaGioDau;
+					}
+					else
+					{
+						// Nếu thuê nhiều hơn 1 giờ:
+						// Tiền phòng = (Giá giờ đầu) + (Số giờ còn lại * Giá mỗi giờ thêm)
+						tienPhongChoMotPhong = giaGioDau + (soGio - 1) * giaMoiGioThem;
+					}
+					// Cộng tiền của phòng vừa tính vào tổng tiền phòng
+					tongTienPhong += tienPhongChoMotPhong;
 				}
 			}
-			else // THEONGAY
+			else // Nếu loại hình thuê là THEONGAY
 			{
 				int soNgay = TinhSoNgay();
+				// Duyệt qua từng phòng và tính tiền theo ngày như cũ
 				for (int i = 0; i < gvDatphong.RowCount; i++)
 				{
 					double donGiaNgay = Convert.ToDouble(gvDatphong.GetRowCellValue(i, "DONGIA") ?? 0);
@@ -159,12 +181,9 @@ namespace THUEPHONGNHANGHI
 				}
 			}
 
-			if (lstDPSP != null)
-			{
-				tongTienSPDV = lstDPSP.Sum(item => item.THANHTIEN ?? 0);
-			}
-
+			// Tính tổng cộng tiền phòng và tiền dịch vụ
 			double tongThanhTien = tongTienPhong + tongTienSPDV;
+			// Hiển thị tổng tiền đã được định dạng
 			txtThanhtien.Text = tongThanhTien.ToString("N0");
 		}
 
@@ -236,15 +255,14 @@ namespace THUEPHONGNHANGHI
 
 			_reset();
 
-			// Clear các GridControl khi thêm mới
+		
 
 			((DataTable)gcDatphong.DataSource).Clear();
 
-			lstDPSP.Clear(); // Xóa danh sách SPDV trong bộ nhớ
+			lstDPSP.Clear(); 
 
-			gcSPDV.DataSource = null; // Hoặc gcSPDV.DataSource = new List<objDPSP>();
-
-			UpdateTotalPrice(); // Cập nhật tổng tiền về 0 khi thêm mới
+			gcSPDV.DataSource = null; 
+			UpdateTotalPrice();
 
 			tabDanhsach.SelectedTabPage = pageChitiet;
 
@@ -270,11 +288,7 @@ namespace THUEPHONGNHANGHI
 
 			showHideControl(false);
 
-			// Khi sửa, cần tải lại dữ liệu chi tiết của đặt phòng đã chọn
-
-			// (Điều này đã được gọi trong gvDanhSach_Click/DoubleClick)
-
-			// Ensure UpdateTotalPrice is called after loading data for editing
+			tabDanhsach.SelectedTabPage = pageChitiet;
 
 			UpdateTotalPrice();
 
@@ -352,7 +366,7 @@ namespace THUEPHONGNHANGHI
 
 			loadDanhSach();
 
-			// Đảm bảo objMain không null trước khi gọi
+		
 
 			if (objMain != null)
 
@@ -364,17 +378,17 @@ namespace THUEPHONGNHANGHI
 
 			}
 
-			_idDP = 0; // Reset ID đặt phòng hiện tại
+			_idDP = 0; 
 
-			_reset(); // Reset form chi tiết
+			_reset(); 
 
-			((DataTable)gcDatphong.DataSource).Clear(); // Xóa dữ liệu trên lưới phòng đã đặt
+			((DataTable)gcDatphong.DataSource).Clear();
 
-			lstDPSP.Clear(); // Xóa danh sách SPDV trong bộ nhớ
+			lstDPSP.Clear(); 
 
-			gcSPDV.DataSource = null; // Hoặc gcSPDV.DataSource = new List<objDPSP>();
+			gcSPDV.DataSource = null;
 
-			UpdateTotalPrice(); // Cập nhật tổng tiền về 0 sau khi xóa
+			UpdateTotalPrice(); 
 
 		}
 
@@ -455,7 +469,6 @@ namespace THUEPHONGNHANGHI
 
 					txtThanhtien.Text = dpSaved.SOTIEN.Value.ToString("N0");
 
-					// Cập nhật các trường UI khác nếu cần
 
 					cboTrangthai.SelectedValue = dpSaved.STATUS;
 
@@ -465,7 +478,7 @@ namespace THUEPHONGNHANGHI
 
 		}
 
-		void saveData()
+		void saveData(string hinhThucThanhToan = null)
 		{
 			if (cboKhachhang.SelectedValue == null)
 			{
@@ -507,6 +520,7 @@ namespace THUEPHONGNHANGHI
 				dp.MACTY = _macty;
 				dp.MADVI = _madvi;
 				dp.CREATED_DATE = DateTime.Now;
+				dp.HINHTHUCTHANHTOAN = hinhThucThanhToan;
 
 				var _dpAdded = _datphong.add(dp);
 				_idDP = _dpAdded.IDDP;
@@ -522,14 +536,13 @@ namespace THUEPHONGNHANGHI
 					if (_loaiHinhThue == "THEOGIO")
 					{
 						dpct.SONGAYO = TinhSoGio();
-						// SỬA LỖI 1: Cần ép kiểu double sang int? hoặc kiểu dữ liệu tương ứng của DONGIA trong database.
-						// Giả sử DONGIA trong database là int?
+						
 						dpct.DONGIA = (int?)Convert.ToDouble(gvDatphong.GetRowCellValue(i, "DONGIA_GIO") ?? 0);
 					}
 					else
 					{
 						dpct.SONGAYO = TinhSoNgay();
-						// SỬA LỖI 2: Cần ép kiểu double sang int? tương tự.
+						
 						dpct.DONGIA = (int?)Convert.ToDouble(gvDatphong.GetRowCellValue(i, "DONGIA") ?? 0);
 					}
 					dpct.THANHTIEN = dpct.SONGAYO * dpct.DONGIA;
@@ -548,7 +561,6 @@ namespace THUEPHONGNHANGHI
 							dpsp.IDPHONG = dpspItem.IDPHONG;
 							dpsp.IDSP = dpspItem.IDSP;
 							dpsp.SOLUONG = dpspItem.SOLUONG;
-							// SỬA LỖI 3: Cần ép kiểu double? sang int?
 							dpsp.DONGIA = (int?)dpspItem.DONGIA;
 							dpsp.THANHTIEN = (int?)dpspItem.THANHTIEN;
 							_datphongsanpham.add(dpsp);
@@ -556,7 +568,7 @@ namespace THUEPHONGNHANGHI
 					}
 				}
 			}
-			else // UPDATE
+			else 
 			{
 				tb_DatPhong dp = _datphong.getItem(_idDP);
 				dp.IDKH = Convert.ToInt32(cboKhachhang.SelectedValue);
@@ -568,9 +580,15 @@ namespace THUEPHONGNHANGHI
 				dp.GHICHU = txtGhichu.Text;
 				dp.UPDATE_BY = 1;
 				dp.UPDATE_DATE = DateTime.Now;
+
+			
+				if (!string.IsNullOrEmpty(hinhThucThanhToan))
+				{
+					dp.HINHTHUCTHANHTOAN = hinhThucThanhToan;
+				}
+
 				_datphong.update(dp);
 
-				// Giải phóng các phòng cũ
 				foreach (int phongId in oldPhongIds)
 				{
 					_phong.updateStatus(phongId, false);
@@ -635,131 +653,79 @@ namespace THUEPHONGNHANGHI
 			if (dtNgaydat.Value.Date > dtNgaytra.Value.Date)
 			{
 				MessageBox.Show("Ngày trả phòng phải sau ngày đặt phòng.", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				return; // Dừng thực thi, không cho phép lưu
+				return; 
 			}
 
 
-			// 2. Chỉ gọi hàm xuất báo cáo.
-			// Báo cáo sẽ in dữ liệu đang có trong cơ sở dữ liệu.
-			// Hoàn toàn không gọi saveData() hay bất kỳ hàm cập nhật nào khác.
 			XuatReport("PHIEU_DATPHONG", "Phiếu đặt phòng chi tiết");
 		}
 
 
 
 		private void XuatReport(string _reportName, string _tieude)
-
 		{
-
-			if (_idDP != 0)
-
+			
+			if (_idDP == 0)
 			{
+				MessageBox.Show("Vui lòng chọn một đặt phòng để in.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return; 
+			}
+
+			ReportDocument doc = new ReportDocument();
+			try
+			{
+				
+				string reportPath = System.IO.Path.Combine(Application.StartupPath, "Reports", _reportName + ".rpt");
+
+				if (!System.IO.File.Exists(reportPath))
+				{
+					MessageBox.Show("Không tìm thấy file báo cáo: " + reportPath, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return;
+				}
+
+				doc.Load(reportPath);
+
+				
+				foreach (Table tbl in doc.Database.Tables)
+				{
+					TableLogOnInfo tblLogOnInfo = tbl.LogOnInfo;
+					tblLogOnInfo.ConnectionInfo.ServerName = myFunctions._srv;
+					tblLogOnInfo.ConnectionInfo.DatabaseName = myFunctions._db;
+					tblLogOnInfo.ConnectionInfo.UserID = myFunctions._us;
+					tblLogOnInfo.ConnectionInfo.Password = myFunctions._pw;
+					tbl.ApplyLogOnInfo(tblLogOnInfo);
+				}
+
+				
+				doc.SetParameterValue("@IDDP", _idDP);
 
 				Form frm = new Form();
-
 				CrystalReportViewer Crv = new CrystalReportViewer();
 
 				Crv.ShowGroupTreeButton = false;
-
-				Crv.ShowParameterPanelButton = false;
-
+				Crv.ShowParameterPanelButton = false; 
 				Crv.ToolPanelView = ToolPanelViewType.None;
+				Crv.Dock = DockStyle.Fill;
+				Crv.ReportSource = doc; 
+				Crv.Refresh(); 
 
-				TableLogOnInfo Thongtin;
-
-				ReportDocument doc = new ReportDocument();
-
-
-
-				try
-
-				{
-
-					doc.Load(System.Windows.Forms.Application.StartupPath + "\\Reports\\" + _reportName + @".rpt");
-
-					Thongtin = doc.Database.Tables[0].LogOnInfo;
-
-					Thongtin.ConnectionInfo.ServerName = myFunctions._srv;
-
-					Thongtin.ConnectionInfo.DatabaseName = myFunctions._db;
-
-					Thongtin.ConnectionInfo.UserID = myFunctions._us;
-
-					Thongtin.ConnectionInfo.Password = myFunctions._pw;
-
-					doc.Database.Tables[0].ApplyLogOnInfo(Thongtin);
-
-
-
-					doc.SetParameterValue("@IDDP", _idDP.ToString());
-
-
-
-					// Các lệnh làm mới báo cáo để đảm bảo lấy dữ liệu mới nhất
-
-					// Điều này đôi khi là cần thiết với Crystal Reports để tránh cache
-
-					foreach (Table tbl in doc.Database.Tables)
-
-					{
-
-						TableLogOnInfo tblLogOnInfo = tbl.LogOnInfo;
-
-						tblLogOnInfo.ConnectionInfo.ServerName = myFunctions._srv;
-
-						tblLogOnInfo.ConnectionInfo.DatabaseName = myFunctions._db;
-
-						tblLogOnInfo.ConnectionInfo.UserID = myFunctions._us;
-
-						tblLogOnInfo.ConnectionInfo.Password = myFunctions._pw;
-
-						tbl.ApplyLogOnInfo(tblLogOnInfo);
-
-						tbl.Location = tbl.Location; // Forced refresh, sometimes needed
-
-					}
-
-					doc.Refresh(); // Buộc refresh dữ liệu của ReportDocument
-
-
-
-					Crv.Dock = DockStyle.Fill;
-
-					Crv.ReportSource = doc;
-
-					Crv.RefreshReport(); // Làm mới lại CrystalReportViewer
-
-
-
-					frm.Controls.Add(Crv);
-
-					frm.Text = _tieude;
-
-					frm.WindowState = FormWindowState.Maximized;
-
-					frm.ShowDialog();
-
-				}
-
-				catch (Exception ex)
-
-				{
-
-					MessageBox.Show("Lỗi khi xuất báo cáo: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-				}
-
+				frm.Controls.Add(Crv);
+				frm.Text = _tieude;
+				frm.WindowState = FormWindowState.Maximized;
+				frm.ShowDialog();
 			}
-
-			else
-
+			catch (Exception ex)
 			{
-
-				MessageBox.Show("Không có dữ liệu đặt phòng để in.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
+				MessageBox.Show("Lỗi khi xuất báo cáo: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
-
-
+			finally
+			{
+				if (doc != null)
+				{
+					doc.Close();
+					doc.Dispose();
+				}
+			}
 		}
 
 		private void btnHuy_Click(object sender, EventArgs e)
@@ -801,6 +767,19 @@ namespace THUEPHONGNHANGHI
 			btnHuy.Visible = !t;
 
 			btnIn.Visible = t;
+
+			btnThanhToanHoaDon.Visible = t;
+
+			if (t && myFunctions._vaitro != null && myFunctions._vaitro.Equals("ADMIN1", StringComparison.OrdinalIgnoreCase))
+			{
+				// Nếu người đăng nhập là "ADMIN1", hiện nút
+				btnSuaThanhToan.Visible = true;
+			}
+			else
+			{
+				// Nếu là người khác, ẩn nút
+				btnSuaThanhToan.Visible = false;
+			}
 
 		}
 
@@ -1052,12 +1031,11 @@ namespace THUEPHONGNHANGHI
 
 		{
 
-			if (!gvPhong.IsGroupRow(e.RowHandle)) // Nếu không phải là Group
+			if (!gvPhong.IsGroupRow(e.RowHandle)) 
 
 			{
 
-				if (e.Info.IsRowIndicator) // Nếu là dòng Indicator
-
+				if (e.Info.IsRowIndicator) 
 				{
 
 					if (e.RowHandle < 0)
@@ -1074,19 +1052,19 @@ namespace THUEPHONGNHANGHI
 
 					{
 
-						e.Info.ImageIndex = -1; // Không hiển thị hình
+						e.Info.ImageIndex = -1;
 
-						e.Info.DisplayText = (e.RowHandle + 1).ToString(); // Số thứ tự tăng dần
+						e.Info.DisplayText = (e.RowHandle + 1).ToString(); 
 
 					}
 
 
 
-					SizeF Size = e.Graphics.MeasureString(e.Info.DisplayText, e.Appearance.Font); // Lấy kích thước của vùng hiển thị Text
+					SizeF Size = e.Graphics.MeasureString(e.Info.DisplayText, e.Appearance.Font); 
 
 					Int32 _Width = Convert.ToInt32(Size.Width) + 20;
 
-					BeginInvoke(new MethodInvoker(delegate { cal(_Width, gvPhong); })); // Tăng kích thước nếu Text vượt quá
+					BeginInvoke(new MethodInvoker(delegate { cal(_Width, gvPhong); })); 
 
 				}
 
@@ -1098,7 +1076,7 @@ namespace THUEPHONGNHANGHI
 
 				e.Info.ImageIndex = -1;
 
-				e.Info.DisplayText = string.Format("[{0}]", (e.RowHandle * -1)); // Nhân -1 để đánh lại số thứ tự tăng dần
+				e.Info.DisplayText = string.Format("[{0}]", (e.RowHandle * -1)); 
 
 				SizeF Size = e.Graphics.MeasureString(e.Info.DisplayText, e.Appearance.Font);
 
@@ -1220,7 +1198,7 @@ namespace THUEPHONGNHANGHI
 
 						found = true;
 
-						break; // Thoát khỏi vòng lặp khi tìm thấy
+						break; 
 
 					}
 
@@ -1238,7 +1216,7 @@ namespace THUEPHONGNHANGHI
 
 			loadDPSP();
 
-			UpdateTotalPrice(); // Gọi hàm UpdateTotalPrice() duy nhất
+			UpdateTotalPrice(); 
 
 		}
 
@@ -1248,9 +1226,7 @@ namespace THUEPHONGNHANGHI
 
 		{
 
-			// Tạo một danh sách mới từ lstDPSP để gán cho DataSource.
-
-			// Điều này giúp DevExpress GridControl cập nhật đúng cách khi lstDPSP thay đổi
+			
 
 			gcSPDV.DataSource = new List<objDPSP>(lstDPSP);
 
@@ -1274,15 +1250,13 @@ namespace THUEPHONGNHANGHI
 
 					double gia = 0;
 
-					if (double.TryParse(gvSPDV.GetRowCellValue(e.RowHandle, "DONGIA")?.ToString(), out gia)) // Dùng e.RowHandle
+					if (double.TryParse(gvSPDV.GetRowCellValue(e.RowHandle, "DONGIA")?.ToString(), out gia)) 
 
 					{
 
-						gvSPDV.SetRowCellValue(e.RowHandle, "THANHTIEN", sl * gia); // Dùng e.RowHandle
+						gvSPDV.SetRowCellValue(e.RowHandle, "THANHTIEN", sl * gia);
 
 
-
-						// Cập nhật giá trị trong lstDPSP
 
 						if (e.RowHandle >= 0 && e.RowHandle < lstDPSP.Count)
 
@@ -1310,12 +1284,10 @@ namespace THUEPHONGNHANGHI
 
 		private void gvDatphong_RowCountChanged(object sender, EventArgs e)
 		{
-			// Logic xóa và cập nhật trạng thái phòng ngay lập tức khi kéo thả là rất rủi ro.
-			// Mọi thay đổi về phòng nên được xử lý trong hàm saveData() khi người dùng nhấn "Lưu".
-			// Do đó, logic trong hàm này nên được vô hiệu hóa hoặc xóa bỏ.
+			
 			if (!isFormLoading)
 			{
-				UpdateTotalPrice(); // Chỉ nên gọi cập nhật tổng tiền
+				UpdateTotalPrice(); 
 			}
 		}
 
@@ -1331,11 +1303,11 @@ namespace THUEPHONGNHANGHI
 
 		{
 
-			if (!gvSanpham.IsGroupRow(e.RowHandle)) // Nếu không phải là Group
+			if (!gvSanpham.IsGroupRow(e.RowHandle))
 
 			{
 
-				if (e.Info.IsRowIndicator) // Nếu là dòng Indicator
+				if (e.Info.IsRowIndicator) 
 
 				{
 
@@ -1353,20 +1325,19 @@ namespace THUEPHONGNHANGHI
 
 					{
 
-						e.Info.ImageIndex = -1; // Không hiển thị hình
+						e.Info.ImageIndex = -1; 
 
-						e.Info.DisplayText = (e.RowHandle + 1).ToString(); // Số thứ tự tăng dần
+						e.Info.DisplayText = (e.RowHandle + 1).ToString(); 
 
 					}
 
 
 
-					SizeF Size = e.Graphics.MeasureString(e.Info.DisplayText, e.Appearance.Font); // Lấy kích thước của vùng hiển thị Text
+					SizeF Size = e.Graphics.MeasureString(e.Info.DisplayText, e.Appearance.Font); 
 
 					Int32 _Width = Convert.ToInt32(Size.Width) + 20;
 
-					BeginInvoke(new MethodInvoker(delegate { cal(_Width, gvSanpham); })); // Tăng kích thước nếu Text vượt quá
-
+					BeginInvoke(new MethodInvoker(delegate { cal(_Width, gvSanpham); })); 
 				}
 
 			}
@@ -1377,7 +1348,7 @@ namespace THUEPHONGNHANGHI
 
 				e.Info.ImageIndex = -1;
 
-				e.Info.DisplayText = string.Format("[{0}]", (e.RowHandle * -1)); // Nhân -1 để đánh lại số thứ tự tăng dần
+				e.Info.DisplayText = string.Format("[{0}]", (e.RowHandle * -1));
 
 				SizeF Size = e.Graphics.MeasureString(e.Info.DisplayText, e.Appearance.Font);
 
@@ -1395,11 +1366,11 @@ namespace THUEPHONGNHANGHI
 
 		{
 
-			if (!gvDatphong.IsGroupRow(e.RowHandle)) // Nếu không phải là Group
+			if (!gvDatphong.IsGroupRow(e.RowHandle)) 
 
 			{
 
-				if (e.Info.IsRowIndicator) // Nếu là dòng Indicator
+				if (e.Info.IsRowIndicator) 
 
 				{
 
@@ -1417,19 +1388,19 @@ namespace THUEPHONGNHANGHI
 
 					{
 
-						e.Info.ImageIndex = -1; // Không hiển thị hình
+						e.Info.ImageIndex = -1; 
 
-						e.Info.DisplayText = (e.RowHandle + 1).ToString(); // Số thứ tự tăng dần
+						e.Info.DisplayText = (e.RowHandle + 1).ToString(); 
 
 					}
 
 
 
-					SizeF Size = e.Graphics.MeasureString(e.Info.DisplayText, e.Appearance.Font); // Lấy kích thước của vùng hiển thị Text
+					SizeF Size = e.Graphics.MeasureString(e.Info.DisplayText, e.Appearance.Font); 
 
 					Int32 _Width = Convert.ToInt32(Size.Width) + 20;
 
-					BeginInvoke(new MethodInvoker(delegate { cal(_Width, gvDatphong); })); // Tăng kích thước nếu Text vượt quá
+					BeginInvoke(new MethodInvoker(delegate { cal(_Width, gvDatphong); })); 
 
 				}
 
@@ -1441,7 +1412,7 @@ namespace THUEPHONGNHANGHI
 
 				e.Info.ImageIndex = -1;
 
-				e.Info.DisplayText = string.Format("[{0}]", (e.RowHandle * -1)); // Nhân -1 để đánh lại số thứ tự tăng dần
+				e.Info.DisplayText = string.Format("[{0}]", (e.RowHandle * -1)); 
 
 				SizeF Size = e.Graphics.MeasureString(e.Info.DisplayText, e.Appearance.Font);
 
@@ -1459,12 +1430,11 @@ namespace THUEPHONGNHANGHI
 
 		{
 
-			if (!gvSPDV.IsGroupRow(e.RowHandle)) // Nếu không phải là Group
+			if (!gvSPDV.IsGroupRow(e.RowHandle)) 
 
 			{
 
-				if (e.Info.IsRowIndicator) // Nếu là dòng Indicator
-
+				if (e.Info.IsRowIndicator) 
 				{
 
 					if (e.RowHandle < 0)
@@ -1481,19 +1451,19 @@ namespace THUEPHONGNHANGHI
 
 					{
 
-						e.Info.ImageIndex = -1; // Không hiển thị hình
+						e.Info.ImageIndex = -1; 
 
-						e.Info.DisplayText = (e.RowHandle + 1).ToString(); // Số thứ tự tăng dần
+						e.Info.DisplayText = (e.RowHandle + 1).ToString(); 
 
 					}
 
 
 
-					SizeF Size = e.Graphics.MeasureString(e.Info.DisplayText, e.Appearance.Font); // Lấy kích thước của vùng hiển thị Text
+					SizeF Size = e.Graphics.MeasureString(e.Info.DisplayText, e.Appearance.Font); 
 
 					Int32 _Width = Convert.ToInt32(Size.Width) + 20;
 
-					BeginInvoke(new MethodInvoker(delegate { cal(_Width, gvSPDV); })); // Tăng kích thước nếu Text vượt quá
+					BeginInvoke(new MethodInvoker(delegate { cal(_Width, gvSPDV); })); 
 
 				}
 
@@ -1505,7 +1475,7 @@ namespace THUEPHONGNHANGHI
 
 				e.Info.ImageIndex = -1;
 
-				e.Info.DisplayText = string.Format("[{0}]", (e.RowHandle * -1)); // Nhân -1 để đánh lại số thứ tự tăng dần
+				e.Info.DisplayText = string.Format("[{0}]", (e.RowHandle * -1)); 
 
 				SizeF Size = e.Graphics.MeasureString(e.Info.DisplayText, e.Appearance.Font);
 
@@ -1547,9 +1517,8 @@ namespace THUEPHONGNHANGHI
 		{
 			if (gvDanhSach.FocusedRowHandle < 0) return;
 
-			isFormLoading = true; // Tạm dừng các sự kiện khác
-
-			// Lấy IDDP từ dòng đang chọn
+			isFormLoading = true; 
+		
 			_idDP = Convert.ToInt32(gvDanhSach.GetFocusedRowCellValue("IDDP"));
 			var dp = _datphong.getItem(_idDP);
 			if (dp == null)
@@ -1558,9 +1527,7 @@ namespace THUEPHONGNHANGHI
 				return;
 			}
 
-			// BƯỚC 1: LẤY LOẠI HÌNH THUÊ TỪ DATABASE
-			// Vì tất cả các phòng trong cùng 1 lần đặt đều có chung loại hình thuê,
-			// nên chỉ cần lấy chi tiết của phòng đầu tiên là đủ.
+			
 			var lstDPCT = _datphongchitiet.getAllByDatPhong(_idDP);
 			if (lstDPCT.Count > 0)
 			{
@@ -1568,16 +1535,15 @@ namespace THUEPHONGNHANGHI
 			}
 			else
 			{
-				_loaiHinhThue = "THEONGAY"; // Mặc định nếu không có chi tiết
+				_loaiHinhThue = "THEONGAY"; 
 			}
 
-			// BƯỚC 2: CẬP NHẬT GIAO DIỆN VÀ LOGIC THEO ĐÚNG LOẠI HÌNH THUÊ
-			// Gán giá trị cho RadioGroup trước
+			
 			radioG_LoaiHinhThue.EditValue = _loaiHinhThue;
-			// Sau đó gọi hàm cập nhật giao diện, hàm này sẽ tự động tính lại tổng tiền
+			
 			CapNhatGiaoDienTheoLoaiHinh();
 
-			// BƯỚC 3: NẠP CÁC THÔNG TIN CÒN LẠI VÀ HIỂN THỊ ĐÚNG TỔNG TIỀN ĐÃ LƯU
+		
 			cboKhachhang.SelectedValue = dp.IDKH;
 			dtNgaydat.Value = dp.NGAYDATPHONG ?? DateTime.Now;
 			dtNgaytra.Value = dp.NGAYTRAPHONG ?? DateTime.Now.AddDays(1);
@@ -1585,22 +1551,21 @@ namespace THUEPHONGNHANGHI
 			cboTrangthai.SelectedValue = dp.STATUS;
 			txtGhichu.Text = dp.GHICHU;
 
-			// Hiển thị lại đúng tổng tiền đã lưu trong database,
-			// thay vì tổng tiền vừa bị tính lại sai ở trên.
+			
 			txtThanhtien.Text = dp.SOTIEN.Value.ToString("N0");
 
 			loadDP();
 			loadSPDVForEdit();
 
-			isFormLoading = false; // Cho phép các sự kiện chạy lại bình thường
+			isFormLoading = false; 
 		}
 
 		void loadDP()
 		{
-			// Sửa lỗi sai tên biến
+			
 			_rowDatPhong = 0;
 
-			// Sửa lỗi thiếu cột DONGIATHEOGIO trong câu lệnh SQL
+			
 			string sql = $@"SELECT A.IDPHONG, A.TENPHONG, C.DONGIA, C.DONGIATHEOGIO, A.IDTANG, B.TENTANG 
                     FROM tb_Phong A, tb_Tang B, tb_LoaiPhong C, tb_DatPhongCT D 
                     WHERE A.IDTANG = B.IDTANG 
@@ -1611,7 +1576,7 @@ namespace THUEPHONGNHANGHI
 			DataTable dtRooms = myFunctions.laydulieu(sql);
 			gcDatphong.DataSource = dtRooms;
 
-			// Sửa lỗi sai tên biến
+			
 			_rowDatPhong = gvDatphong.RowCount;
 		}
 
@@ -1619,7 +1584,7 @@ namespace THUEPHONGNHANGHI
 
 		{
 
-			lstDPSP.Clear(); // Xóa dữ liệu cũ
+			lstDPSP.Clear(); 
 
 			var listFromDB = _datphongsanpham.getAllByDatPhong(_idDP);
 
@@ -1627,7 +1592,7 @@ namespace THUEPHONGNHANGHI
 
 			{
 
-				// Chỉ thêm vào danh sách nếu cả 2 ID đều không phải là null
+				
 
 				if (item.IDSP.HasValue && item.IDPHONG.HasValue)
 
@@ -1637,7 +1602,7 @@ namespace THUEPHONGNHANGHI
 
 					{
 
-						// Dùng .Value để lấy giá trị kiểu int từ int?
+						
 
 						IDSP = item.IDSP.Value,
 
@@ -1663,11 +1628,11 @@ namespace THUEPHONGNHANGHI
 
 			}
 
-			gcSPDV.DataSource = new List<objDPSP>(lstDPSP); // Cập nhật GridControl
+			gcSPDV.DataSource = new List<objDPSP>(lstDPSP); 
 
 		}
 
-		// ... (Các hàm dtTungay_ValueChanged, dtDenngay_ValueChanged, v.v. không thay đổi)
+		
 
 
 
@@ -1775,7 +1740,7 @@ namespace THUEPHONGNHANGHI
 
 		{
 
-			// Tái sử dụng logic từ gvDanhSach_Click
+			
 
 			gvDanhSach_Click(sender, e);
 
@@ -1785,28 +1750,130 @@ namespace THUEPHONGNHANGHI
 
 		private void gvSPDV_KeyDown(object sender, KeyEventArgs e)
 		{
-			// 1. Kiểm tra xem phím được nhấn có phải là phím Delete không
+			
 			if (e.KeyCode == Keys.Delete)
 			{
-				// 2. Lấy đối tượng sản phẩm từ dòng đang được chọn
+				
 				var sp = gvSPDV.GetFocusedRow() as objDPSP;
 				if (sp != null)
 				{
-					// 3. Hỏi xác nhận người dùng
+					
 					if (MessageBox.Show("Bạn có chắc chắn muốn xóa '" + sp.TENSP + "' không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 					{
-						// 4. Xóa sản phẩm khỏi danh sách trong bộ nhớ
+						
 						lstDPSP.Remove(sp);
 
-						// 5. Tải lại dữ liệu lên lưới để cập nhật giao diện
+						
 						loadDPSP();
 
-						// 6. Tính lại tổng tiền
+						
 						UpdateTotalPrice();
 					}
 				}
 			}
 		}
+
+		private void btnThanhToanHoaDon_Click(object sender, EventArgs e)
+		{
+			 
+			if (_idDP == 0)
+			{
+				MessageBox.Show("Vui lòng chọn một đặt phòng từ danh sách để thanh toán.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
+			
+			var dpHienTai = _datphong.getItem(_idDP);
+			if (dpHienTai != null && dpHienTai.STATUS == true)
+			{
+				MessageBox.Show("Phiếu này đã được thanh toán.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				return;
+			}
+
+			
+			frmChonThanhToan frmChon = new frmChonThanhToan();
+			if (frmChon.ShowDialog() == DialogResult.OK)
+			{
+				
+				string paymentMethod = frmChon.SelectedPaymentMethod;
+
+				
+				cboTrangthai.SelectedValue = true; 
+				saveData(paymentMethod); 
+
+				
+				var lstPhongTrongDP = _datphongchitiet.getAllByDatPhong(_idDP);
+				foreach (var p in lstPhongTrongDP)
+				{
+					_phong.updateStatus(p.IDPHONG, false); 
+				}
+
+				MessageBox.Show($"Đã thanh toán bằng [{paymentMethod}] thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+				
+				XuatReport("PHIEU_DATPHONG", "Hóa đơn thanh toán");
+
+				loadDanhSach(); 
+				if (objMain != null)
+				{
+					objMain.gControl.Gallery.Groups.Clear();
+					objMain.showRoom(); 
+				}
+
+				_enabled(false);
+				showHideControl(true);
+				tabDanhsach.SelectedTabPage = pageDanhsach; 
+			}
+			
+		}
+
+		private void btnSuaThanhToan_Click(object sender, EventArgs e)
+		{
+			
+			if (_idDP == 0)
+			{
+				MessageBox.Show("Vui lòng chọn một phiếu đã thanh toán để sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
+			
+			var dpHienTai = _datphong.getItem(_idDP);
+			if (dpHienTai == null || dpHienTai.STATUS == false)
+			{
+				MessageBox.Show("Chức năng này chỉ dùng để sửa hình thức thanh toán cho các phiếu ĐÃ THANH TOÁN.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				return;
+			}
+
+			
+			frmChonThanhToan frmChon = new frmChonThanhToan();
+			if (frmChon.ShowDialog() == DialogResult.OK)
+			{
+				string newPaymentMethod = frmChon.SelectedPaymentMethod;
+
+				
+				if (newPaymentMethod == dpHienTai.HINHTHUCTHANHTOAN)
+				{
+					MessageBox.Show("Bạn đã chọn lại hình thức thanh toán cũ. Không có gì thay đổi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					return;
+				}
+
+				try
+				{
+					
+					dpHienTai.HINHTHUCTHANHTOAN = newPaymentMethod;
+					_datphong.update(dpHienTai); 
+
+					MessageBox.Show($"Đã cập nhật hình thức thanh toán thành công thành [{newPaymentMethod}].", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+					
+					loadDanhSach();
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show("Đã xảy ra lỗi khi cập nhật: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+			}
+		}
 	}
 
-}
+} 

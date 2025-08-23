@@ -33,7 +33,9 @@ namespace BusinessLayer
 							 IDLOAIPHONG = p.IDLOAIPHONG,
 							 TENLOAIPHONG = lp.TENLOAIPHONG, // Lấy từ bảng join
 							 DONGIA = lp.DONGIA,
-							 DONGIATHEOGIO = lp.DONGIATHEOGIO
+							 DONGIATHEOGIO = lp.DONGIATHEOGIO,
+							 SONGUOIO = lp.SONGUOIO,
+							 SOGIUONG = lp.SOGIUONG
 						 }).FirstOrDefault();
 			return phong;
 		}
@@ -53,7 +55,9 @@ namespace BusinessLayer
 								  IDLOAIPHONG = p.IDLOAIPHONG,
 								  TENLOAIPHONG = lp.TENLOAIPHONG,
 								  DONGIA = lp.DONGIA,
-								  DONGIATHEOGIO = lp.DONGIATHEOGIO
+								  DONGIATHEOGIO = lp.DONGIATHEOGIO,
+								  SONGUOIO = lp.SONGUOIO,
+								  SOGIUONG = lp.SOGIUONG
 							  }).ToList();
 			return lsPhongOBJ;
 		}
@@ -74,7 +78,9 @@ namespace BusinessLayer
 								  IDLOAIPHONG = p.IDLOAIPHONG,
 								  TENLOAIPHONG = lp.TENLOAIPHONG,
 								  DONGIA = lp.DONGIA,
-								  DONGIATHEOGIO = lp.DONGIATHEOGIO
+								  DONGIATHEOGIO = lp.DONGIATHEOGIO,
+								  SONGUOIO = lp.SONGUOIO,
+								  SOGIUONG = lp.SOGIUONG
 							  }).ToList();
 			return lsPhongOBJ;
 		}

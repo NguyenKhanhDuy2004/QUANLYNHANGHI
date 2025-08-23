@@ -387,12 +387,13 @@
 			// 
 			// radioG_LoaiHinhThue
 			// 
-			this.radioG_LoaiHinhThue.Location = new System.Drawing.Point(667, 167);
+			this.radioG_LoaiHinhThue.Location = new System.Drawing.Point(646, 179);
 			this.radioG_LoaiHinhThue.Name = "radioG_LoaiHinhThue";
+			this.radioG_LoaiHinhThue.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Default;
 			this.radioG_LoaiHinhThue.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem("THEONGAY", "Theo ngày"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem("THEOGIO", "Theo giờ")});
-			this.radioG_LoaiHinhThue.Size = new System.Drawing.Size(215, 86);
+			this.radioG_LoaiHinhThue.Size = new System.Drawing.Size(236, 69);
 			this.radioG_LoaiHinhThue.TabIndex = 34;
 			this.radioG_LoaiHinhThue.EditValueChanged += new System.EventHandler(this.radioG_LoaiHinhThue_EditValueChanged);
 			// 
@@ -425,7 +426,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
 			this.searchKH.Properties.NullText = "";
 			this.searchKH.Properties.PopupView = this.searchLookUpEdit1View;
-			this.searchKH.Size = new System.Drawing.Size(413, 26);
+			this.searchKH.Size = new System.Drawing.Size(639, 26);
 			this.searchKH.TabIndex = 30;
 			// 
 			// searchLookUpEdit1View
@@ -482,7 +483,7 @@
 			this.spSonguoio.Name = "spSonguoio";
 			this.spSonguoio.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-			this.spSonguoio.Size = new System.Drawing.Size(179, 28);
+			this.spSonguoio.Size = new System.Drawing.Size(158, 28);
 			this.spSonguoio.TabIndex = 27;
 			// 
 			// label8
@@ -499,7 +500,7 @@
 			// 
 			this.btnAddNew.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAddNew.ImageOptions.Image")));
 			this.btnAddNew.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-			this.btnAddNew.Location = new System.Drawing.Point(622, 89);
+			this.btnAddNew.Location = new System.Drawing.Point(843, 89);
 			this.btnAddNew.Name = "btnAddNew";
 			this.btnAddNew.Size = new System.Drawing.Size(39, 42);
 			this.btnAddNew.TabIndex = 25;
@@ -509,7 +510,7 @@
 			// 
 			this.txtGhichu.Location = new System.Drawing.Point(198, 221);
 			this.txtGhichu.Name = "txtGhichu";
-			this.txtGhichu.Size = new System.Drawing.Size(463, 27);
+			this.txtGhichu.Size = new System.Drawing.Size(442, 27);
 			this.txtGhichu.TabIndex = 24;
 			// 
 			// label7
@@ -654,7 +655,12 @@
 			this.ClientSize = new System.Drawing.Size(1463, 820);
 			this.Controls.Add(this.splitContainerControl1);
 			this.Controls.Add(this.toolStrip1);
+			this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmDatPhongDon.IconOptions.Image")));
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "frmDatPhongDon";
+			this.ShowInTaskbar = false;
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Đặt Phòng";
 			this.Load += new System.EventHandler(this.frmDatPhongDon_Load);
 			this.toolStrip1.ResumeLayout(false);

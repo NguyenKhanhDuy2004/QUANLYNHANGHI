@@ -34,12 +34,15 @@
 			this.btnChuyenPhong = new DevExpress.XtraEditors.SimpleButton();
 			this.searchPhong = new DevExpress.XtraEditors.SearchLookUpEdit();
 			this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
-			this.IDPHONG = new DevExpress.XtraGrid.Columns.GridColumn();
-			this.TENPHONG = new DevExpress.XtraGrid.Columns.GridColumn();
-			this.DONGIA = new DevExpress.XtraGrid.Columns.GridColumn();
 			this.label1 = new System.Windows.Forms.Label();
 			this.lblPhong = new System.Windows.Forms.Label();
 			this.lblPhongHienTai = new System.Windows.Forms.Label();
+			this.IDPHONG = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.TENPHONG = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.DONGIA = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.TENLOAIPHONG = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.SONGUOIO = new DevExpress.XtraGrid.Columns.GridColumn();
+			this.SOGIUONG = new DevExpress.XtraGrid.Columns.GridColumn();
 			((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
 			this.groupControl1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.searchPhong.Properties)).BeginInit();
@@ -99,41 +102,14 @@
 			this.searchLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.IDPHONG,
             this.TENPHONG,
-            this.DONGIA});
+            this.DONGIA,
+            this.TENLOAIPHONG,
+            this.SONGUOIO,
+            this.SOGIUONG});
 			this.searchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
 			this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
 			this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
 			this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
-			// 
-			// IDPHONG
-			// 
-			this.IDPHONG.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-			this.IDPHONG.AppearanceHeader.Options.UseFont = true;
-			this.IDPHONG.Caption = "ID";
-			this.IDPHONG.FieldName = "IDPHONG";
-			this.IDPHONG.Name = "IDPHONG";
-			this.IDPHONG.Visible = true;
-			this.IDPHONG.VisibleIndex = 0;
-			// 
-			// TENPHONG
-			// 
-			this.TENPHONG.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-			this.TENPHONG.AppearanceHeader.Options.UseFont = true;
-			this.TENPHONG.Caption = "TÊN PHÒNG";
-			this.TENPHONG.FieldName = "TENPHONG";
-			this.TENPHONG.Name = "TENPHONG";
-			this.TENPHONG.Visible = true;
-			this.TENPHONG.VisibleIndex = 1;
-			// 
-			// DONGIA
-			// 
-			this.DONGIA.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
-			this.DONGIA.AppearanceHeader.Options.UseFont = true;
-			this.DONGIA.Caption = "ĐƠN GIÁ";
-			this.DONGIA.FieldName = "DONGIA";
-			this.DONGIA.Name = "DONGIA";
-			this.DONGIA.Visible = true;
-			this.DONGIA.VisibleIndex = 2;
 			// 
 			// label1
 			// 
@@ -166,13 +142,77 @@
 			this.lblPhongHienTai.TabIndex = 0;
 			this.lblPhongHienTai.Text = "Phòng hiện tại:";
 			// 
+			// IDPHONG
+			// 
+			this.IDPHONG.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+			this.IDPHONG.AppearanceHeader.Options.UseFont = true;
+			this.IDPHONG.Caption = "ID";
+			this.IDPHONG.FieldName = "IDPHONG";
+			this.IDPHONG.Name = "IDPHONG";
+			this.IDPHONG.Visible = true;
+			this.IDPHONG.VisibleIndex = 0;
+			// 
+			// TENPHONG
+			// 
+			this.TENPHONG.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+			this.TENPHONG.AppearanceHeader.Options.UseFont = true;
+			this.TENPHONG.Caption = "TÊN PHÒNG";
+			this.TENPHONG.FieldName = "TENPHONG";
+			this.TENPHONG.Name = "TENPHONG";
+			this.TENPHONG.Visible = true;
+			this.TENPHONG.VisibleIndex = 1;
+			// 
+			// DONGIA
+			// 
+			this.DONGIA.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+			this.DONGIA.AppearanceHeader.Options.UseFont = true;
+			this.DONGIA.Caption = "ĐƠN GIÁ";
+			this.DONGIA.FieldName = "DONGIA";
+			this.DONGIA.Name = "DONGIA";
+			this.DONGIA.Visible = true;
+			this.DONGIA.VisibleIndex = 2;
+			// 
+			// TENLOAIPHONG
+			// 
+			this.TENLOAIPHONG.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+			this.TENLOAIPHONG.AppearanceHeader.Options.UseFont = true;
+			this.TENLOAIPHONG.Caption = "LOẠI PHÒNG";
+			this.TENLOAIPHONG.FieldName = "TENLOAIPHONG";
+			this.TENLOAIPHONG.Name = "TENLOAIPHONG";
+			this.TENLOAIPHONG.Visible = true;
+			this.TENLOAIPHONG.VisibleIndex = 3;
+			// 
+			// SONGUOIO
+			// 
+			this.SONGUOIO.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+			this.SONGUOIO.AppearanceHeader.Options.UseFont = true;
+			this.SONGUOIO.Caption = "SỐ NGƯỜI Ở";
+			this.SONGUOIO.FieldName = "SONGUOIO";
+			this.SONGUOIO.Name = "SONGUOIO";
+			this.SONGUOIO.Visible = true;
+			this.SONGUOIO.VisibleIndex = 4;
+			// 
+			// SOGIUONG
+			// 
+			this.SOGIUONG.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
+			this.SOGIUONG.AppearanceHeader.Options.UseFont = true;
+			this.SOGIUONG.Caption = "GIƯỜNG";
+			this.SOGIUONG.FieldName = "SOGIUONG";
+			this.SOGIUONG.Name = "SOGIUONG";
+			this.SOGIUONG.Visible = true;
+			this.SOGIUONG.VisibleIndex = 5;
+			// 
 			// frmChuyenPhong
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(811, 317);
 			this.Controls.Add(this.groupControl1);
+			this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmChuyenPhong.IconOptions.Image")));
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "frmChuyenPhong";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Chuyển phòng";
 			this.Load += new System.EventHandler(this.frmChuyenPhong_Load);
@@ -198,5 +238,8 @@
 		private DevExpress.XtraGrid.Columns.GridColumn IDPHONG;
 		private DevExpress.XtraGrid.Columns.GridColumn TENPHONG;
 		private DevExpress.XtraGrid.Columns.GridColumn DONGIA;
+		private DevExpress.XtraGrid.Columns.GridColumn TENLOAIPHONG;
+		private DevExpress.XtraGrid.Columns.GridColumn SONGUOIO;
+		private DevExpress.XtraGrid.Columns.GridColumn SOGIUONG;
 	}
 }

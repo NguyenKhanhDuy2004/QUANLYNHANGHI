@@ -33,7 +33,7 @@ namespace THUEPHONGNHANGHI
 			_datphongsp = new DATPHONGSANPHAM();
 			_datphong = new DATPHONG();
 			var p =_phong.getItemFull(_idPhong);
-			lblPhong.Text = p.TENPHONG + " - Đơn giá: " + p.DONGIA.ToString();
+			lblPhong.Text = p.TENPHONG + " - " + p.TENLOAIPHONG + "  Đơn giá: " + p.DONGIA.ToString();
 			loadPhongTrong();
 		}
 		void loadPhongTrong()

@@ -31,16 +31,15 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
 			this.txtPass = new System.Windows.Forms.TextBox();
 			this.btnLogin = new DevExpress.XtraEditors.SimpleButton();
-			this.btnThoat = new DevExpress.XtraEditors.SimpleButton();
 			this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
 			this.btnCa1 = new DevExpress.XtraEditors.SimpleButton();
 			this.btnCa2 = new DevExpress.XtraEditors.SimpleButton();
 			this.btnAdmin = new DevExpress.XtraEditors.SimpleButton();
+			this.btnThoat = new DevExpress.XtraEditors.SimpleButton();
 			this.SuspendLayout();
 			// 
 			// txtPass
 			// 
-			this.txtPass.BackColor = System.Drawing.Color.LightSteelBlue;
 			this.txtPass.Font = new System.Drawing.Font("Tahoma", 12F);
 			this.txtPass.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
 			this.txtPass.Location = new System.Drawing.Point(150, 288);
@@ -51,33 +50,18 @@
 			// 
 			// btnLogin
 			// 
-			this.btnLogin.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+			this.btnLogin.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
 			this.btnLogin.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
 			this.btnLogin.Appearance.Options.UseFont = true;
 			this.btnLogin.Appearance.Options.UseForeColor = true;
+			this.btnLogin.BackgroundImage = global::THUEPHONGNHANGHI.Properties.Resources.Hotel_đăng_nhập;
 			this.btnLogin.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnLogin.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLogin.ImageOptions.Image")));
-			this.btnLogin.Location = new System.Drawing.Point(27, 355);
+			this.btnLogin.Location = new System.Drawing.Point(27, 357);
 			this.btnLogin.Name = "btnLogin";
-			this.btnLogin.Size = new System.Drawing.Size(201, 73);
+			this.btnLogin.Size = new System.Drawing.Size(437, 73);
 			this.btnLogin.TabIndex = 5;
 			this.btnLogin.Text = "Đăng nhập";
 			this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
-			// 
-			// btnThoat
-			// 
-			this.btnThoat.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-			this.btnThoat.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-			this.btnThoat.Appearance.Options.UseFont = true;
-			this.btnThoat.Appearance.Options.UseForeColor = true;
-			this.btnThoat.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnThoat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThoat.ImageOptions.Image")));
-			this.btnThoat.Location = new System.Drawing.Point(261, 355);
-			this.btnThoat.Name = "btnThoat";
-			this.btnThoat.Size = new System.Drawing.Size(203, 73);
-			this.btnThoat.TabIndex = 6;
-			this.btnThoat.Text = "Thoát";
-			this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
 			// 
 			// labelControl3
 			// 
@@ -97,6 +81,7 @@
 			this.btnCa1.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
 			this.btnCa1.Appearance.Options.UseFont = true;
 			this.btnCa1.Appearance.Options.UseForeColor = true;
+			this.btnCa1.BackgroundImage = global::THUEPHONGNHANGHI.Properties.Resources.Hotel_đăng_nhập2;
 			this.btnCa1.Location = new System.Drawing.Point(178, 188);
 			this.btnCa1.Name = "btnCa1";
 			this.btnCa1.Size = new System.Drawing.Size(146, 71);
@@ -110,6 +95,7 @@
 			this.btnCa2.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
 			this.btnCa2.Appearance.Options.UseFont = true;
 			this.btnCa2.Appearance.Options.UseForeColor = true;
+			this.btnCa2.BackgroundImage = global::THUEPHONGNHANGHI.Properties.Resources.Hotel_đăng_nhập3;
 			this.btnCa2.Location = new System.Drawing.Point(330, 188);
 			this.btnCa2.Name = "btnCa2";
 			this.btnCa2.Size = new System.Drawing.Size(134, 71);
@@ -123,6 +109,7 @@
 			this.btnAdmin.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
 			this.btnAdmin.Appearance.Options.UseFont = true;
 			this.btnAdmin.Appearance.Options.UseForeColor = true;
+			this.btnAdmin.BackgroundImage = global::THUEPHONGNHANGHI.Properties.Resources.Hotel_đăng_nhập1;
 			this.btnAdmin.Location = new System.Drawing.Point(27, 188);
 			this.btnAdmin.Name = "btnAdmin";
 			this.btnAdmin.Size = new System.Drawing.Size(145, 71);
@@ -130,24 +117,41 @@
 			this.btnAdmin.Text = "ADMIN";
 			this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
 			// 
+			// btnThoat
+			// 
+			this.btnThoat.Appearance.BackColor = System.Drawing.Color.RoyalBlue;
+			this.btnThoat.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
+			this.btnThoat.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+			this.btnThoat.Appearance.Options.UseBackColor = true;
+			this.btnThoat.Appearance.Options.UseFont = true;
+			this.btnThoat.Appearance.Options.UseForeColor = true;
+			this.btnThoat.BackgroundImage = global::THUEPHONGNHANGHI.Properties.Resources._3231313;
+			this.btnThoat.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.btnThoat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThoat.ImageOptions.Image")));
+			this.btnThoat.Location = new System.Drawing.Point(930, 1);
+			this.btnThoat.Name = "btnThoat";
+			this.btnThoat.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
+			this.btnThoat.Size = new System.Drawing.Size(70, 73);
+			this.btnThoat.TabIndex = 13;
+			this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
+			// 
 			// frmLogin
 			// 
 			this.AcceptButton = this.btnLogin;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackgroundImageLayoutStore = System.Windows.Forms.ImageLayout.Tile;
-			this.BackgroundImageStore = global::THUEPHONGNHANGHI.Properties.Resources.Hotel;
-			this.CancelButton = this.btnThoat;
-			this.ClientSize = new System.Drawing.Size(999, 502);
-			this.ControlBox = false;
+			this.BackgroundImageStore = global::THUEPHONGNHANGHI.Properties.Resources.Hotel2;
+			this.ClientSize = new System.Drawing.Size(999, 498);
+			this.Controls.Add(this.btnThoat);
 			this.Controls.Add(this.btnCa2);
 			this.Controls.Add(this.btnCa1);
 			this.Controls.Add(this.btnAdmin);
 			this.Controls.Add(this.labelControl3);
-			this.Controls.Add(this.btnThoat);
-			this.Controls.Add(this.btnLogin);
 			this.Controls.Add(this.txtPass);
+			this.Controls.Add(this.btnLogin);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+			this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmLogin.IconOptions.Image")));
 			this.Name = "frmLogin";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Đăng nhập hệ thống";
@@ -160,10 +164,10 @@
 		#endregion
 		private System.Windows.Forms.TextBox txtPass;
 		private DevExpress.XtraEditors.SimpleButton btnLogin;
-		private DevExpress.XtraEditors.SimpleButton btnThoat;
 		private DevExpress.XtraEditors.LabelControl labelControl3;
 		private DevExpress.XtraEditors.SimpleButton btnCa1;
 		private DevExpress.XtraEditors.SimpleButton btnCa2;
 		private DevExpress.XtraEditors.SimpleButton btnAdmin;
+		private DevExpress.XtraEditors.SimpleButton btnThoat;
 	}
 }

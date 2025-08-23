@@ -358,7 +358,11 @@
 			this.Controls.Add(this.groupControl1);
 			this.Controls.Add(this.gcDanhSach);
 			this.Controls.Add(this.toolStrip1);
+			this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmLoaiPhong.IconOptions.Image")));
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "frmLoaiPhong";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Loại Phòng";
 			this.Load += new System.EventHandler(this.frmLoaiPhong_Load);

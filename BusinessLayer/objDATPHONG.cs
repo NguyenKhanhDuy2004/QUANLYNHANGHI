@@ -20,6 +20,7 @@ namespace BusinessLayer
 		public string MADVI { get; set; }
 		public bool? STATUS { get; set; }
 		public string GHICHI { get; set; }
- 
-	 }
+		public string HINHTHUCTHANHTOAN { get; set; }
+
+	}
 }

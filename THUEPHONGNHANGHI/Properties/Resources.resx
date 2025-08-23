@@ -163,6 +163,9 @@
   <data name="icons8-edit-property-1005" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-edit-property-1005.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="6035_exit_icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\6035_exit_icon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-recycle-bin-1002" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-recycle-bin-1002.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -174,6 +177,9 @@
   </data>
   <data name="icons8-recycle-bin-1005" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-recycle-bin-1005.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Hotel đăng nhập" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Hotel đăng nhập.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-save-1002" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-save-1002.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -208,6 +214,9 @@
   <data name="icons8-recycle-bin-1003" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-recycle-bin-1003.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Thiết kế chưa có tên (1)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Thiết kế chưa có tên (1)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="520570_chart_analytics_business_graph_report_icon2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\520570_chart_analytics_business_graph_report_icon2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -235,11 +244,20 @@
   <data name="BeautyPlus-Image-Enhancer-17512557642543" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BeautyPlus-Image-Enhancer-17512557642542.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Hotel (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Hotel (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Hotel đăng nhập1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Hotel đăng nhập1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-add-1002" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-add-1002.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="user-pen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\user-pen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Hotel đăng nhập3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Hotel đăng nhập3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="6035_exit_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\6035_exit_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -264,6 +282,9 @@
   </data>
   <data name="icons8-recycle-bin-1001" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-recycle-bin-1001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pngtree-hotel-signboard-sojourn-ad-symbol-photo-image_991658" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pngtree-hotel-signboard-sojourn-ad-symbol-photo-image_991658.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="5402370_bin_delete_remove_trash_can_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\5402370_bin_delete_remove_trash_can_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -298,11 +319,20 @@
   <data name="icons8-sales-performance-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-sales-performance-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Hotel1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Hotel1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="4975312_docs_document_format_page_word_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\4975312_docs_document_format_page_word_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Hotel2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Hotel2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-edit-property-1003" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-edit-property-1003.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1564506_close_exit_logout_power_icon2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1564506_close_exit_logout_power_icon2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="285657_floppy_guardar_save_icon (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\285657_floppy_guardar_save_icon (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -340,16 +370,22 @@
   <data name="icons8-edit-property-1009" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-edit-property-1009.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Hotel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Hotel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-recycle-bin-1009" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-recycle-bin-1009.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="8725775_edit_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\8725775_edit_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Hotel đăng nhập2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Hotel đăng nhập2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Thiết kế chưa có tên (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Thiết kế chưa có tên (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Hotel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Hotel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="3231313" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\3231313.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

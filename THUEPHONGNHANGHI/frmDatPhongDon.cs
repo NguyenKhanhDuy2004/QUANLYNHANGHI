@@ -28,8 +28,7 @@ namespace THUEPHONGNHANGHI
 		public bool _them;
 		public int _idPhong;
 		int _idDP = 0;
-		string _loaiHinhThue = "THEONGAY"; // Biến lưu loại hình thuê
-
+		string _loaiHinhThue = "THEONGAY"; 
 		DATPHONG _datphong;
 		DATPHONGCHITIET _datphongct;
 		DATPHONGSANPHAM _datphongsp;
@@ -156,24 +155,49 @@ namespace THUEPHONGNHANGHI
 
 		void UpdateTongTien()
 		{
+			// Tính tổng tiền sản phẩm dịch vụ đã chọn
 			double tongTienSPDV = lstDPSP.Sum(p => p.THANHTIEN) ?? 0;
 			double tienPhong = 0;
 
+			// Kiểm tra nếu loại hình thuê là THEOGIO
 			if (_loaiHinhThue == "THEOGIO")
 			{
-				tienPhong = (_phongHienTai.DONGIATHEOGIO ?? 0) * TinhSoGio();
+				// Lấy tổng số giờ thuê từ phương thức TinhSoGio()
+				int soGioThue = TinhSoGio();
+
+				// Lấy giá giờ đầu từ thông tin phòng
+				double giaGioDau = _phongHienTai.DONGIATHEOGIO ?? 0;
+
+				// Định nghĩa giá cho mỗi giờ phát sinh thêm
+				double giaMoiGioThem = 50000; // 50k cho mỗi giờ thêm
+
+				if (soGioThue <= 1)
+				{
+					// Nếu chỉ thuê 1 giờ hoặc ít hơn, chỉ tính giá giờ đầu
+					tienPhong = giaGioDau;
+				}
+				else
+				{
+					// Nếu thuê nhiều hơn 1 giờ:
+					// Tiền phòng = (Giá giờ đầu) + (Số giờ còn lại * Giá mỗi giờ thêm)
+					tienPhong = giaGioDau + (soGioThue - 1) * giaMoiGioThem;
+				}
 			}
-			else
+			else // Nếu loại hình thuê là THEONGAY
 			{
+				// Giữ nguyên cách tính tiền theo ngày
 				tienPhong = (_phongHienTai.DONGIA ?? 0) * TinhSoNgay();
 			}
 
+			// Tính tổng cộng tiền phòng và tiền dịch vụ
 			double tongCong = tienPhong + tongTienSPDV;
+
+			// Hiển thị tổng tiền đã được định dạng
 			txtThanhtien.Text = tongCong.ToString("N0");
 		}
 
 
-		void saveData()
+		void saveData(string hinhThucThanhToan = null)
 		{
 			if (searchKH.EditValue == null || searchKH.EditValue.ToString() == "")
 			{
@@ -201,6 +225,7 @@ namespace THUEPHONGNHANGHI
 				dp.MACTY = _macty;
 				dp.MADVI = _madvi;
 				dp.CREATED_DATE = DateTime.Now;
+				dp.HINHTHUCTHANHTOAN = hinhThucThanhToan; 
 
 				var newDP = _datphong.add(dp);
 				_idDP = newDP.IDDP;
@@ -214,13 +239,13 @@ namespace THUEPHONGNHANGHI
 				if (_loaiHinhThue == "THEOGIO")
 				{
 					dpct.SONGAYO = TinhSoGio();
-					// 💡 SỬA LỖI: Ép kiểu double sang int?
+				
 					dpct.DONGIA = (int?)(_phongHienTai.DONGIATHEOGIO ?? 0);
 				}
 				else
 				{
 					dpct.SONGAYO = TinhSoNgay();
-					// 💡 SỬA LỖI: Ép kiểu double sang int?
+				
 					dpct.DONGIA = (int?)(_phongHienTai.DONGIA ?? 0);
 				}
 				dpct.THANHTIEN = dpct.SONGAYO * dpct.DONGIA;
@@ -236,13 +261,13 @@ namespace THUEPHONGNHANGHI
 					dpsp.IDPHONG = _idPhong;
 					dpsp.IDSP = item.IDSP;
 					dpsp.SOLUONG = (int?)item.SOLUONG;
-					// 💡 SỬA LỖI: Ép kiểu double sang int?
+				
 					dpsp.DONGIA = (int?)item.DONGIA;
 					dpsp.THANHTIEN = (int?)item.THANHTIEN;
 					_datphongsp.add(dpsp);
 				}
 			}
-			else // CẬP NHẬT
+			else 
 			{
 				tb_DatPhong dp = _datphong.getItem(_idDP);
 				dp.IDKH = int.Parse(searchKH.EditValue.ToString());
@@ -254,6 +279,13 @@ namespace THUEPHONGNHANGHI
 				dp.GHICHU = txtGhichu.Text;
 				dp.UPDATE_BY = 1;
 				dp.UPDATE_DATE = DateTime.Now;
+
+				
+				if (!string.IsNullOrEmpty(hinhThucThanhToan))
+				{
+					dp.HINHTHUCTHANHTOAN = hinhThucThanhToan;
+				}
+
 				_datphong.update(dp);
 
 				tb_DatPhongCT dpct = _datphongct.getItem(_idDP, _idPhong);
@@ -261,13 +293,13 @@ namespace THUEPHONGNHANGHI
 				if (_loaiHinhThue == "THEOGIO")
 				{
 					dpct.SONGAYO = TinhSoGio();
-					// 💡 SỬA LỖI: Ép kiểu double sang int?
+					
 					dpct.DONGIA = (int?)(_phongHienTai.DONGIATHEOGIO ?? 0);
 				}
 				else
 				{
 					dpct.SONGAYO = TinhSoNgay();
-					// 💡 SỬA LỖI: Ép kiểu double sang int?
+					
 					dpct.DONGIA = (int?)(_phongHienTai.DONGIA ?? 0);
 				}
 				dpct.THANHTIEN = dpct.SONGAYO * dpct.DONGIA;
@@ -282,7 +314,7 @@ namespace THUEPHONGNHANGHI
 					dpsp.IDPHONG = _idPhong;
 					dpsp.IDSP = item.IDSP;
 					dpsp.SOLUONG = (int?)item.SOLUONG;
-					// 💡 SỬA LỖI: Ép kiểu double sang int?
+					
 					dpsp.DONGIA = (int?)item.DONGIA;
 					dpsp.THANHTIEN = (int?)item.THANHTIEN;
 					_datphongsp.add(dpsp);
@@ -303,15 +335,7 @@ namespace THUEPHONGNHANGHI
 			}
 		}
 
-		//private void dtNgaydat_ValueChanged(object sender, EventArgs e)
-		//{
-		//	UpdateTongTien();
-		//}
-		//
-		//private void dtNgaytra_ValueChanged(object sender, EventArgs e)
-		//{
-		//	UpdateTongTien();
-		//}
+
 
 		private void btnThanhToanHoaDon_Click(object sender, EventArgs e)
 		{
@@ -326,21 +350,28 @@ namespace THUEPHONGNHANGHI
 				return;
 			}
 
-			cboTrangthai.SelectedValue = true;
-			saveData();
+			
+			frmChonThanhToan frmChon = new frmChonThanhToan();
+			if (frmChon.ShowDialog() == DialogResult.OK)
+			{
+				
+				string paymentMethod = frmChon.SelectedPaymentMethod;
 
-			// 💡 SỬA LỖI 4: Kiểm tra lại tên phương thức trong lớp DATPHONG của bạn.
-			// Có thể tên đúng là "UpdateStatus" hoặc một tên khác.
-			_datphong.updateStuatus(_idDP);
-			_phong.updateStatus(_idPhong, false);
+				
+				cboTrangthai.SelectedValue = true;
+				saveData(paymentMethod); 
+				_datphong.updateStuatus(_idDP); 
+				_phong.updateStatus(_idPhong, false);
 
-			MessageBox.Show("Đã thanh toán và trả phòng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				MessageBox.Show($"Đã thanh toán bằng [{paymentMethod}] và trả phòng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-			XuatReport("PHIEU_DATPHONG_DON", "Hóa đơn thanh toán");
+				XuatReport("PHIEU_DATPHONG_DON", "Hóa đơn thanh toán");
 
-			objMain.gControl.Gallery.Groups.Clear();
-			objMain.showRoom();
-			this.Close();
+				objMain.gControl.Gallery.Groups.Clear();
+				objMain.showRoom();
+				this.Close();
+			}
+			
 		}
 
 		private void btnIn_Click(object sender, EventArgs e)
@@ -513,7 +544,7 @@ namespace THUEPHONGNHANGHI
 		{
 			CapNhatGiaoDienTheoLoaiHinh();
 		}
-		// Dùng cho các thay đổi tức thời (bấm mũi tên, chọn trên lịch)
+		
 		private void dtNgaydat_ValueChanged(object sender, EventArgs e)
 		{
 			UpdateTongTien();
@@ -524,7 +555,7 @@ namespace THUEPHONGNHANGHI
 			UpdateTongTien();
 		}
 
-		// Dùng để xác nhận thay đổi cuối cùng (khi gõ tay xong và chuyển đi)
+		
 		private void dtNgaydat_Validated(object sender, EventArgs e)
 		{
 			UpdateTongTien();
@@ -537,7 +568,7 @@ namespace THUEPHONGNHANGHI
 
 		private void gvSPDV_KeyDown(object sender, KeyEventArgs e)
 		{
-			// Kiểm tra xem phím được nhấn có phải là phím Delete không
+			
 			if (e.KeyCode == Keys.Delete)
 			{
 				// Lấy dòng đang được chọn trong lưới gvSPDV

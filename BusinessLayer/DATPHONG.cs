@@ -46,6 +46,7 @@ namespace BusinessLayer
 				dp.SOTIEN = item.SOTIEN;
 				dp.STATUS = item.STATUS;
 				dp.GHICHI = item.GHICHU;
+				dp.HINHTHUCTHANHTOAN = item.HINHTHUCTHANHTOAN;
 				lstDP.Add(dp);
 			}
 			return lstDP;
@@ -102,6 +103,7 @@ namespace BusinessLayer
 			dp.STATUS = _dp.STATUS;
 			dp.GHICHU = _dp.GHICHU;
 			dp.CREATED_DATE = _dp.CREATED_DATE;
+			dp.HINHTHUCTHANHTOAN = _dp.HINHTHUCTHANHTOAN;
 			try
 			{
 				db.SaveChanges();

@@ -103,6 +103,16 @@ namespace THUEPHONGNHANGHI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1564506_close_exit_logout_power_icon2 {
+            get {
+                object obj = ResourceManager.GetObject("1564506_close_exit_logout_power_icon2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _285657_floppy_guardar_save_icon__1_ {
             get {
                 object obj = ResourceManager.GetObject("285657_floppy_guardar_save_icon (1)", resourceCulture);
@@ -136,6 +146,16 @@ namespace THUEPHONGNHANGHI.Properties {
         internal static System.Drawing.Bitmap _299068_add_sign_icon {
             get {
                 object obj = ResourceManager.GetObject("299068_add_sign_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _3231313 {
+            get {
+                object obj = ResourceManager.GetObject("3231313", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -226,6 +246,16 @@ namespace THUEPHONGNHANGHI.Properties {
         internal static System.Drawing.Bitmap _6035_exit_icon {
             get {
                 object obj = ResourceManager.GetObject("6035_exit_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _6035_exit_icon1 {
+            get {
+                object obj = ResourceManager.GetObject("6035_exit_icon1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -356,6 +386,76 @@ namespace THUEPHONGNHANGHI.Properties {
         internal static System.Drawing.Bitmap Hotel {
             get {
                 object obj = ResourceManager.GetObject("Hotel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Hotel__3_ {
+            get {
+                object obj = ResourceManager.GetObject("Hotel (3)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Hotel_đăng_nhập {
+            get {
+                object obj = ResourceManager.GetObject("Hotel đăng nhập", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Hotel_đăng_nhập1 {
+            get {
+                object obj = ResourceManager.GetObject("Hotel đăng nhập1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Hotel_đăng_nhập2 {
+            get {
+                object obj = ResourceManager.GetObject("Hotel đăng nhập2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Hotel_đăng_nhập3 {
+            get {
+                object obj = ResourceManager.GetObject("Hotel đăng nhập3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Hotel1 {
+            get {
+                object obj = ResourceManager.GetObject("Hotel1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Hotel2 {
+            get {
+                object obj = ResourceManager.GetObject("Hotel2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -763,6 +863,16 @@ namespace THUEPHONGNHANGHI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pngtree_hotel_signboard_sojourn_ad_symbol_photo_image_991658 {
+            get {
+                object obj = ResourceManager.GetObject("pngtree-hotel-signboard-sojourn-ad-symbol-photo-image_991658", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap report {
             get {
                 object obj = ResourceManager.GetObject("report", resourceCulture);
@@ -806,6 +916,16 @@ namespace THUEPHONGNHANGHI.Properties {
         internal static System.Drawing.Bitmap Thiết_kế_chưa_có_tên__1_ {
             get {
                 object obj = ResourceManager.GetObject("Thiết kế chưa có tên (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Thiết_kế_chưa_có_tên__1_1 {
+            get {
+                object obj = ResourceManager.GetObject("Thiết kế chưa có tên (1)1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
